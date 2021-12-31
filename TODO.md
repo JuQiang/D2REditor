@@ -1,0 +1,4 @@
+- cascview打开后，data\data\global\palette\act1的pat.dat要试验一下
+- data\data\global\sfx\item是各种item的掉落或者十七的声音
+- data\data\global\ui\automap，这些dc6文件可以打开看看**包括菜单、地图什么的！**
+- 这个可以看看了，很多图像相关的。http://www.diablo2.com.cn/category-21.html

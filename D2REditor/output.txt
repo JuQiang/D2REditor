@@ -1,0 +1,8 @@
+    tc offset 0
+set tc to 0
+Args:
+    template path .\template
+    bin path .\bin
+    output path .\txt
+    all module
+confirm start?(y/n)

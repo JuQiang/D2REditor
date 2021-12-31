@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <Nullable></Nullable>
+    <Company />
+    <Authors>dschu012</Authors>
+    <PackageTags>d2s d2i diablo-ii diablo2 d2r</PackageTags>
+    <Description>Read and write saves from Diablo 2. Supports versions 1.10 through Diablo II: Resurrected (1.15). Supports both d2s (player saves) and d2i (shared stash).</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/dschu012/D2SLib</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.2</Version>
+<LangVersion>8.0</LangVersion>
+<AssemblyName>D2SLib</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\NewFolder\**" />
+    <Compile Remove="Resources\**" />
+    <Compile Remove="test\**" />
+    <EmbeddedResource Remove="Model\NewFolder\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <EmbeddedResource Remove="test\**" />
+    <None Remove="Model\NewFolder\**" />
+    <None Remove="Resources\**" />
+    <None Remove="test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\ItemStatCostTXT.cs" />
+    <Compile Remove="Model\ItemsTXT.cs" />
+    <Compile Remove="Model\TXTFile.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="TextFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

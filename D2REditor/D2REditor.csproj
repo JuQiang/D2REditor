@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE356A28-CCAD-4F2F-83CF-3844D164441C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>D2REditor</RootNamespace>
+    <AssemblyName>D2REditor</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ButtonEx.Designer.cs">
+      <DependentUpon>ButtonEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CharactorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CharactorControl.Designer.cs">
+      <DependentUpon>CharactorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CheckBoxEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CheckBoxEx.Designer.cs">
+      <DependentUpon>CheckBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FollowerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FollowerControl.Designer.cs">
+      <DependentUpon>FollowerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ItemsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemsControl.Designer.cs">
+      <DependentUpon>ItemsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ListBoxEx.Designer.cs">
+      <DependentUpon>ListBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ListViewEx.Designer.cs">
+      <DependentUpon>ListViewEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OptimizeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptimizeControl.Designer.cs">
+      <DependentUpon>OptimizeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PanelEx.Designer.cs">
+      <DependentUpon>PanelEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressControl.Designer.cs">
+      <DependentUpon>ProgressControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QuestsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QuestsControl.Designer.cs">
+      <DependentUpon>QuestsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SkillsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SkillsControl.Designer.cs">
+      <DependentUpon>SkillsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TabControlEx.Designer.cs">
+      <DependentUpon>TabControlEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WaypointsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WaypointsControl.Designer.cs">
+      <DependentUpon>WaypointsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DC6.cs" />
+    <Compile Include="DxtDecoder.cs" />
+    <Compile Include="ExtendEventArgs.cs" />
+    <Compile Include="Forms\FormCreateNewCharactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreateNewCharactor.Designer.cs">
+      <DependentUpon>FormCreateNewCharactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEditItemWithAffix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEditItemWithAffix.Designer.cs">
+      <DependentUpon>FormEditItemWithAffix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEditItem.Designer.cs">
+      <DependentUpon>FormEditItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEditStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEditStat.Designer.cs">
+      <DependentUpon>FormEditStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEx.Designer.cs">
+      <DependentUpon>FormEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormKnowledges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormKnowledges.Designer.cs">
+      <DependentUpon>FormKnowledges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormOpenD2R.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOpenD2R.Designer.cs">
+      <DependentUpon>FormOpenD2R.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOptions.Designer.cs">
+      <DependentUpon>FormOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormReportBug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormReportBug.Designer.cs">
+      <DependentUpon>FormReportBug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSelectAffix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSelectAffix.Designer.cs">
+      <DependentUpon>FormSelectAffix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSelectD2R.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSelectD2R.Designer.cs">
+      <DependentUpon>FormSelectD2R.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCreateItemFromTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreateItemFromTemplate.Designer.cs">
+      <DependentUpon>FormCreateItemFromTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormGenerateAndSaveCoolThings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormGenerateAndSaveCoolThings.Designer.cs">
+      <DependentUpon>FormGenerateAndSaveCoolThings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSaveTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSaveTemplate.Designer.cs">
+      <DependentUpon>FormSaveTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper.cs" />
+    <EmbeddedResource Include="Controls\ButtonEx.resx">
+      <DependentUpon>ButtonEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CharactorControl.resx">
+      <DependentUpon>CharactorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CheckBoxEx.resx">
+      <DependentUpon>CheckBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ItemsControl.resx">
+      <DependentUpon>ItemsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ListBoxEx.resx">
+      <DependentUpon>ListBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OptimizeControl.resx">
+      <DependentUpon>OptimizeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProgressControl.resx">
+      <DependentUpon>ProgressControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QuestsControl.resx">
+      <DependentUpon>QuestsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SkillsControl.resx">
+      <DependentUpon>SkillsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WaypointsControl.resx">
+      <DependentUpon>WaypointsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCreateNewCharactor.resx">
+      <DependentUpon>FormCreateNewCharactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEditItemWithAffix.resx">
+      <DependentUpon>FormEditItemWithAffix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEditItem.resx">
+      <DependentUpon>FormEditItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEx.resx">
+      <DependentUpon>FormEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormKnowledges.resx">
+      <DependentUpon>FormKnowledges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOpenD2R.resx">
+      <DependentUpon>FormOpenD2R.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOptions.resx">
+      <DependentUpon>FormOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormReportBug.resx">
+      <DependentUpon>FormReportBug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSelectAffix.resx">
+      <DependentUpon>FormSelectAffix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSelectD2R.resx">
+      <DependentUpon>FormSelectD2R.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCreateItemFromTemplate.resx">
+      <DependentUpon>FormCreateItemFromTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormGenerateAndSaveCoolThings.resx">
+      <DependentUpon>FormGenerateAndSaveCoolThings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSaveTemplate.resx">
+      <DependentUpon>FormSaveTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\D2SLib\D2SLib.csproj">
+      <Project>{dafe98a5-c695-4b07-8514-58ac91f53942}</Project>
+      <Name>D2SLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
