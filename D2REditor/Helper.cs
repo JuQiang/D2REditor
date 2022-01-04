@@ -427,6 +427,11 @@ namespace D2REditor
         private static string GetFormatFromDescFunc(TxtRow row, ItemStat stat)
         {
             string key = row["descstrpos"].Value.Trim();
+            if (stat.Id == 83) key = ExcelTxt.CharStatsTxt.Rows[Convert.ToInt32(stat.Param)]["StrAllSkills"].Value;
+            if (stat.Id == 188)
+            {
+                key = ExcelTxt.CharStatsTxt.Rows[Convert.ToInt32(stat.SkillLevel)]["StrSkillTab" + (Convert.ToInt32(stat.SkillTab) + 1).ToString()].Value;
+            }
 
             if (key == "" && stat.Value < 0)
             {
@@ -446,6 +451,7 @@ namespace D2REditor
         private static string GetFormatFromDgrpFunc(TxtRow row, ItemStat stat)
         {
             string key = row["dgrpstrpos"].Value.Trim();
+            //if (stat.Id == 83) key = ExcelTxt.CharStatsTxt.Rows[Convert.ToInt32(stat.Param)]["StrAllSkills"].Value;
 
             if (key == "" && stat.Value < 0)
             {
@@ -480,26 +486,27 @@ namespace D2REditor
                     desc = String.Format(format, "FQQ", stat.SkillLevel, Utils.GetSkillName((int)stat.SkillId));
                     break;
                 case 27:
-                    if (ExcelTxt.SkillsTxt[(int)stat.Param].Data[2].Value == "")
+                    var sid = stat.Param.Value;
+                    if (ExcelTxt.SkillsTxt[sid].Data[2].Value == "")
                     {
-                        desc = String.Format(format, "FQQ", Utils.GetSkillName((int)stat.Param), "（限" + "(renhe)" + "使用）");
+                        desc = String.Format(format, "FQQ", Utils.GetSkillName(sid), "（限" + "(renhe)" + "使用）");
                     }
                     else
                     {
-                        var _class = ExcelTxt.PlayerClassTxt[ExcelTxt.SkillsTxt[(int)stat.Param].Data[2].Value]["Player Class"].Value;
+                        var _class = ExcelTxt.PlayerClassTxt[ExcelTxt.SkillsTxt[sid].Data[2].Value]["Player Class"].Value;
                         if (_class == "Necromancer") _class = "Necromaner";
                         var limit = "str" + _class + "Only";
 
-                        desc = String.Format(format, "FQQ", Utils.GetSkillName((int)stat.Param), Utils.AllJsons[limit]);
+                        desc = String.Format(format, "FQQ", Utils.GetSkillName(sid), Utils.AllJsons[limit]);
                     }
                     break;
                 case 24:
-                    desc = String.Format(format, "FQQ", Utils.GetSkillName((int)stat.SkillId), stat.Value, stat.MaxCharges);
+                    desc = String.Format(format, "FQQ", Utils.GetSkillName(stat.SkillId.Value), stat.Value, stat.MaxCharges);
                     //ret.NewValue = Convert.ToDouble(stat.SkillLevel);
                     break;
                 case 16:
                 case 28:
-                    desc = String.Format(format, "FQQ", Utils.GetSkillName((int)stat.Param));
+                    desc = String.Format(format, "FQQ", Utils.GetSkillName(stat.Param.Value));
                     break;
                 case 14:
                     desc = String.Format(format, "FQQ", stat.SkillTab, stat.Param);
@@ -789,7 +796,7 @@ namespace D2REditor
         private static List<ItemStatCostFunc> MergeCost(List<ItemStatCostFunc> list)
         {
             List<ItemStatCostFunc> costList = new List<ItemStatCostFunc>();
-            var ginfo = list.GroupBy(c => c.ID);
+            var ginfo = list.Where(cd=>!String.IsNullOrEmpty(cd.DgrpFormat)).GroupBy(c => c.ID);
             foreach (var group in ginfo)
             {
                 double newvalue = group.Sum(g => g.NewValue);
@@ -797,6 +804,12 @@ namespace D2REditor
                 f.NewValue = newvalue;
                 costList.Add(f);
             }
+
+            var list2 = list.Where(cd => String.IsNullOrEmpty(cd.DgrpFormat));
+            foreach(var stat in list2)
+            {
+                costList.Add(stat);
+            }            
 
             var c39 = costList.Where(c => c.ID == 39).FirstOrDefault();
             var c41 = costList.Where(c => c.ID == 41).FirstOrDefault();
@@ -1163,8 +1176,8 @@ namespace D2REditor
             item.IsMisc = false;
             item.IsRuneword = false;
 
-            item.Durability = 1;
-            item.MaxDurability = 0;
+            //item.Durability = 1;
+            //item.MaxDurability = 0;
 
             item.IsArmor = (ExcelTxt.ArmorTxt[item.Code] != null);
             item.IsWeapon = (ExcelTxt.WeaponsTxt[item.Code] != null);
@@ -1188,7 +1201,7 @@ namespace D2REditor
             foreach (var row in ExcelTxt.RunesTxt.Rows)
             {
                 var output = Utils.AllJsons[row["Name"].Value];
-                System.Diagnostics.Debug.WriteLine("Processing " + output);
+                //System.Diagnostics.Debug.WriteLine("Processing " + output);
 
                 for (int i = 1; i <= 6; i++)
                 {
@@ -1256,7 +1269,7 @@ namespace D2REditor
                         output += Utils.AllJsons[rune];
                         output += " ";
                     }
-                    System.Diagnostics.Debug.WriteLine(output);
+                    //System.Diagnostics.Debug.WriteLine(output);
 
                     //优先精英底材
                     var code = basicItemRow["ultracode"].Value;
@@ -1279,6 +1292,7 @@ namespace D2REditor
                     item.TotalNumberOfSockets = (byte)runes.Count;
                     item.NumberOfSocketedItems = (byte)runes.Count;
                     item.IsSocketed = true;
+                    SetDurability(item);
 
                     int column = 0;
                     foreach (var rcode in runes)
@@ -1321,10 +1335,35 @@ namespace D2REditor
                     SplitStatLists(item, list);
                     runewords.Add(item);
                 }
-                System.Diagnostics.Debug.WriteLine("Done ");
+                //System.Diagnostics.Debug.WriteLine("Done ");
             }
 
             return runewords;
+        }
+
+        private static void SetDurability(Item item)
+        {
+            if (item.IsWeapon)
+            {
+                if (ExcelTxt.WeaponsTxt[item.Code]["nodurability"].Value != "1")
+                {
+                    item.Durability = item.MaxDurability = ExcelTxt.WeaponsTxt[item.Code]["durability"].ToUInt16();
+                }
+            }
+            if (item.IsArmor)
+            {
+                if (ExcelTxt.ArmorTxt[item.Code]["nodurability"].Value != "1")
+                {
+                    item.Durability = item.MaxDurability = ExcelTxt.ArmorTxt[item.Code]["durability"].ToUInt16();
+                }
+            }
+            if (item.IsMisc)
+            {
+                if (ExcelTxt.MiscTxt[item.Code]["nodurability"].Value != "1")
+                {
+                    item.Durability = item.MaxDurability = ExcelTxt.MiscTxt[item.Code]["durability"].ToUInt16();
+                }
+            }
         }
 
         public static List<ItemStat> GetStatListFromProperty(string prop, string param, int min, int max)
@@ -1333,6 +1372,7 @@ namespace D2REditor
             int? skilllevel = null;
             int? maxcharges = null;
             int? parameter = null;
+            int? skilltab = null;
             int value = max;
 
             List<ItemStat> ret = new List<ItemStat>();
@@ -1362,12 +1402,17 @@ namespace D2REditor
                         value = max / 100;
                         break;
                     case 9:
-                        skillid = Convert.ToInt32(param);
+                        skillid = GetSkillId(param);
                         skilllevel = max;
                         break;
-                    case 10:
                     case 18:
                     case 20:
+                        break;
+                    case 10:
+                        //"[Class Skill Tab ID] = (Amazon = 0-2, Sorceress = 3-5, Necromancer = 6-8, Paladin = 9-11, Barbarian = 12-14, Druid = 15-17,  Assassin = 18-20)"
+                        skilllevel = Convert.ToInt32(param) / 3;//class id
+                        skilltab = Convert.ToInt32(param)%3;// details skill id
+                        value = max;//added skill value
                         break;
                     case 11:
                         skillid = GetSkillId(param);
@@ -1378,12 +1423,14 @@ namespace D2REditor
                     case 12:
                     case 14:
                     case 17:
-                    case 21:
-
                     case 23:
                     case 24:
                     case 36:
                         parameter = max;
+                        break;
+                    case 21:
+                        value = max;
+                        parameter = ExcelTxt.PropertiesTxt[prop]["val" + m.ToString()].ToInt32();
                         break;
                     case 19:
                         skillid = GetSkillId(param);
@@ -1393,15 +1440,8 @@ namespace D2REditor
                         value = min;
                         break;
                     case 22:
-                        var s = ExcelTxt.SkillsTxt.Rows.Where(s2 => s2["skill"].Value.ToLower() == param.ToLower()).FirstOrDefault();
-                        if (s != null)
-                        {
-                            parameter = Convert.ToInt32(s["*Id"].Value);
-                        }
-                        else
-                        {
-                            parameter = Convert.ToInt32(param);
-                        }
+                        value = max;
+                        parameter = GetSkillId(param);
                         break;
                     default:
                         break;
@@ -1410,15 +1450,15 @@ namespace D2REditor
 
                 if (prop == "dmg%")
                 {
-                    ret.Add(new ItemStat() { Id = 17, Param = parameter, SkillId = skillid, SkillLevel = skilllevel, MaxCharges = maxcharges, Stat = "item_maxdamage_percent", Value = max });
-                    ret.Add(new ItemStat() { Id = 18, Param = parameter, SkillId = skillid, SkillLevel = skilllevel, MaxCharges = maxcharges, Stat = "item_mindamage_percent", Value = max });
+                    ret.Add(new ItemStat() { Id = 17, Param = parameter, SkillId = skillid,SkillTab=skilltab, SkillLevel = skilllevel, MaxCharges = maxcharges, Stat = "item_maxdamage_percent", Value = max });
+                    ret.Add(new ItemStat() { Id = 18, Param = parameter, SkillId = skillid, SkillTab = skilltab, SkillLevel = skilllevel, MaxCharges = maxcharges, Stat = "item_mindamage_percent", Value = max });
                 }
                 else
                 {
                     var cost = ExcelTxt.ItemStatCostTxt[stat];
                     if (cost != null)
                     {
-                        ret.Add(new ItemStat() { Id = (UInt16)(cost["*ID"].ToInt32()), Param = parameter, SkillId = skillid, SkillLevel = skilllevel, MaxCharges = maxcharges, Stat = cost["Stat"].Value, Value = value });
+                        ret.Add(new ItemStat() { Id = (UInt16)(cost["*ID"].ToInt32()), Param = parameter, SkillId = skillid, SkillTab = skilltab, SkillLevel = skilllevel, MaxCharges = maxcharges, Stat = cost["Stat"].Value, Value = value });
                     }
                 }
             }
@@ -1436,6 +1476,10 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Superior;
+                if (row["nodurability"].Value != "1")
+                {
+                    item.Durability = item.MaxDurability = row["durability"].ToUInt16();
+                }
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1455,6 +1499,10 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Normal;
+                if (row["nodurability"].Value != "1")
+                {
+                    item.Durability = item.MaxDurability = row["durability"].ToUInt16();
+                }
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1474,6 +1522,11 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Normal;
+                if (row["nodurability"].Value != "1")
+                {
+                    item.Durability = item.MaxDurability = row["durability"].ToUInt16();
+                }
+
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1494,8 +1547,14 @@ namespace D2REditor
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Unique;
                 item.FileIndex = (uint)(row["*ID"].ToInt32());
+                SetDurability(item);
 
-                if (String.IsNullOrEmpty(item.Icon)) continue;
+                if (String.IsNullOrEmpty(item.Icon))
+                {
+                    System.Diagnostics.Debug.WriteLine("没有图标：" + item.Name);
+                    continue;
+                }
+                    
 
                 List<ItemStat> list = new List<ItemStat>();
                 for (int k = 1; k <= 12; k++)
@@ -1509,6 +1568,7 @@ namespace D2REditor
                     if (String.IsNullOrEmpty(t1code)) break;
                     if (t1code.StartsWith("*")) continue;
 
+                    //System.Diagnostics.Debug.WriteLine(String.Format("{0},{1}", item.FileIndex, item.Name));
                     var statlist = GetStatListFromProperty(t1code, t1param, t1min, t1max);
                     foreach (var stat in statlist)
                     {
@@ -1552,8 +1612,14 @@ namespace D2REditor
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Set;
                 item.FileIndex = (uint)(row["*ID"].ToInt32());
+                SetDurability(item);
 
-                if (String.IsNullOrEmpty(item.Icon)) continue;
+                if (String.IsNullOrEmpty(item.Icon))
+                {
+                    System.Diagnostics.Debug.WriteLine("没有图标：" + item.Name);
+                    continue;
+                }
+
 
                 sets.Add(item);
 

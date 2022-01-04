@@ -89,7 +89,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(191, 72);
             this.button3.TabIndex = 4;
-            this.button3.Text = "改变图片大小";
+            this.button3.Text = "dc6 2 png";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

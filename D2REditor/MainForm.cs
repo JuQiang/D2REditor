@@ -345,7 +345,7 @@ namespace D2REditor
             pContainer.Controls.Add(itemsControl);
 
             ResetStatesAndEnableState(sender as Button);
-            ClearEvents(btnExtra1);
+            ClearEvents(btnExtra1); ClearEvents(btnExtra2);
 
             btnExtra1.Visible = true; btnExtra1.Text = "+"; tooltip.SetToolTip(btnExtra1, Utils.AllJsons["click_import"]);
             btnExtra1.Click += (asender, ae) =>
@@ -354,6 +354,21 @@ namespace D2REditor
                 if (DialogResult.OK == fcift.ShowDialog())
                 {
                     itemsControl.SetCurrentDraggingItem(fcift.NewItem);
+                }
+            };
+
+            btnExtra2.Visible = true; btnExtra2.Text = "+"; tooltip.SetToolTip(btnExtra2, Utils.AllJsons["click_import_local"]);
+            btnExtra2.Click += (asender, ae) =>
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                if (DialogResult.OK == ofd.ShowDialog())
+                {
+                    var buf = File.ReadAllBytes(ofd.FileName);
+                    var buf2 = new byte[buf.Length - 2];
+                    Array.Copy(buf, 2, buf2, 0, buf2.Length);
+
+                    var item = Core.ReadItem(buf, 0x60);
+                    itemsControl.SetCurrentDraggingItem(item);
                 }
             };
 

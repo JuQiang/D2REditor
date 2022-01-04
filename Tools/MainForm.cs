@@ -190,8 +190,7 @@ namespace Tools
             {
                 D2Palette dp = new D2Palette(file);
                 var bmp = dp.Transform();
-                FileInfo fi = new FileInfo(file);
-                bmp.Save(fi.Name.Replace(".dc6", ".png"));
+                bmp.Save(file.Replace(".dc6", ".png"));
             }
             MessageBox.Show("Done");
         }

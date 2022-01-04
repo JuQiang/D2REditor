@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveAsTemplate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -53,8 +53,9 @@
             this.btnRestoreValues = new System.Windows.Forms.Button();
             this.btnMaxValues = new System.Windows.Forms.Button();
             this.cbWeight = new System.Windows.Forms.ComboBox();
-            this.labelSockets = new System.Windows.Forms.Label();
             this.labelRunewordsCannotEdit = new System.Windows.Forms.Label();
+            this.labelSockets = new System.Windows.Forms.Label();
+            this.cbNoDamaged = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemStatCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbItemPicture)).BeginInit();
@@ -72,6 +73,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelRunewordsCannotEdit);
             this.panel1.Controls.Add(this.btnSaveAsTemplate);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnOk);
@@ -126,8 +128,8 @@
             // 
             // colDescFunc
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle1;
             this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.colDescFunc.HeaderText = "高级属性(下拉更改)";
             this.colDescFunc.MinimumWidth = 8;
@@ -136,8 +138,8 @@
             // 
             // colDescFuncValue
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDescFuncValue.HeaderText = "高级属性值";
             this.colDescFuncValue.MinimumWidth = 8;
             this.colDescFuncValue.Name = "colDescFuncValue";
@@ -153,8 +155,8 @@
             // 
             // colMaxValue
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle3;
             this.colMaxValue.HeaderText = "最大值";
             this.colMaxValue.MinimumWidth = 8;
             this.colMaxValue.Name = "colMaxValue";
@@ -309,6 +311,16 @@
             this.cbWeight.Size = new System.Drawing.Size(107, 32);
             this.cbWeight.TabIndex = 51;
             // 
+            // labelRunewordsCannotEdit
+            // 
+            this.labelRunewordsCannotEdit.AutoSize = true;
+            this.labelRunewordsCannotEdit.ForeColor = System.Drawing.Color.Red;
+            this.labelRunewordsCannotEdit.Location = new System.Drawing.Point(12, 37);
+            this.labelRunewordsCannotEdit.Name = "labelRunewordsCannotEdit";
+            this.labelRunewordsCannotEdit.Size = new System.Drawing.Size(82, 24);
+            this.labelRunewordsCannotEdit.TabIndex = 53;
+            this.labelRunewordsCannotEdit.Text = "label1";
+            // 
             // labelSockets
             // 
             this.labelSockets.AutoSize = true;
@@ -318,21 +330,22 @@
             this.labelSockets.TabIndex = 52;
             this.labelSockets.Text = "label1";
             // 
-            // labelRunewordsCannotEdit
+            // cbNoDamaged
             // 
-            this.labelRunewordsCannotEdit.AutoSize = true;
-            this.labelRunewordsCannotEdit.ForeColor = System.Drawing.Color.Red;
-            this.labelRunewordsCannotEdit.Location = new System.Drawing.Point(526, 134);
-            this.labelRunewordsCannotEdit.Name = "labelRunewordsCannotEdit";
-            this.labelRunewordsCannotEdit.Size = new System.Drawing.Size(82, 24);
-            this.labelRunewordsCannotEdit.TabIndex = 53;
-            this.labelRunewordsCannotEdit.Text = "label1";
+            this.cbNoDamaged.AutoSize = true;
+            this.cbNoDamaged.Location = new System.Drawing.Point(530, 130);
+            this.cbNoDamaged.Margin = new System.Windows.Forms.Padding(2);
+            this.cbNoDamaged.Name = "cbNoDamaged";
+            this.cbNoDamaged.Size = new System.Drawing.Size(84, 28);
+            this.cbNoDamaged.TabIndex = 53;
+            this.cbNoDamaged.Text = "无形";
+            this.cbNoDamaged.UseVisualStyleBackColor = true;
             // 
             // FormEditItem
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1048, 675);
-            this.Controls.Add(this.labelRunewordsCannotEdit);
+            this.Controls.Add(this.cbNoDamaged);
             this.Controls.Add(this.labelSockets);
             this.Controls.Add(this.cbWeight);
             this.Controls.Add(this.btnRestoreValues);
@@ -358,6 +371,7 @@
             this.Text = "编辑装备";
             this.Load += new System.EventHandler(this.FormEditItem_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemStatCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbItemPicture)).EndInit();
             this.ResumeLayout(false);
@@ -384,11 +398,12 @@
         private System.Windows.Forms.Button btnRestoreValues;
         private System.Windows.Forms.Button btnMaxValues;
         private System.Windows.Forms.ComboBox cbWeight;
-        private System.Windows.Forms.Label labelSockets;
         private System.Windows.Forms.DataGridViewComboBoxColumn colDescFunc;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescFuncValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaxValue;
         private System.Windows.Forms.Label labelRunewordsCannotEdit;
+        private System.Windows.Forms.Label labelSockets;
+        private System.Windows.Forms.CheckBox cbNoDamaged;
     }
 }
