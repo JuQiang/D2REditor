@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveAsTemplate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -54,7 +54,6 @@
             this.btnMaxValues = new System.Windows.Forms.Button();
             this.cbWeight = new System.Windows.Forms.ComboBox();
             this.labelRunewordsCannotEdit = new System.Windows.Forms.Label();
-            this.labelSockets = new System.Windows.Forms.Label();
             this.cbNoDamaged = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemStatCost)).BeginInit();
@@ -128,8 +127,8 @@
             // 
             // colDescFunc
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle4;
             this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.colDescFunc.HeaderText = "高级属性(下拉更改)";
             this.colDescFunc.MinimumWidth = 8;
@@ -138,8 +137,8 @@
             // 
             // colDescFuncValue
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle5;
             this.colDescFuncValue.HeaderText = "高级属性值";
             this.colDescFuncValue.MinimumWidth = 8;
             this.colDescFuncValue.Name = "colDescFuncValue";
@@ -155,8 +154,8 @@
             // 
             // colMaxValue
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle6;
             this.colMaxValue.HeaderText = "最大值";
             this.colMaxValue.MinimumWidth = 8;
             this.colMaxValue.Name = "colMaxValue";
@@ -252,9 +251,9 @@
             "4孔",
             "5孔",
             "6孔"});
-            this.cbSockets.Location = new System.Drawing.Point(723, 14);
+            this.cbSockets.Location = new System.Drawing.Point(758, 14);
             this.cbSockets.Name = "cbSockets";
-            this.cbSockets.Size = new System.Drawing.Size(121, 32);
+            this.cbSockets.Size = new System.Drawing.Size(86, 32);
             this.cbSockets.TabIndex = 45;
             // 
             // lbBasicDescription
@@ -321,19 +320,10 @@
             this.labelRunewordsCannotEdit.TabIndex = 53;
             this.labelRunewordsCannotEdit.Text = "label1";
             // 
-            // labelSockets
-            // 
-            this.labelSockets.AutoSize = true;
-            this.labelSockets.Location = new System.Drawing.Point(624, 20);
-            this.labelSockets.Name = "labelSockets";
-            this.labelSockets.Size = new System.Drawing.Size(82, 24);
-            this.labelSockets.TabIndex = 52;
-            this.labelSockets.Text = "label1";
-            // 
             // cbNoDamaged
             // 
             this.cbNoDamaged.AutoSize = true;
-            this.cbNoDamaged.Location = new System.Drawing.Point(530, 130);
+            this.cbNoDamaged.Location = new System.Drawing.Point(628, 18);
             this.cbNoDamaged.Margin = new System.Windows.Forms.Padding(2);
             this.cbNoDamaged.Name = "cbNoDamaged";
             this.cbNoDamaged.Size = new System.Drawing.Size(84, 28);
@@ -346,7 +336,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1048, 675);
             this.Controls.Add(this.cbNoDamaged);
-            this.Controls.Add(this.labelSockets);
             this.Controls.Add(this.cbWeight);
             this.Controls.Add(this.btnRestoreValues);
             this.Controls.Add(this.btnMaxValues);
@@ -403,7 +392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaxValue;
         private System.Windows.Forms.Label labelRunewordsCannotEdit;
-        private System.Windows.Forms.Label labelSockets;
         private System.Windows.Forms.CheckBox cbNoDamaged;
     }
 }

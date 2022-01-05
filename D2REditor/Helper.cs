@@ -1292,7 +1292,7 @@ namespace D2REditor
                     item.TotalNumberOfSockets = (byte)runes.Count;
                     item.NumberOfSocketedItems = (byte)runes.Count;
                     item.IsSocketed = true;
-                    SetDurability(item);
+                    Helper.SetDurability(item);
 
                     int column = 0;
                     foreach (var rcode in runes)
@@ -1341,7 +1341,7 @@ namespace D2REditor
             return runewords;
         }
 
-        private static void SetDurability(Item item)
+        public static void SetDurability(Item item)
         {
             if (item.IsWeapon)
             {
@@ -1476,10 +1476,7 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Superior;
-                if (row["nodurability"].Value != "1")
-                {
-                    item.Durability = item.MaxDurability = row["durability"].ToUInt16();
-                }
+                Helper.SetDurability(item);
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1499,10 +1496,7 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Normal;
-                if (row["nodurability"].Value != "1")
-                {
-                    item.Durability = item.MaxDurability = row["durability"].ToUInt16();
-                }
+                Helper.SetDurability(item);
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1522,11 +1516,7 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Normal;
-                if (row["nodurability"].Value != "1")
-                {
-                    item.Durability = item.MaxDurability = row["durability"].ToUInt16();
-                }
-
+                Helper.SetDurability(item);
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1547,7 +1537,8 @@ namespace D2REditor
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Unique;
                 item.FileIndex = (uint)(row["*ID"].ToInt32());
-                SetDurability(item);
+                Helper.SetDurability(item);
+
 
                 if (String.IsNullOrEmpty(item.Icon))
                 {
@@ -1612,7 +1603,8 @@ namespace D2REditor
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Set;
                 item.FileIndex = (uint)(row["*ID"].ToInt32());
-                SetDurability(item);
+                Helper.SetDurability(item);
+
 
                 if (String.IsNullOrEmpty(item.Icon))
                 {

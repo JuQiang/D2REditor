@@ -40,7 +40,7 @@ namespace D2REditor.Forms
             cbSubTypes.SelectedIndexChanged -= cbSubTypes_SelectedIndexChanged;
             cbItems.SelectedIndexChanged -= cbItems_SelectedIndexChanged;
 
-            labelSockets.Text = Utils.AllJsons["Addsocketsui"];
+            //labelSockets.Text = Utils.AllJsons["Addsocketsui"];
             Dictionary<string, string> typeMappings = new Dictionary<string, string>();
 
             //cbIsCompact.Checked = this.item.IsCompact;
@@ -177,7 +177,7 @@ namespace D2REditor.Forms
             cbSockets.Items.Clear();
 
             for (int i = 0; i <= max; i++) cbSockets.Items.Add(i);
-            cbSockets.SelectedIndex = max;
+            cbSockets.SelectedIndex = (item.TotalNumberOfSockets>=max)?max:item.TotalNumberOfSockets;
         }
 
         internal class CostFunc
@@ -260,23 +260,23 @@ namespace D2REditor.Forms
             cbSubTypes.BeginUpdate();
             cbSubTypes.Items.Clear();
             var typenames = Utils.MiniItemList.Where(mi => mi.TypeName == cbTypes.Text).GroupBy(mi => mi.SubTypeName).ToList();
-            System.Diagnostics.Debug.WriteLine("Fillsubtypes group" + sw.ElapsedMilliseconds.ToString());
+            //System.Diagnostics.Debug.WriteLine("Fillsubtypes group" + sw.ElapsedMilliseconds.ToString());
             sw.Restart();
 
             foreach (var typename in typenames)
             {
                 cbSubTypes.Items.Add(typename.Key);
-                System.Diagnostics.Debug.WriteLine("Fill" + " " + typename.Key + " " + sw.ElapsedMilliseconds.ToString());
+                //System.Diagnostics.Debug.WriteLine("Fill" + " " + typename.Key + " " + sw.ElapsedMilliseconds.ToString());
                 sw.Restart();
             }
             cbSubTypes.EndUpdate();
             sw.Stop();
-            System.Diagnostics.Debug.WriteLine("Fillsubtypes" + sw.ElapsedMilliseconds.ToString());
+            //System.Diagnostics.Debug.WriteLine("Fillsubtypes" + sw.ElapsedMilliseconds.ToString());
         }
 
         private void cbSubTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Fill items");
+            //System.Diagnostics.Debug.WriteLine("Fill items");
             FillItems();
         }
 
@@ -374,10 +374,11 @@ namespace D2REditor.Forms
             this.item.IsMisc = (cbTypes.SelectedIndex == 2);
 
             this.item.Code = (cbItems.SelectedItem as MiniItem).ItemCode;
+            Item.UpdateRowsAndColumnsInformation(this.item);
             this.item.IsSocketed = cbSockets.SelectedIndex > 0;
             this.item.TotalNumberOfSockets = (byte)cbSockets.SelectedIndex;
             this.item.IsEthereal = cbIsEthereal.Checked;
-
+            if (cbNoDamaged.Checked) this.item.MaxDurability = 0; else Helper.SetDurability(this.item);
         }
         private void btnSave_Click(object sender, EventArgs e)
         {

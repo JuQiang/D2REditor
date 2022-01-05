@@ -26,6 +26,8 @@ namespace D2REditor.Controls
         private Dictionary<string, int> locMappings = new Dictionary<string, int>();
         private Dictionary<int, ItemLocation> locMappings2 = new Dictionary<int, ItemLocation>();
         private Bitmap downimg, upimg, goldbmp;
+        private Bitmap gembmp;
+        private Dictionary<Size, List<List<Point>>> socketMappings = new Dictionary<Size, List<List<Point>>>();
 
         //        private ButtonEx btnGoldSelf, btnGoldStash;
 
@@ -63,31 +65,78 @@ namespace D2REditor.Controls
             goldbmp = Helper.Sprite2Png(goldfile);
             goldbmp = Helper.GetImageByFrame(goldbmp, 4, 0) as Bitmap;
 
-            //btnGoldSelf = new ButtonEx();
-            //btnGoldSelf.ImageFrames = 4;
-            //btnGoldSelf.ImageFile = @"\panel\goldbutton";
-            //tooltip.SetToolTip(btnGoldSelf, Utils.AllJsons["strGoldWithdraw"]);
-            //btnGoldSelf.Location = new Point(794, 672);
-            //btnGoldSelf.Size = new Size(24, 24);
-            //this.Controls.Add(btnGoldSelf);
-
-            //btnGoldStash = new ButtonEx();
-            //btnGoldStash.ImageFrames = 4;
-            //btnGoldStash.ImageFile = @"\panel\goldbutton";
-            //tooltip.SetToolTip(btnGoldStash, Utils.AllJsons["strGoldDeposit"]);
-            //btnGoldStash.Location = new Point(210, 650);
-            //btnGoldStash.Size = new Size(24, 24);
-            //this.Controls.Add(btnGoldStash);
+            var gemname = Helper.GetDefinitionFileName(@"\panel\gemsocket");
+            gembmp = Helper.Sprite2Png(gemname);
+            BuildSocketMappings();
 
             this.Size = new Size(1162, 753);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
-            //this.DoubleBuffered = true;//现在的double buffer简单了，不用新稿一个graphics画完再拖过去了。
 
             this.MouseDown += ItemsControl_MouseDown;
         }
 
+        private void BuildSocketMappings()
+        {
+            int x = Helper.DefinitionInfo.BoxSize;
+            int y = gembmp.Width;
 
+            socketMappings[new Size(1, 1)] = new List<List<Point>> { new List<Point> { new Point((x - y) / 2, (x - y) / 2) }, null, null, null, null, null };
+
+            socketMappings[new Size(1, 2)] = new List<List<Point>> {
+                new List<Point> { new Point((2*x - y) / 2, (x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (x - y) / 2), new Point(x+(x - y) / 2, (x - y) / 2) },
+                null,null,null,null
+            };
+
+            socketMappings[new Size(2, 1)] = new List<List<Point>> {
+                new List<Point> { new Point((x - y) / 2, (2*x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (x - y) / 2), new Point((x - y) / 2, x + (x - y) / 2) },
+                null,null,null,null
+            };
+
+            socketMappings[new Size(3, 1)] = new List<List<Point>> {
+                new List<Point> { new Point((x - y) / 2,(3*x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (3*x - 2*y)*1 / 3), new Point((x - y) / 2, (3 * x - 2 * y) * 2 / 3+y) },
+                new List<Point> { new Point((x - y) / 2, (x - y)/2), new Point((x - y) / 2,x+ (x - y)/2),new Point((x - y) / 2,2* x + (x - y) /2) },
+                null,null,null
+            };
+
+            socketMappings[new Size(2, 2)] = new List<List<Point>> {
+                new List<Point> { new Point((2*x - y) / 2, (2*x - y) / 2) },
+                new List<Point> { new Point((2*x - y) / 2, (x - y) / 2), new Point((2*x - y) / 2, x + (x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (x - y) / 2),new Point(x+(x - y) / 2, (x - y) / 2),new Point((x - y) / 2, x + (x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (x - y) / 2),new Point(x+(x - y) / 2, (x - y) / 2),new Point((x - y) / 2, x + (x - y) / 2),new Point(x+(x - y) / 2, x + (x - y) / 2) },
+                null,null
+            };
+
+            socketMappings[new Size(4, 1)] = new List<List<Point>> {
+                new List<Point> { new Point((x - y) / 2,(4*x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (4*x - 2*y)*1 / 3), new Point((x - y) / 2, (4 * x - 2 * y)*2 / 3+y) },
+                new List<Point> { new Point((x - y) / 2, (4*x - 3*y)*1/4), new Point((x - y) / 2, (4 * x - 3 * y) * 2 / 4+y), new Point((x - y) / 2, (4 * x - 3 * y) * 3 / 4+2*y) },
+                new List<Point> { new Point((x - y) / 2, (x - y)/2), new Point((x - y) / 2, x + (x - y) / 2), new Point((x - y) / 2, 2*x + (x - y) / 2), new Point((x - y) / 2, 3*x + (x - y) / 2) },
+                null,null
+            };
+
+            socketMappings[new Size(3, 2)] = new List<List<Point>> {
+                new List<Point> { new Point((2*x - y) / 2,(3*x - y) / 2) },
+                new List<Point> { new Point((2*x - y) / 2, (3*x - 2*y)*1 / 3), new Point((2*x - y) / 2, (3 * x - 2 * y) * 2 / 3+y) },
+                new List<Point> { new Point((2*x - y) / 2, (x - y)/2), new Point((2*x - y) / 2,x+ (x - y)/2),new Point((2*x - y) / 2,2* x + (x - y) /2) },
+                new List<Point> { new Point((x - y) / 2, (3*x - 2*y) / 3),new Point(x+(x - y) / 2, (3*x - 2*y) / 3),new Point((x - y) / 2, (3*x - 2*y)*2 / 3+y),new Point(x+(x - y) / 2, (3*x - 2*y)*2 / 3+y)  },
+                new List<Point> { new Point((x - y) / 2, (x - y) / 2), new Point(x+(x - y) / 2, (x - y) / 2), new Point((2*x - y) / 2, (3*x - y) / 2), new Point((x - y) / 2, 2*x + (x - y) / 2),new Point(x+(x - y) / 2, 2 * x + (x - y) / 2) },
+                new List<Point> { new Point((x - y) / 2, (x - y) / 2), new Point(x+(x - y) / 2, (x - y) / 2), new Point((x - y) / 2, (x - y) / 2+x), new Point(x+(x - y) / 2, (x - y) / 2+x), new Point((x - y) / 2, (x - y) / 2+2*x), new Point(x+(x - y) / 2, (x - y) / 2+2*x)},
+            };
+
+            socketMappings[new Size(4, 2)] = new List<List<Point>> {
+                new List<Point> { new Point((2*x - y) / 2,(4*x - y) / 2) },
+                new List<Point> { new Point((2*x - y) / 2, (4*x - 2*y)*1/3), new Point((2*x - y) / 2, (4 * x - 2 * y)*2 / 3+y) },
+                new List<Point> { new Point((2*x - y) / 2, (4*x - 3*y)*1/4), new Point((2*x - y) / 2, (4 * x - 3 * y) * 2 / 4+y), new Point((2*x - y) / 2, (4 * x - 3 * y) * 3 / 4+2*y) },
+                new List<Point> { new Point((2*x - y) / 2, (x - y)/2), new Point((2*x - y) / 2,x+ (x - y)/2),new Point((2*x - y) / 2,2* x + (x - y) /2),new Point((2*x - y) / 2,3* x + (x - y) /2) },
+                new List<Point> { new Point((x - y) / 2, (4*x - 3*y)*1/4), new Point(x+(x - y) / 2, (4 * x - 3 * y) * 1 / 4), new Point((2*x - y) / 2, (4 * x - 3 * y) * 2 / 4+y),new Point((x - y) / 2, (4*x - 3*y)*3/4+2*y), new Point(x+(x - y) / 2, (4 * x - 3 * y) * 3 / 4 + 2 * y) },
+                new List<Point> { new Point((x - y) / 2, (4*x - 3*y)*1/4), new Point(x+(x - y) / 2, (4 * x - 3 * y) * 1 / 4), new Point((x - y) / 2, (4 * x - 3 * y) * 2 / 4+y), new Point(x + (x - y) / 2, (4 * x - 3 * y) * 2 / 4 + y), new Point((x - y) / 2, (4*x - 3*y)*3/4+2*y), new Point(x+(x - y) / 2, (4 * x - 3 * y) * 3 / 4 + 2 * y) },
+            };
+
+        }
 
         private void RebuildMappings()
         {
@@ -678,6 +727,9 @@ namespace D2REditor.Controls
                 if ((item != null) && (OnItemSelected != null))
                 {
                     OnItemSelected(this, new ItemSelectedEventArgs(item));
+                    //ItemsControl_MouseDown(sender, new MouseEventArgs(MouseButtons.Left,e.Clicks, e.X,e.Y,e.Delta));
+                    //Item.UpdateRowsAndColumnsInformation(item);
+                    this.Invalidate();
                 }
             }
         }
@@ -847,57 +899,71 @@ namespace D2REditor.Controls
             if (mappings.ContainsKey(hoveringR))
             {
                 var item = mappings[hoveringR];
-                var gemname = Helper.GetDefinitionFileName(@"\panel\gemsocket");
-                var gembmp = Helper.Sprite2Png(gemname);
-
+                
+                var sinfo = this.socketMappings[new Size(item.Rows,item.Columns)];
+                
+                if (item.TotalNumberOfSockets>0 && sinfo[item.TotalNumberOfSockets-1] != null)
+                {
+                    int i = item.TotalNumberOfSockets-1;
+                    for (int j = 0; j < sinfo[i].Count; j++)
+                    {
+                        g.DrawImage(gembmp, hoveringR.X + sinfo[i][j].X, hoveringR.Y + sinfo[i][j].Y);
+                    }
+                    for(int j = 0; j < item.SocketedItems.Count; j++)
+                    {
+                        var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[j].Icon);
+                        var sbmp = Helper.Sprite2Png(iconname);
+                        g.DrawImage(sbmp,new Rectangle(hoveringR.X + sinfo[i][j].X+10, hoveringR.Y + sinfo[i][j].Y+6,32, 32), new Rectangle(0, 0, sbmp.Width, sbmp.Height), GraphicsUnit.Pixel);
+                    }
+                }
                 int margin = 2;
-                if (item.TotalNumberOfSockets > 3)
-                {
-                    for (int i = 0; i < item.TotalNumberOfSockets; i++)
-                    {
-                        g.DrawImage(gembmp,
-                            hoveringR.X + (hoveringR.Width - (gembmp.Width + margin) * 2) / 2 + (gembmp.Width + margin) * (i % 2),
-                            4 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets / 2 * (gembmp.Height + margin)) / 2 + (gembmp.Height + margin) * (i / 2) - ((item.TotalNumberOfSockets > 4) ? gembmp.Height / 2 : 0),
-                            gembmp.Width, gembmp.Height);
+                //if (item.TotalNumberOfSockets > 3)
+                //{
+                //    for (int i = 0; i < item.TotalNumberOfSockets; i++)
+                //    {
+                //        g.DrawImage(gembmp,
+                //            hoveringR.X + (hoveringR.Width - (gembmp.Width + margin) * 2) / 2 + (gembmp.Width + margin) * (i % 2),
+                //            4 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets / 2 * (gembmp.Height + margin)) / 2 + (gembmp.Height + margin) * (i / 2) - ((item.TotalNumberOfSockets > 4) ? gembmp.Height / 2 : 0),
+                //            gembmp.Width, gembmp.Height);
 
-                        if (item.SocketedItems.Count >= i + 1)
-                        {
-                            var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[i].Icon);
-                            var sbmp = Helper.Sprite2Png(iconname);
-                            g.DrawImage(sbmp,
-                                new Rectangle(6 + hoveringR.X + (hoveringR.Width - (sbmp.Width + margin) * 2) / 2 + (sbmp.Width + margin) * (i % 2),
-                                6 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets / 2 * (sbmp.Height + margin)) / 2 + (sbmp.Height + margin) * (i / 2) - ((item.TotalNumberOfSockets > 4) ? gembmp.Height / 2 : 0),
-                                36/*sbmp.Width*/, 36/*sbmp.Height*/),
-                                new Rectangle(0, 0, sbmp.Width, sbmp.Height),
-                                GraphicsUnit.Pixel
-                                );
-                        }
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < item.TotalNumberOfSockets; i++)
-                    {
-                        g.DrawImage(gembmp,
-                            hoveringR.X + (hoveringR.Width - gembmp.Width) / 2,
-                            4 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets * (gembmp.Height + margin)) / 2 + (gembmp.Height + margin) * i,
-                            gembmp.Width, gembmp.Height);
+                //        if (item.SocketedItems.Count >= i + 1)
+                //        {
+                //            var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[i].Icon);
+                //            var sbmp = Helper.Sprite2Png(iconname);
+                //            g.DrawImage(sbmp,
+                //                new Rectangle(6 + hoveringR.X + (hoveringR.Width - (sbmp.Width + margin) * 2) / 2 + (sbmp.Width + margin) * (i % 2),
+                //                6 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets / 2 * (sbmp.Height + margin)) / 2 + (sbmp.Height + margin) * (i / 2) - ((item.TotalNumberOfSockets > 4) ? gembmp.Height / 2 : 0),
+                //                36/*sbmp.Width*/, 36/*sbmp.Height*/),
+                //                new Rectangle(0, 0, sbmp.Width, sbmp.Height),
+                //                GraphicsUnit.Pixel
+                //                );
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    for (int i = 0; i < item.TotalNumberOfSockets; i++)
+                //    {
+                //        g.DrawImage(gembmp,
+                //            hoveringR.X + (hoveringR.Width - gembmp.Width) / 2,
+                //            4 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets * (gembmp.Height + margin)) / 2 + (gembmp.Height + margin) * i,
+                //            gembmp.Width, gembmp.Height);
 
-                        if (item.SocketedItems.Count >= i + 1)
-                        {
-                            var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[i].Icon);
-                            var sbmp = Helper.Sprite2Png(iconname);
+                //        if (item.SocketedItems.Count >= i + 1)
+                //        {
+                //            var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[i].Icon);
+                //            var sbmp = Helper.Sprite2Png(iconname);
 
-                            g.DrawImage(sbmp,
-                                new Rectangle(6 + hoveringR.X + (hoveringR.Width - sbmp.Width) / 2,
-                                6 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets * (sbmp.Height + margin)) / 2 + (sbmp.Height + margin) * i,
-                                36/*sbmp.Width*/, 36/*sbmp.Height*/),
-                                new Rectangle(0, 0, sbmp.Width, sbmp.Height),
-                                GraphicsUnit.Pixel
-                            );
-                        }
-                    }
-                }
+                //            g.DrawImage(sbmp,
+                //                new Rectangle(6 + hoveringR.X + (hoveringR.Width - sbmp.Width) / 2,
+                //                6 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets * (sbmp.Height + margin)) / 2 + (sbmp.Height + margin) * i,
+                //                36/*sbmp.Width*/, 36/*sbmp.Height*/),
+                //                new Rectangle(0, 0, sbmp.Width, sbmp.Height),
+                //                GraphicsUnit.Pixel
+                //            );
+                //        }
+                //    }
+                //}
 
                 var complexRet = MeasureSizeInfo(item);
                 var newp = TryGetBestTooltipPosition(hoveringR, complexRet.Item1);
