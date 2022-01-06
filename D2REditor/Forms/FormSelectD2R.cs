@@ -227,7 +227,21 @@ namespace D2REditor.Forms
                 lbCharactors.SelectedIndex = 0;
             }
 
-            if (File.Exists(Helper.SharedD2IFileName)) Helper.SharedStashes = Core.ReadD2I2(Helper.SharedD2IFileName, Helper.Version);
+            if (File.Exists(Helper.SharedD2IFileName))
+            {
+                Helper.SharedStashes = Core.ReadD2I2(Helper.SharedD2IFileName, Helper.Version);
+            }
+            else
+            {
+                Helper.SharedStashes = new List<D2I> { };
+                for (int i = 0; i < 3; i++)
+                {
+                    var d2i = new D2I();
+                    d2i.ItemList = new ItemList();
+                    d2i.ItemList.Items = new List<Item>();
+                    Helper.SharedStashes.Add(d2i);
+                }
+            }
         }
 
         private void BtnCreateNew_Click(object sender, EventArgs e)

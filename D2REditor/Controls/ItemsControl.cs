@@ -916,54 +916,6 @@ namespace D2REditor.Controls
                         g.DrawImage(sbmp,new Rectangle(hoveringR.X + sinfo[i][j].X+10, hoveringR.Y + sinfo[i][j].Y+6,32, 32), new Rectangle(0, 0, sbmp.Width, sbmp.Height), GraphicsUnit.Pixel);
                     }
                 }
-                int margin = 2;
-                //if (item.TotalNumberOfSockets > 3)
-                //{
-                //    for (int i = 0; i < item.TotalNumberOfSockets; i++)
-                //    {
-                //        g.DrawImage(gembmp,
-                //            hoveringR.X + (hoveringR.Width - (gembmp.Width + margin) * 2) / 2 + (gembmp.Width + margin) * (i % 2),
-                //            4 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets / 2 * (gembmp.Height + margin)) / 2 + (gembmp.Height + margin) * (i / 2) - ((item.TotalNumberOfSockets > 4) ? gembmp.Height / 2 : 0),
-                //            gembmp.Width, gembmp.Height);
-
-                //        if (item.SocketedItems.Count >= i + 1)
-                //        {
-                //            var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[i].Icon);
-                //            var sbmp = Helper.Sprite2Png(iconname);
-                //            g.DrawImage(sbmp,
-                //                new Rectangle(6 + hoveringR.X + (hoveringR.Width - (sbmp.Width + margin) * 2) / 2 + (sbmp.Width + margin) * (i % 2),
-                //                6 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets / 2 * (sbmp.Height + margin)) / 2 + (sbmp.Height + margin) * (i / 2) - ((item.TotalNumberOfSockets > 4) ? gembmp.Height / 2 : 0),
-                //                36/*sbmp.Width*/, 36/*sbmp.Height*/),
-                //                new Rectangle(0, 0, sbmp.Width, sbmp.Height),
-                //                GraphicsUnit.Pixel
-                //                );
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    for (int i = 0; i < item.TotalNumberOfSockets; i++)
-                //    {
-                //        g.DrawImage(gembmp,
-                //            hoveringR.X + (hoveringR.Width - gembmp.Width) / 2,
-                //            4 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets * (gembmp.Height + margin)) / 2 + (gembmp.Height + margin) * i,
-                //            gembmp.Width, gembmp.Height);
-
-                //        if (item.SocketedItems.Count >= i + 1)
-                //        {
-                //            var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[i].Icon);
-                //            var sbmp = Helper.Sprite2Png(iconname);
-
-                //            g.DrawImage(sbmp,
-                //                new Rectangle(6 + hoveringR.X + (hoveringR.Width - sbmp.Width) / 2,
-                //                6 + hoveringR.Y + (hoveringR.Height - item.TotalNumberOfSockets * (sbmp.Height + margin)) / 2 + (sbmp.Height + margin) * i,
-                //                36/*sbmp.Width*/, 36/*sbmp.Height*/),
-                //                new Rectangle(0, 0, sbmp.Width, sbmp.Height),
-                //                GraphicsUnit.Pixel
-                //            );
-                //        }
-                //    }
-                //}
 
                 var complexRet = MeasureSizeInfo(item);
                 var newp = TryGetBestTooltipPosition(hoveringR, complexRet.Item1);

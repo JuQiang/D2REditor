@@ -574,13 +574,17 @@ namespace D2SLib
                     typeMappings.Add("tpot", Utils.AllJsons["tpot"]);
                     #endregion 类型
 
+                    //if (this.item.IsArmor) max = ExcelTxt.ArmorTxt[code]["gemsockets"].ToInt32();
+                    //if (this.item.IsWeapon) max = ExcelTxt.WeaponsTxt[code]["gemsockets"].ToInt32();
+                    //if (this.item.IsMisc) max = ExcelTxt.MiscTxt[code]["gemsockets"].ToInt32();
+
                     var w = ExcelTxt.WeaponsTxt.Rows.GroupBy(r => r["type"].Value);
                     foreach (var subtype in w)
                     {
                         foreach (var item in subtype)
                         {
                             if (subtype.Key == "") continue;
-                            miniItemList.Add(new MiniItem() { TypeCode = "weap", TypeName = Utils.AllJsons["strBSWeapons"], SubTypeCode = subtype.Key, SubTypeName = typeMappings[subtype.Key], ItemCode = item["code"].Value, ItemName = Utils.AllJsons[item["code"].Value] });///* Utils.ItemNames[item["code"].Value]*/
+                            miniItemList.Add(new MiniItem() {TotalNumberOfSockets = ExcelTxt.WeaponsTxt[item["code"].Value]["gemsockets"].ToInt32(), TypeCode = "weap", TypeName = Utils.AllJsons["strBSWeapons"], SubTypeCode = subtype.Key, SubTypeName = typeMappings[subtype.Key], ItemCode = item["code"].Value, ItemName = Utils.AllJsons[item["code"].Value] });///* Utils.ItemNames[item["code"].Value]*/
                         }
 
                     }
@@ -590,7 +594,7 @@ namespace D2SLib
                         foreach (var item in subtype)
                         {
                             if (subtype.Key == "") continue;
-                            miniItemList.Add(new MiniItem() { TypeCode = "armo", TypeName = Utils.AllJsons["strBSArmor"], SubTypeCode = subtype.Key, SubTypeName = typeMappings[subtype.Key], ItemCode = item["code"].Value, ItemName = Utils.AllJsons[item["code"].Value] });
+                            miniItemList.Add(new MiniItem() { TotalNumberOfSockets = ExcelTxt.ArmorTxt[item["code"].Value]["gemsockets"].ToInt32(), TypeCode = "armo", TypeName = Utils.AllJsons["strBSArmor"], SubTypeCode = subtype.Key, SubTypeName = typeMappings[subtype.Key], ItemCode = item["code"].Value, ItemName = Utils.AllJsons[item["code"].Value] });
                         }
 
                     }
@@ -605,7 +609,7 @@ namespace D2SLib
                             if (subtype.Key == "") continue;
                             if (Utils.ItemNames.ContainsKey(item["code"].Value))
                             {
-                                miniItemList.Add(new MiniItem() { TypeCode = "misc", TypeName = Utils.AllJsons["strBSMisc"], SubTypeCode = subtype.Key, SubTypeName = typeMappings[subtype.Key], ItemCode = item["code"].Value, ItemName = Utils.AllJsons[item["code"].Value] });
+                                miniItemList.Add(new MiniItem() { TotalNumberOfSockets = ExcelTxt.MiscTxt[item["code"].Value]["gemsockets"].ToInt32(), TypeCode = "misc", TypeName = Utils.AllJsons["strBSMisc"], SubTypeCode = subtype.Key, SubTypeName = typeMappings[subtype.Key], ItemCode = item["code"].Value, ItemName = Utils.AllJsons[item["code"].Value] });
                             }
                             else
                             {
@@ -742,6 +746,7 @@ namespace D2SLib
         public string SubTypeName { get; set; }
         public string ItemCode { get; set; }
         public string ItemName { get; set; }
+        public int TotalNumberOfSockets { get; set; }
     }
 
     public class MiniItemStatCost

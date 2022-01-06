@@ -158,7 +158,7 @@ namespace D2REditor.Forms
             btnAddStat.Enabled = (!item.IsRuneword);
             btnDeleteStat.Enabled = (!item.IsRuneword);
             btnMaxValues.Enabled = (!item.IsRuneword);
-            cbItems.Enabled = (!item.IsRuneword);
+            //cbItems.Enabled = (!item.IsRuneword);
             labelRunewordsCannotEdit.Visible = (item.IsRuneword);
 
             cbNoDamaged.Text = Utils.AllJsons["ModStre9s"];
@@ -285,6 +285,10 @@ namespace D2REditor.Forms
             cbItems.BeginUpdate();
             cbItems.Items.Clear();
             var itemnames = Utils.MiniItemList.Where(mi => mi.TypeName == cbTypes.Text && mi.SubTypeName == cbSubTypes.Text);
+            if (this.item.IsRuneword)
+            {
+                itemnames = itemnames.Where(i => i.TotalNumberOfSockets >= this.item.TotalNumberOfSockets);
+            }
             foreach (var itemname in itemnames)
             {
                 cbItems.Items.Add(itemname);
@@ -391,7 +395,11 @@ namespace D2REditor.Forms
         private bool ValidateData()
         {
             var ret = true;
-
+            if (cbSockets.Items.Count-1 < this.item.TotalNumberOfSockets)
+            {
+                MessageBox.Show("更换后底材的最大孔数不能小于当前装备的孔数！");
+                ret = false;
+            }
 
             return ret;
         }

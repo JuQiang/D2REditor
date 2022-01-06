@@ -197,7 +197,7 @@ namespace D2REditor
             pBottom.SizeChanged += PBottom_SizeChanged;
             pBottom.Paint += PBottom_Paint;
 
-            this.sharedStashes = Core.ReadD2I2(Helper.SharedD2IFileName, Helper.Version);
+            //this.sharedStashes = Core.ReadD2I2(Helper.SharedD2IFileName, Helper.Version);
 
             itemsControl.InitData();
             itemsControl.OnItemSelected += itemsControl_OnItemSelected;
