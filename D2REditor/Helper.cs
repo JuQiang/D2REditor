@@ -1376,6 +1376,7 @@ namespace D2REditor
             int value = max;
 
             List<ItemStat> ret = new List<ItemStat>();
+            if (String.IsNullOrEmpty(prop)) return ret;
 
             for (int m = 1; m <= 7; m++)
             {

@@ -90,7 +90,7 @@ namespace D2SLib
 
         private static ExcelTxt itemStatCostTxt, armorTxt, weaponsTxt, miscTxt, skillsTxt, itemTypeTxt, setItemsTxt, setsTxt, uniqueItemsTxt, superUniqueItemsTxt, runesTxt, charStatsTxt, gemsTxt,
             propertiesTxt, experienceTxt, inventoryTxt, skillDescTxt, hirelingTxt,
-            autoMagicTxt, magicPrefixTxt, magicSuffixTxt, playerClassTxt;
+            autoMagicTxt, magicPrefixTxt, magicSuffixTxt, playerClassTxt, levelsTxt, cubemainTxt;
 
         public static ExcelTxt AutoMagicTxt
         {
@@ -98,10 +98,36 @@ namespace D2SLib
             {
                 if (autoMagicTxt == null)
                 {
-                    autoMagicTxt = ExcelTxt.GetInstance("*ID", "Stat").Read(Utils.CacheFolder + @"\excel\automagic.txt");
+                    autoMagicTxt = ExcelTxt.GetInstance("Id", "Name").Read(Utils.CacheFolder + @"\excel\automagic.txt");
                 }
 
                 return autoMagicTxt;
+            }
+        }
+
+        public static ExcelTxt LevelsTxt
+        {
+            get
+            {
+                if (levelsTxt == null)
+                {
+                    levelsTxt = ExcelTxt.GetInstance("*ID", "Stat").Read(Utils.CacheFolder + @"\excel\levels.txt");
+                }
+
+                return levelsTxt;
+            }
+        }
+
+        public static ExcelTxt CubemainTxt
+        {
+            get
+            {
+                if (cubemainTxt == null)
+                {
+                    cubemainTxt = ExcelTxt.GetInstance("", "").Read(Utils.CacheFolder + @"\excel\cubemain.txt");
+                }
+
+                return cubemainTxt;
             }
         }
 
@@ -150,7 +176,7 @@ namespace D2SLib
             {
                 if (magicSuffixTxt == null)
                 {
-                    magicSuffixTxt = new ExcelTxt("", "");
+                    magicSuffixTxt = new ExcelTxt("Id", "Name");
                     magicSuffixTxt.Columns = new Dictionary<string, int>();
 
                     var allLines = File.ReadAllLines(Utils.CacheFolder + @"\excel\magicsuffix.txt");
