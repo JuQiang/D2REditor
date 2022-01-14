@@ -113,10 +113,10 @@ namespace D2REditor.Forms
             btnCreateNew.ImageFile = Helper.GeneralButtonImageFile;
 
             var back = Helper.GetDefinitionFileName(@"\logoanimation\logoanimation");
-            var logo = Helper.Sprite2Png(back);
+            var logo = Helper.Sprite2Png(back,false);
 
             var back2 = Helper.GetDefinitionFileName(@"\logoanimation\logo_bottomflame");
-            var logo2 = Helper.Sprite2Png(back2);
+            var logo2 = Helper.Sprite2Png(back2, false);
 
             var left = Helper.GetDefinitionFileName(@"\controller\switch\frontend\frontend_leftpanel");
             var leftimg = Helper.Sprite2Png(left);
@@ -175,11 +175,11 @@ namespace D2REditor.Forms
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(bmp);
 
-            g.DrawImage(closebmp, pbRightPanel.Width - 24, 0);
+            g.DrawImage(closebmp, pbRightPanel.Width - closebmp.Width, 0);
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Center;
-                g.DrawString(Utils.AllJsons["BetaWelcomeTitle"], this.Font, Brushes.White, new Rectangle(0, 40, pbRightPanel.Width, pbRightPanel.Height - 4), sf);
+                g.DrawString(Utils.AllJsons["BetaWelcomeTitle"], this.Font, Brushes.White, new RectangleF(0, 24, pbRightPanel.Width, pbRightPanel.Height - 4), sf);
             }
 
             e.Graphics.DrawImage(bmp, 0, 0);
@@ -256,12 +256,12 @@ namespace D2REditor.Forms
         private void pbLeftPanel_Paint(object sender, PaintEventArgs e)
         {
             if (logoIndex > 26) logoIndex = 0;
-            e.Graphics.DrawImage(anilist[logoIndex], new Rectangle(38, 56, 210, 210 * anilist[0].Height / anilist[0].Width));
-            e.Graphics.DrawImage(anilist2[logoIndex], new Rectangle(90, 192, 100, 100 * anilist2[0].Height / anilist2[0].Width));
+            e.Graphics.DrawImage(anilist[logoIndex], new RectangleF(45*Helper.DisplayRatio, 56 * Helper.DisplayRatio, 210 * Helper.DisplayRatio, 210 * Helper.DisplayRatio * anilist[0].Height / anilist[0].Width));
+            e.Graphics.DrawImage(anilist2[logoIndex], new RectangleF(90 * Helper.DisplayRatio, 192 * Helper.DisplayRatio, 100 * Helper.DisplayRatio, 100 * Helper.DisplayRatio * anilist2[0].Height / anilist2[0].Width));
 
-            using (Font f = new Font("SimSun", 12, FontStyle.Bold))
+            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
             {
-                e.Graphics.DrawString("R E S U R R E C T E D", f, brush, new Point(50, 173));
+                e.Graphics.DrawString("R E S U R R E C T E D", f, brush, new PointF(50 * Helper.DisplayRatio, 173 * Helper.DisplayRatio));
             }
         }
 

@@ -40,11 +40,11 @@
             // 
             this.cbAllMoney.AutoSize = true;
             this.cbAllMoney.Checked = true;
-            this.cbAllMoney.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbAllMoney.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbAllMoney.ForeColor = System.Drawing.Color.White;
-            this.cbAllMoney.Location = new System.Drawing.Point(181, 286);
+            this.cbAllMoney.Location = new System.Drawing.Point(122, 272);
             this.cbAllMoney.Name = "cbAllMoney";
-            this.cbAllMoney.Size = new System.Drawing.Size(400, 56);
+            this.cbAllMoney.Size = new System.Drawing.Size(279, 56);
             this.cbAllMoney.TabIndex = 11;
             this.cbAllMoney.Text = "最多钱";
             // 
@@ -56,13 +56,13 @@
             this.btnModify.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnModify.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModify.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnModify.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnModify.ForeColor = System.Drawing.Color.White;
             this.btnModify.ImageFile = "";
             this.btnModify.ImageFrames = 4;
-            this.btnModify.Location = new System.Drawing.Point(400, 633);
+            this.btnModify.Location = new System.Drawing.Point(287, 444);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(354, 42);
+            this.btnModify.Size = new System.Drawing.Size(246, 25);
             this.btnModify.TabIndex = 10;
             this.btnModify.Text = "一键修改";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -72,11 +72,11 @@
             // 
             this.cbSkill20.AutoSize = true;
             this.cbSkill20.Checked = true;
-            this.cbSkill20.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbSkill20.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbSkill20.ForeColor = System.Drawing.Color.White;
-            this.cbSkill20.Location = new System.Drawing.Point(601, 113);
+            this.cbSkill20.Location = new System.Drawing.Point(416, 99);
             this.cbSkill20.Name = "cbSkill20";
-            this.cbSkill20.Size = new System.Drawing.Size(400, 56);
+            this.cbSkill20.Size = new System.Drawing.Size(279, 56);
             this.cbSkill20.TabIndex = 9;
             this.cbSkill20.Text = "所有技能都到20级";
             // 
@@ -84,11 +84,11 @@
             // 
             this.cbAllWays.AutoSize = true;
             this.cbAllWays.Checked = false;
-            this.cbAllWays.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbAllWays.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbAllWays.ForeColor = System.Drawing.Color.White;
-            this.cbAllWays.Location = new System.Drawing.Point(601, 195);
+            this.cbAllWays.Location = new System.Drawing.Point(416, 181);
             this.cbAllWays.Name = "cbAllWays";
-            this.cbAllWays.Size = new System.Drawing.Size(400, 56);
+            this.cbAllWays.Size = new System.Drawing.Size(279, 56);
             this.cbAllWays.TabIndex = 8;
             this.cbAllWays.Text = "打通所有传送点";
             // 
@@ -96,11 +96,11 @@
             // 
             this.CbAllQuests.AutoSize = true;
             this.CbAllQuests.Checked = false;
-            this.CbAllQuests.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CbAllQuests.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CbAllQuests.ForeColor = System.Drawing.Color.White;
-            this.CbAllQuests.Location = new System.Drawing.Point(181, 195);
+            this.CbAllQuests.Location = new System.Drawing.Point(122, 181);
             this.CbAllQuests.Name = "CbAllQuests";
-            this.CbAllQuests.Size = new System.Drawing.Size(400, 56);
+            this.CbAllQuests.Size = new System.Drawing.Size(279, 56);
             this.CbAllQuests.TabIndex = 7;
             this.CbAllQuests.Text = "完成所有任务";
             // 
@@ -108,11 +108,11 @@
             // 
             this.cbLevel99.AutoSize = true;
             this.cbLevel99.Checked = true;
-            this.cbLevel99.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbLevel99.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbLevel99.ForeColor = System.Drawing.Color.White;
-            this.cbLevel99.Location = new System.Drawing.Point(181, 113);
+            this.cbLevel99.Location = new System.Drawing.Point(122, 99);
             this.cbLevel99.Name = "cbLevel99";
-            this.cbLevel99.Size = new System.Drawing.Size(400, 56);
+            this.cbLevel99.Size = new System.Drawing.Size(279, 56);
             this.cbLevel99.TabIndex = 4;
             this.cbLevel99.Text = "直升到99级";
             // 
@@ -128,6 +128,7 @@
             this.Controls.Add(this.CbAllQuests);
             this.Controls.Add(this.cbLevel99);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "OptimizeControl";
             this.Size = new System.Drawing.Size(1162, 753);

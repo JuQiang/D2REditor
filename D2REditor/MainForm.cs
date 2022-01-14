@@ -44,8 +44,6 @@ namespace D2REditor
         public MainForm()
         {
             InitializeComponent();
-
-
         }
 
         private void PBottom_Paint(object sender, PaintEventArgs e)
@@ -57,10 +55,10 @@ namespace D2REditor
             Graphics g = Graphics.FromImage(bmp);
 
             g.DrawImage(bottombmp, new Rectangle(0, top + 0, (int)(ratio * bottombmp.Width), (int)(ratio * bottombmp.Height)), new Rectangle(0, 0, bottombmp.Width, bottombmp.Height), GraphicsUnit.Pixel);
-            g.DrawImage(healthlist[healthindex], new Rectangle(132, top + 27, (int)(healthlist[0].Width * ratio), (int)(healthlist[0].Height * ratio)), new Rectangle(0, 0, healthlist[0].Width, healthlist[0].Height), GraphicsUnit.Pixel);
-            g.DrawImage(manalist[healthindex], new Rectangle(933, top + 27, (int)(manalist[0].Width * ratio), (int)(manalist[0].Height * ratio)), new Rectangle(0, 0, manalist[0].Width, manalist[0].Height), GraphicsUnit.Pixel);
-            g.DrawImage(sprintbmp, new Rectangle(280, top + 113, 16, 16), new Rectangle(0, 0, sprintbmp.Width, sprintbmp.Height), GraphicsUnit.Pixel);
-            g.DrawImage(staminabmp, new Rectangle(302, top + 113, 180, 16), new Rectangle(0, 0, staminabmp.Width, staminabmp.Height), GraphicsUnit.Pixel);
+            g.DrawImage(healthlist[healthindex], new RectangleF(132*Helper.DisplayRatio, top + 27 * Helper.DisplayRatio, (int)(healthlist[0].Width * ratio) * Helper.DisplayRatio, (int)(healthlist[0].Height * ratio) * Helper.DisplayRatio), new RectangleF(0, 0, healthlist[0].Width, healthlist[0].Height), GraphicsUnit.Pixel);
+            g.DrawImage(manalist[healthindex], new RectangleF(933 * Helper.DisplayRatio, top + 27 * Helper.DisplayRatio, (int)(manalist[0].Width * ratio) * Helper.DisplayRatio, (int)(manalist[0].Height * ratio) * Helper.DisplayRatio), new RectangleF(0, 0, manalist[0].Width, manalist[0].Height), GraphicsUnit.Pixel);
+            g.DrawImage(sprintbmp, new RectangleF(280 * Helper.DisplayRatio, top + 113 * Helper.DisplayRatio, 16 * Helper.DisplayRatio, 16 * Helper.DisplayRatio), new Rectangle(0, 0, sprintbmp.Width, sprintbmp.Height), GraphicsUnit.Pixel);
+            g.DrawImage(staminabmp, new RectangleF(302 * Helper.DisplayRatio, top + 113 * Helper.DisplayRatio, 180 * Helper.DisplayRatio, 16 * Helper.DisplayRatio), new Rectangle(0, 0, staminabmp.Width, staminabmp.Height), GraphicsUnit.Pixel);
 
             using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
             {
@@ -69,7 +67,7 @@ namespace D2REditor
                 g.DrawString(text, f, Helper.TextBrush, (this.Width - sf.Width) / 2, top + 27);
             }
 
-            if (itemClicked) g.DrawRectangle(lightPens[healthindex / 12], new Rectangle(696, top + 122, 34, 32));
+            if (itemClicked) g.DrawRectangle(lightPens[healthindex / 12], 696 * Helper.DisplayRatio, top + 122 * Helper.DisplayRatio, 34 * Helper.DisplayRatio, 32 * Helper.DisplayRatio);
 
             e.Graphics.DrawImage(bmp, 0, 0);
 
@@ -89,12 +87,12 @@ namespace D2REditor
 
         private void PTop_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.X >= this.Width - 24 && e.X < this.Width)
+            if (e.X >= this.Width - closebmp.Width && e.X < this.Width)
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
-            if (e.X >= this.Width - 48 && e.X < this.Width - 24)
+            if (e.X >= this.Width - closebmp.Width*2 && e.X < this.Width - closebmp.Width)
             {
                 this.WindowState = FormWindowState.Minimized;
             }
@@ -105,8 +103,8 @@ namespace D2REditor
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(bmp);
 
-            g.DrawImage(closebmp, pTop.Width - 24, 0);
-            g.DrawString("_", pTop.Font, Brushes.White, pTop.Width - 48, 0);
+            g.DrawImage(closebmp, pTop.Width - closebmp.Width, 0);
+            g.DrawString("_", pTop.Font, Brushes.White, pTop.Width - closebmp.Width*2, 0);
 
             e.Graphics.DrawImage(bmp, 0, 0);
             using (var sf = new StringFormat())
@@ -206,7 +204,7 @@ namespace D2REditor
             ResetStatesAndEnableState(btnCharactorSkill);
 
             var back = Helper.GetDefinitionFileName(@"\panel\hud_02\healthmanaanimation\healthidle\4k\globe_health_man_idle");
-            var logo = Helper.Sprite2Png(back);
+            var logo = Helper.Sprite2Png(back,false);
             var mana = Image.FromFile(Helper.CacheFolder + @"\panel\hud_02\healthmanaanimation\healthidle\4k\globe_mana_man_idle.png") as Bitmap;
 
             var bottom = Helper.GetDefinitionFileName(@"\panel\hud_02\front_panel");
@@ -216,6 +214,14 @@ namespace D2REditor
             {
                 healthlist[i] = Helper.GetImageByFrame(logo, 46, i);
                 manalist[i] = Helper.GetImageByFrame(mana, 46, i);
+                //var mbmp = Helper.GetImageByFrame(mana, 46, i);
+                //var zoombmp = new Bitmap((int)(mbmp.Width * Helper.DisplayRatio), (int)(mbmp.Height * Helper.DisplayRatio));
+                //using (Graphics g = Graphics.FromImage(zoombmp))
+                //{
+                //    g.DrawImage(mbmp, new Rectangle(0, 0, zoombmp.Width, zoombmp.Height), new Rectangle(0, 0, mbmp.Width, mbmp.Height), GraphicsUnit.Pixel);
+                //}
+                //mbmp.Dispose();
+                //manalist[i] = zoombmp;
             }
 
             var sprint = Helper.GetDefinitionFileName(@"\panel\hud_02\sprint");

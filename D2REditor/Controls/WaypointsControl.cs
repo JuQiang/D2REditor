@@ -31,7 +31,7 @@ namespace D2REditor.Controls
             }
             else
             {
-                this.Size = new Size(581, 753);
+                this.Size = new Size((int)(581 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
             }
 
             var questback = Helper.GetDefinitionFileName(@"\panel\waypoints\waypoints_base");
@@ -41,21 +41,21 @@ namespace D2REditor.Controls
             diffbmp = Helper.Sprite2Png(diff);
 
             var nb = Helper.GetDefinitionFileName(@"\panel\waypoints\waypoints_button");
-            normalbutton = Helper.GetImageByFrame(Helper.Sprite2Png(nb), 3, 0);
+            normalbutton = Helper.GetImageByFrame(Helper.Sprite2Png(nb,false), 3, 0);
 
             var ab = Helper.GetDefinitionFileName(@"\panel\waypoints\waypoints_button_active");
-            activebutton = Helper.GetImageByFrame(Helper.Sprite2Png(ab), 3, 0);
+            activebutton = Helper.GetImageByFrame(Helper.Sprite2Png(ab, false), 3, 0);
 
             var db = Helper.GetDefinitionFileName(@"\panel\waypoints\waypoints_button_disabled");
-            disablebutton = Helper.GetImageByFrame(Helper.Sprite2Png(db), 2, 0);
+            disablebutton = Helper.GetImageByFrame(Helper.Sprite2Png(db, false), 2, 0);
 
             var imgname = Helper.GetDefinitionFileName(@"\panel\waypoints\waypoints_tab");
-            var img = Helper.Sprite2Png(imgname);
+            var img = Helper.Sprite2Png(imgname,false);
             downimg = Helper.GetImageByFrame(img, 2, 0);
             upimg = Helper.GetImageByFrame(img, 2, 1);
 
             imgname = Helper.GetDefinitionFileName(@"\questicons\questgem");
-            img = Helper.Sprite2Png(imgname);
+            img = Helper.Sprite2Png(imgname,false);
 
             SetDifficulty(1);
             List<object> allways = new List<object>() { waydiff.ActI, waydiff.ActII, waydiff.ActIII, waydiff.ActIV, waydiff.ActV };
@@ -101,21 +101,21 @@ namespace D2REditor.Controls
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(bmp);
 
-            g.DrawImage(waypointsbackbmp, left + 0, 0, waypointsbackbmp.Width, waypointsbackbmp.Height);
+            g.DrawImage(waypointsbackbmp, left  + 0, 0, waypointsbackbmp.Width, waypointsbackbmp.Height);
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
                     sf.Alignment = StringAlignment.Center;
                     var text = title + " - " + difftext;
-                    g.DrawString(text, f, Helper.TextBrush, new Rectangle(0, 36, this.Width, 40), sf);
+                    g.DrawString(text, f, Helper.TextBrush, new RectangleF(0, 36 * Helper.DisplayRatio, this.Width, 40 * Helper.DisplayRatio), sf);
                 }
             }
 
             //g.DrawImage(diffbmp, diffleft, difftop, diffbmp.Width, diffbmp.Height);
 
-            using (Font f = new Font("SimSun", 16, FontStyle.Bold))
+            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
             {
                 //g.DrawString("选择要优化的难度", f, Brushes.White, diffleft + 60, difftop - 30);
 
@@ -123,29 +123,29 @@ namespace D2REditor.Controls
                 {
                     if (currentTab == i)
                     {
-                        g.DrawImage(downimg, left + Helper.DefinitionInfo.WaypointsTabStartX + Helper.DefinitionInfo.WaypointsTabWidth * i, Helper.DefinitionInfo.WaypointsTabStartY, Helper.DefinitionInfo.WaypointsTabWidth, Helper.DefinitionInfo.WaypointsTabHeight);
-                        g.DrawString(chapters[i], f, Brushes.White, left + Helper.DefinitionInfo.WaypointsTabTitleStartX + Helper.DefinitionInfo.WaypointsTabWidth * i, Helper.DefinitionInfo.WaypointsTabTitleStartY - 5);
+                        g.DrawImage(downimg, new RectangleF(left  + Helper.DefinitionInfo.WaypointsTabStartX*Helper.DisplayRatio + Helper.DefinitionInfo.WaypointsTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.WaypointsTabStartY * Helper.DisplayRatio, downimg.Width*Helper.DisplayRatio, downimg.Height * Helper.DisplayRatio),new RectangleF(0,0,downimg.Width,downimg.Height),GraphicsUnit.Pixel);
+                        g.DrawString(chapters[i], f, Brushes.White, left + Helper.DefinitionInfo.WaypointsTabTitleStartX * Helper.DisplayRatio + Helper.DefinitionInfo.WaypointsTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.WaypointsTabTitleStartY * Helper.DisplayRatio - 5 * Helper.DisplayRatio);
 
                         for (int j = 0; j < waynamedict[currentTab].Count; j++)
                         {
                             if (waydict[currentTab][j])
                             {
-                                g.DrawImage(normalbutton, left + 75, 62 * j + 128);
-                                g.DrawString(waynamedict[currentTab][j], f, Helper.TextBrush, left + 180, 62 * j + 128 + 22);
+                                g.DrawImage(normalbutton, new RectangleF(left + 75 * Helper.DisplayRatio, (62 * j + 128) * Helper.DisplayRatio,normalbutton.Width * Helper.DisplayRatio ,normalbutton.Height * Helper.DisplayRatio),new RectangleF(0,0,normalbutton.Width,normalbutton.Height),GraphicsUnit.Pixel);
+                                g.DrawString(waynamedict[currentTab][j], f, Helper.TextBrush, left + 180 * Helper.DisplayRatio, (62 * j + 128 + 22) * Helper.DisplayRatio );
                             }
                             else
                             {
-                                g.DrawImage(disablebutton, left + 75, 62 * j + 128);
-                                g.DrawString(waynamedict[currentTab][j], f, Brushes.Gray, left + 180, 62 * j + 128 + 22);
+                                g.DrawImage(disablebutton, new RectangleF(left + 75 * Helper.DisplayRatio, (62 * j + 128) * Helper.DisplayRatio, disablebutton.Width * Helper.DisplayRatio, disablebutton.Height * Helper.DisplayRatio), new RectangleF(0, 0, disablebutton.Width, disablebutton.Height), GraphicsUnit.Pixel);
+                                g.DrawString(waynamedict[currentTab][j], f, Brushes.Gray, left + 180*Helper.DisplayRatio, (62 * j + 128 + 22) * Helper.DisplayRatio);
                             }
 
                         }
                     }
                     else
                     {
-                        g.DrawImage(upimg, left + Helper.DefinitionInfo.WaypointsTabStartX + Helper.DefinitionInfo.WaypointsTabWidth * i, Helper.DefinitionInfo.WaypointsTabStartY, Helper.DefinitionInfo.WaypointsTabWidth, Helper.DefinitionInfo.WaypointsTabHeight);
+                        g.DrawImage(upimg, new RectangleF(left + Helper.DefinitionInfo.WaypointsTabStartX * Helper.DisplayRatio + Helper.DefinitionInfo.WaypointsTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.WaypointsTabStartY * Helper.DisplayRatio, upimg.Width * Helper.DisplayRatio, upimg.Height * Helper.DisplayRatio), new RectangleF(0, 0, upimg.Width, upimg.Height), GraphicsUnit.Pixel);
 
-                        g.DrawString(chapters[i], f, Brushes.Gray, left + Helper.DefinitionInfo.WaypointsTabTitleStartX + Helper.DefinitionInfo.WaypointsTabWidth * i, Helper.DefinitionInfo.WaypointsTabTitleStartY - 5);
+                        g.DrawString(chapters[i], f, Brushes.Gray, left + Helper.DefinitionInfo.WaypointsTabTitleStartX * Helper.DisplayRatio + Helper.DefinitionInfo.WaypointsTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.WaypointsTabTitleStartY * Helper.DisplayRatio - 5 * Helper.DisplayRatio);
                     }
                 }
             }
@@ -220,7 +220,7 @@ namespace D2REditor.Controls
         {
             for (int i = 0; i < this.chapters.Length; i++)
             {
-                Rectangle r = new Rectangle(left + Helper.DefinitionInfo.WaypointsTabStartX + Helper.DefinitionInfo.WaypointsTabWidth * i, Helper.DefinitionInfo.WaypointsTabStartY, Helper.DefinitionInfo.WaypointsTabWidth, Helper.DefinitionInfo.WaypointsTabHeight);
+                Rectangle r = new Rectangle((int)(left + Helper.DefinitionInfo.WaypointsTabStartX*Helper.DisplayRatio + Helper.DefinitionInfo.WaypointsTabWidth * Helper.DisplayRatio * i), (int)(Helper.DefinitionInfo.WaypointsTabStartY * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.WaypointsTabWidth * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.WaypointsTabHeight * Helper.DisplayRatio));
                 if (Helper.IsPointInRange(e.Location, r))
                 {
                     currentTab = i;

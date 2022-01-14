@@ -18,6 +18,7 @@ namespace D2REditor
     {
         public static string Host = "http://localhost";
         public const int Version = 0x61;
+        public static float DisplayRatio = 0.7f;
         public static string CurrentD2SFileName = "";
         public static string GeneralButtonImageFile = @"\frontend\hd\final\cinematics\cinematicsbtn";
         private static Dictionary<int, Bitmap> spmappings = new Dictionary<int, Bitmap>();
@@ -217,7 +218,7 @@ namespace D2REditor
 
         public static bool IsHighDefinition { get; set; }
 
-        public static Bitmap Sprite2Png(string fileName)
+        public static Bitmap Sprite2Png(string fileName, bool skipSplit=true)
         {
             Bitmap bmp = null;
 
@@ -263,7 +264,22 @@ namespace D2REditor
                 //    bmp.Save(fname);
                 //}
 
-                spmappings[hash] = Image.FromFile(fname) as Bitmap;
+                bmp = Image.FromFile(fname) as Bitmap;
+
+                if (!skipSplit)
+                {
+                    spmappings[hash] = bmp;
+                }
+                else
+                {
+                    var zoombmp = new Bitmap((int)(bmp.Width * Helper.DisplayRatio), (int)(bmp.Height * Helper.DisplayRatio));
+                    using (Graphics g = Graphics.FromImage(zoombmp))
+                    {
+                        g.DrawImage(bmp, new Rectangle(0, 0, zoombmp.Width, zoombmp.Height), new Rectangle(0, 0, bmp.Width, bmp.Height), GraphicsUnit.Pixel);
+                    }
+                    spmappings[hash] = zoombmp;
+                    bmp.Dispose();
+                }                    
             }
 
             return spmappings[hash];
@@ -1731,7 +1747,7 @@ namespace D2REditor
         {
             get
             {
-                return new Rectangle(EquipedItem.Min(e => e.X), EquipedItem.Min(e => e.Y), EquipedItem.Max(e => e.X) + 49 * 2 - EquipedItem.Min(e => e.X), EquipedItem.Max(e => e.Y) + 49 - EquipedItem.Min(e => e.Y));
+                return new Rectangle((int)(EquipedItem.Min(e => e.X)*Helper.DisplayRatio), (int)(EquipedItem.Min(e => e.Y) * Helper.DisplayRatio), (int)((EquipedItem.Max(e => e.X) + 49 * 2 - EquipedItem.Min(e => e.X)) * Helper.DisplayRatio), (int)((EquipedItem.Max(e => e.Y) + 49 - EquipedItem.Min(e => e.Y)) * Helper.DisplayRatio));
             }
         }
 
@@ -1739,7 +1755,7 @@ namespace D2REditor
         {
             get
             {
-                return new Rectangle(StoreRangeX[0], StoreRangeY[0], StoreRangeX[StoreRangeX.Length - 1] + 49, StoreRangeY[StoreRangeY.Length - 1] + 49);
+                return new Rectangle((int)(StoreRangeX[0] * Helper.DisplayRatio), (int)(StoreRangeY[0] * Helper.DisplayRatio), (int)((StoreRangeX[StoreRangeX.Length - 1] + 49) * Helper.DisplayRatio), (int)((StoreRangeY[StoreRangeY.Length - 1] + 49) * Helper.DisplayRatio));
             }
         }
 
@@ -1747,7 +1763,7 @@ namespace D2REditor
         {
             get
             {
-                return new Rectangle(StashRangeX[0], StashRangeY[0], StashRangeX[StashRangeX.Length - 1] + 49, StashRangeY[StashRangeY.Length - 1] + 49);
+                return new Rectangle((int)(StashRangeX[0] * Helper.DisplayRatio), (int)(StashRangeY[0] * Helper.DisplayRatio), (int)((StashRangeX[StashRangeX.Length - 1] + 49) * Helper.DisplayRatio), (int)((StashRangeY[StashRangeY.Length - 1] + 49) * Helper.DisplayRatio));
             }
         }
     }

@@ -38,7 +38,7 @@ namespace D2REditor.Controls
             btnAdd1.Name = "btnAdd1";
             btnAdd1.ImageFrames = 4;
             btnAdd1.ImageFile = @"\panel\character_sheet\levelupbutton";
-            btnAdd1.Location = new Point(left + 218, 194); btnAdd1.Size = new Size(36, 36);
+            btnAdd1.Location = new Point(left + (int)(218*Helper.DisplayRatio), (int)(194 * Helper.DisplayRatio)); btnAdd1.Size = new Size((int)(36 * Helper.DisplayRatio), (int)(36 * Helper.DisplayRatio));
             btnAdd1.KeyDown += BtnAdd_KeyDown; btnAdd1.KeyUp += BtnAdd_KeyUp;
             btnAdd1.MouseUp += BtnAdd_MouseUp;
             this.Controls.Add(btnAdd1);
@@ -46,7 +46,7 @@ namespace D2REditor.Controls
             btnAdd2.Name = "btnAdd2";
             btnAdd2.ImageFrames = 4;
             btnAdd2.ImageFile = @"\panel\character_sheet\levelupbutton";
-            btnAdd2.Location = new Point(left + 218, 324); btnAdd2.Size = new Size(36, 36);
+            btnAdd2.Location = new Point(left + (int)(218 * Helper.DisplayRatio), (int)(324 * Helper.DisplayRatio)); btnAdd2.Size = new Size((int)(36 * Helper.DisplayRatio), (int)(36 * Helper.DisplayRatio));
             btnAdd2.KeyDown += BtnAdd_KeyDown; btnAdd2.KeyUp += BtnAdd_KeyUp;
             btnAdd2.MouseUp += BtnAdd_MouseUp;
             this.Controls.Add(btnAdd2);
@@ -54,7 +54,7 @@ namespace D2REditor.Controls
             btnAdd3.Name = "btnAdd3";
             btnAdd3.ImageFrames = 4;
             btnAdd3.ImageFile = @"\panel\character_sheet\levelupbutton";
-            btnAdd3.Location = new Point(left + 218, 450); btnAdd3.Size = new Size(36, 36);
+            btnAdd3.Location = new Point(left + (int)(218 * Helper.DisplayRatio), (int)(450 * Helper.DisplayRatio)); btnAdd3.Size = new Size((int)(36 * Helper.DisplayRatio), (int)(36 * Helper.DisplayRatio));
             btnAdd3.KeyDown += BtnAdd_KeyDown; btnAdd3.KeyUp += BtnAdd_KeyUp;
             btnAdd3.MouseUp += BtnAdd_MouseUp;
             this.Controls.Add(btnAdd3);
@@ -62,7 +62,7 @@ namespace D2REditor.Controls
             btnAdd4.Name = "btnAdd4";
             btnAdd4.ImageFrames = 4;
             btnAdd4.ImageFile = @"\panel\character_sheet\levelupbutton";
-            btnAdd4.Location = new Point(left + 218, 530); btnAdd4.Size = new Size(36, 36);
+            btnAdd4.Location = new Point(left + (int)(218 * Helper.DisplayRatio), (int)(530 * Helper.DisplayRatio)); btnAdd4.Size = new Size((int)(36 * Helper.DisplayRatio), (int)(36 * Helper.DisplayRatio));
             btnAdd4.KeyDown += BtnAdd_KeyDown; btnAdd4.KeyUp += BtnAdd_KeyUp;
             btnAdd4.MouseUp += BtnAdd_MouseUp;
             this.Controls.Add(btnAdd4);
@@ -147,19 +147,19 @@ namespace D2REditor.Controls
             g.DrawImage(chabackbmp, left, 0, chabackbmp.Width, chabackbmp.Height);
             //g.DrawImage(advchabackmp, left + chabackbmp.Width, 0, advchabackmp.Width, advchabackmp.Height);            
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
                     sf.Alignment = StringAlignment.Center;
-                    g.DrawString(Utils.AllJsons["minipanelchar"], f, Helper.TextBrush, new Rectangle(0, 36, this.Width, 40), sf);
+                    g.DrawString(Utils.AllJsons["minipanelchar"], f, Helper.TextBrush, new RectangleF(0, 36*Helper.DisplayRatio, this.Width, 40 * Helper.DisplayRatio), sf);
                 }
             }
 
-            using (Font f = new Font("SimSun", 18, FontStyle.Bold))
+            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
             {
                 //g.DrawString("角色", f, Helper.TextBrush, 260, 36);
-                g.DrawString(Helper.CurrentCharactor.DisplayName, f, Brushes.White, left + 60, 80);
+                g.DrawString(Helper.CurrentCharactor.DisplayName, f, Brushes.White, left + 60 * Helper.DisplayRatio, 80 * Helper.DisplayRatio);
                 if (stats.ContainsKey("statpts") && Convert.ToInt32(stats["statpts"]) > 0)
                 {
 
@@ -170,35 +170,35 @@ namespace D2REditor.Controls
             }
 
 
-            using (Font f = new Font("SimSun", 12, FontStyle.Bold))
+            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
             {
-                g.DrawString(String.Format("{2} {0} {1}", Helper.CurrentCharactor.Level, Helper.CurrentCharactor.ClassName, Utils.AllJsons["Level"]), f, Brushes.White, left + 60, 126);
+                g.DrawString(String.Format("{2} {0} {1}", Helper.CurrentCharactor.Level, Helper.CurrentCharactor.ClassName, Utils.AllJsons["Level"]), f, Brushes.White, left + 60 * Helper.DisplayRatio, 126 * Helper.DisplayRatio);
 
                 DrawExperience(g, f);
 
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrstr"], new Rectangle(left + 45, 200, 124, 25)); try { DrawSimpleTextCenter(g, f, stats["strength"].ToString(), new Rectangle(left + 170, 200, 48, 22)); } catch { }
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrdex"], new Rectangle(left + 45, 330, 124, 25)); try { DrawSimpleTextCenter(g, f, stats["dexterity"].ToString(), new Rectangle(left + 170, 330, 48, 22)); } catch { }
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrvit"], new Rectangle(left + 45, 456, 124, 25)); try { DrawSimpleTextCenter(g, f, stats["vitality"].ToString(), new Rectangle(left + 170, 456, 48, 22)); } catch { }
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchreng"], new Rectangle(left + 45, 536, 124, 25)); try { DrawSimpleTextCenter(g, f, stats["energy"].ToString(), new Rectangle(left + 170, 536, 48, 22)); } catch { }//stamina,maxstamina;hitpoints,maxhp,;mana,maxmana;
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrstr"], new RectangleF(left + 45 * Helper.DisplayRatio, 200 * Helper.DisplayRatio, 124 * Helper.DisplayRatio, 25 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, stats["strength"].ToString(), new RectangleF(left + 170 * Helper.DisplayRatio, 200 * Helper.DisplayRatio, 48 * Helper.DisplayRatio, 22 * Helper.DisplayRatio)); } catch { }
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrdex"], new RectangleF(left + 45 * Helper.DisplayRatio, 330 * Helper.DisplayRatio, 124 * Helper.DisplayRatio, 25 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, stats["dexterity"].ToString(), new RectangleF(left + 170 * Helper.DisplayRatio, 330 * Helper.DisplayRatio, 48 * Helper.DisplayRatio, 22 * Helper.DisplayRatio)); } catch { }
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrvit"], new RectangleF(left + 45 * Helper.DisplayRatio, 456 * Helper.DisplayRatio, 124 * Helper.DisplayRatio, 25 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, stats["vitality"].ToString(), new RectangleF(left + 170 * Helper.DisplayRatio, 456 * Helper.DisplayRatio, 48 * Helper.DisplayRatio, 22 * Helper.DisplayRatio)); } catch { }
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchreng"], new RectangleF(left + 45 * Helper.DisplayRatio, 536 * Helper.DisplayRatio, 124 * Helper.DisplayRatio, 25 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, stats["energy"].ToString(), new RectangleF(left + 170 * Helper.DisplayRatio, 536 * Helper.DisplayRatio, 48 * Helper.DisplayRatio, 22 * Helper.DisplayRatio)); } catch { }//stamina,maxstamina;hitpoints,maxhp,;mana,maxmana;
 
 
                 //DrawSimpleTextCenter(g, f, Utils.AllJsons["Damage"], new Rectangle(left + 270, 165, 140, 44));
                 //DrawSimpleTextCenter(g, f, Utils.AllJsons["strchratr"], new Rectangle(left + 270, 270, 140, 44));
                 //DrawSimpleTextCenter(g, f, Utils.AllJsons["AC"], new Rectangle(left + 270, 373, 140, 36));
 
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrstm"], new Rectangle(left + 270, 432, 140, 30)); try { DrawSimpleTextCenter(g, f, String.Format("{0}/{1}", stats["stamina"], stats["maxstamina"]), new Rectangle(left + 425, 432, 105, 30)); } catch { }
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrlif"], new Rectangle(left + 270, 484, 140, 30)); try { DrawSimpleTextCenter(g, f, String.Format("{0}/{1}", stats["hitpoints"], stats["maxhp"]), new Rectangle(left + 425, 484, 105, 30)); } catch { }
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrman"], new Rectangle(left + 270, 537, 140, 30)); try { DrawSimpleTextCenter(g, f, String.Format("{0}/{1}", stats["mana"], stats["maxmana"]), new Rectangle(left + 425, 537, 105, 30)); } catch { }
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrstm"], new RectangleF(left + 270 * Helper.DisplayRatio, 432 * Helper.DisplayRatio, 140 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, String.Format("{0}/{1}", stats["stamina"], stats["maxstamina"]), new RectangleF(left + 425 * Helper.DisplayRatio, 432 * Helper.DisplayRatio, 105 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); } catch { }
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrlif"], new RectangleF(left + 270 * Helper.DisplayRatio, 484 * Helper.DisplayRatio, 140 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, String.Format("{0}/{1}", stats["hitpoints"], stats["maxhp"]), new RectangleF(left + 425 * Helper.DisplayRatio, 484 * Helper.DisplayRatio, 105 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); } catch { }
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrman"], new RectangleF(left + 270 * Helper.DisplayRatio, 537 * Helper.DisplayRatio, 140 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); try { DrawSimpleTextCenter(g, f, String.Format("{0}/{1}", stats["mana"], stats["maxmana"]), new RectangleF(left + 425 * Helper.DisplayRatio, 537 * Helper.DisplayRatio, 105 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); } catch { }
 
                 var reslist = Helper.GetCharacterResistances();
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrfir"], new Rectangle(left + 48, 595, 175, 30)); DrawSimpleTextCenter(g, f, reslist.Item1.ToString() + "%", new Rectangle(left + 230, 595, 50, 25), Helper.TextBrush);
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrlit"], new Rectangle(left + 300, 595, 175, 30)); DrawSimpleTextCenter(g, f, reslist.Item2.ToString() + "%", new Rectangle(left + 484, 595, 50, 25), Helper.TextBrush);
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrcol"], new Rectangle(left + 48, 630, 175, 30)); DrawSimpleTextCenter(g, f, reslist.Item3.ToString() + "%", new Rectangle(left + 230, 630, 50, 25), Helper.TextBrush);
-                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrpos"], new Rectangle(left + 300, 630, 175, 30)); DrawSimpleTextCenter(g, f, reslist.Item4.ToString() + "%", new Rectangle(left + 484, 630, 50, 25), Helper.TextBrush);
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrfir"], new RectangleF(left + 48 * Helper.DisplayRatio, 595 * Helper.DisplayRatio, 175 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); DrawSimpleTextCenter(g, f, reslist.Item1.ToString() + "%", new RectangleF(left + 230 * Helper.DisplayRatio, 595 * Helper.DisplayRatio, 50 * Helper.DisplayRatio, 25 * Helper.DisplayRatio), Helper.TextBrush);
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrlit"], new RectangleF(left + 300 * Helper.DisplayRatio, 595 * Helper.DisplayRatio, 175 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); DrawSimpleTextCenter(g, f, reslist.Item2.ToString() + "%", new RectangleF(left + 484 * Helper.DisplayRatio, 595 * Helper.DisplayRatio, 50 * Helper.DisplayRatio, 25 * Helper.DisplayRatio), Helper.TextBrush);
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrcol"], new RectangleF(left + 48 * Helper.DisplayRatio, 630 * Helper.DisplayRatio, 175 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); DrawSimpleTextCenter(g, f, reslist.Item3.ToString() + "%", new RectangleF(left + 230 * Helper.DisplayRatio, 630 * Helper.DisplayRatio, 50 * Helper.DisplayRatio, 25 * Helper.DisplayRatio), Helper.TextBrush);
+                DrawSimpleTextCenter(g, f, Utils.AllJsons["strchrpos"], new RectangleF(left + 300 * Helper.DisplayRatio, 630 * Helper.DisplayRatio, 175 * Helper.DisplayRatio, 30 * Helper.DisplayRatio)); DrawSimpleTextCenter(g, f, reslist.Item4.ToString() + "%", new RectangleF(left + 484 * Helper.DisplayRatio, 630 * Helper.DisplayRatio, 50 * Helper.DisplayRatio, 25 * Helper.DisplayRatio), Helper.TextBrush);
             }
 
-            g.DrawImage(expbmp, new Rectangle(left + 66, 114, expbmp.Width * Helper.CurrentCharactor.Level / 99, expbmp.Height));
-            g.DrawImage(advbtnbmp, left + 557, 355);
+            g.DrawImage(expbmp, new RectangleF(left + 66 * Helper.DisplayRatio, 114 * Helper.DisplayRatio, expbmp.Width * Helper.DisplayRatio * Helper.CurrentCharactor.Level / 99, expbmp.Height * Helper.DisplayRatio));
+            g.DrawImage(advbtnbmp, left + 557 * Helper.DisplayRatio, 355 * Helper.DisplayRatio);
 
             //if (this.reorg)
             //{
@@ -211,7 +211,7 @@ namespace D2REditor.Controls
 
         private void DrawExperience(Graphics g, Font f)
         {
-            var r = new Rectangle(left + 220, 126, 300, 20);
+            var r = new RectangleF(left + 220 * Helper.DisplayRatio, 126 * Helper.DisplayRatio, 300 * Helper.DisplayRatio, 20 * Helper.DisplayRatio);
             var expdesc = "";
             uint curexp = 0;
             if (stats.ContainsKey("experience")) curexp = (uint)(stats["experience"]);
@@ -237,7 +237,7 @@ namespace D2REditor.Controls
             }
         }
 
-        private void DrawSimpleTextCenter(Graphics g, Font f, string text, Rectangle r, Brush b)
+        private void DrawSimpleTextCenter(Graphics g, Font f, string text, RectangleF r, Brush b)
         {
             using (var sf = new StringFormat())
             {
@@ -247,7 +247,7 @@ namespace D2REditor.Controls
             }
         }
 
-        private void DrawSimpleTextCenter(Graphics g, Font f, string text, Rectangle r)
+        private void DrawSimpleTextCenter(Graphics g, Font f, string text, RectangleF r)
         {
             DrawSimpleTextCenter(g, f, text, r, Brushes.White);
         }

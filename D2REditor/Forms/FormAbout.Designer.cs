@@ -67,10 +67,10 @@
             this.tabPage1.Controls.Add(this.link6);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.pictureBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(403, 472);
+            this.tabPage1.Size = new System.Drawing.Size(403, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "联系我";
             // 
@@ -114,10 +114,10 @@
             this.tabPage2.Controls.Add(this.link3);
             this.tabPage2.Controls.Add(this.link2);
             this.tabPage2.Controls.Add(this.link1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(403, 472);
+            this.tabPage2.Size = new System.Drawing.Size(403, 484);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "感谢大家";
             // 
@@ -174,9 +174,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tbUpdateLog);
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(403, 472);
+            this.tabPage3.Size = new System.Drawing.Size(403, 484);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "更新日志";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.tbUpdateLog.Location = new System.Drawing.Point(0, 0);
             this.tbUpdateLog.Multiline = true;
             this.tbUpdateLog.Name = "tbUpdateLog";
-            this.tbUpdateLog.Size = new System.Drawing.Size(403, 472);
+            this.tbUpdateLog.Size = new System.Drawing.Size(403, 484);
             this.tbUpdateLog.TabIndex = 0;
             // 
             // FormAbout
@@ -195,12 +195,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(411, 510);
             this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormAbout";
+            this.Text = "About";
             this.Load += new System.EventHandler(this.FormAbout_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

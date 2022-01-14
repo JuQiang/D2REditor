@@ -49,14 +49,14 @@ namespace D2REditor.Forms
 
             tbName = new TextBox();
             tbName.Text = Utils.AllJsons["inpurt_hero_name_here"];
-            tbName.Location = new Point(80, 560);
-            tbName.Width = 420;
+            tbName.Location = new Point((int)(80*Helper.DisplayRatio), (int)(560 * Helper.DisplayRatio));
+            tbName.Width = (int)(420 * Helper.DisplayRatio);
             this.Controls.Add(tbName);
 
             btnCreateNewCharactor = new ButtonEx();
             btnCreateNewCharactor.Text = Utils.AllJsons["strlaunchcreatenewcharexp"];
-            btnCreateNewCharactor.Location = new Point(195, 625);
-            btnCreateNewCharactor.Size = new Size(190, 60);
+            btnCreateNewCharactor.Location = new Point((int)(195*Helper.DisplayRatio), (int)(625 * Helper.DisplayRatio));
+            btnCreateNewCharactor.Size = new Size((int)(190 * Helper.DisplayRatio), (int)(60 * Helper.DisplayRatio));
             btnCreateNewCharactor.Click += BtnCreateNewCharactor_Click;
             this.Controls.Add(btnCreateNewCharactor);
 
@@ -91,7 +91,7 @@ namespace D2REditor.Forms
 
         private void CreateNewCharactorForm_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.X >= this.Width - 27 && e.X < this.Width && e.Y >= 0 && e.Y < 27)
+            if (e.X >=  this.Width - closebmp.Width && e.X < this.Width && e.Y >= 0 && e.Y < closebmp.Height)
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
@@ -99,7 +99,7 @@ namespace D2REditor.Forms
 
             for (int i = 0; i < classes.Length; i++)
             {
-                if (e.X >= 140 && e.X < 500 && e.Y >= 90 + 65 * i && e.Y < 90 + 65 * i + 65)
+                if (e.X >= 140*Helper.DisplayRatio && e.X < 500 * Helper.DisplayRatio && e.Y >= (90+ 65 * i) * Helper.DisplayRatio && e.Y < (90 + 65 * i + 65) * Helper.DisplayRatio)
                 {
                     //System.Diagnostics.Debug.WriteLine("Class=" + i.ToString());
                     curclass = i;
@@ -131,21 +131,21 @@ namespace D2REditor.Forms
 
 
             g.DrawString(descriptions[e.Index], this.Font, Helper.TextBrush, e.Bounds.X + classesbmp[e.Index].Width, e.Bounds.Y + 3);
-            using (Font f = new Font("SimSun", 12))
+            using (Font f = new Font("SimSun", 9))
             {
                 using (StringFormat sf = new StringFormat())
                 {
                     sf.Alignment = StringAlignment.Near;
                     sf.LineAlignment = StringAlignment.Center;
 
-                    g.DrawString(descriptions2[e.Index], f, Brushes.White, new Rectangle(e.Bounds.X + classesbmp[e.Index].Width, e.Bounds.Y + 20, this.Width - 220, 50), sf);
+                    g.DrawString(descriptions2[e.Index], f, Brushes.White, new Rectangle(e.Bounds.X + classesbmp[e.Index].Width, e.Bounds.Y + (int)(20 * Helper.DisplayRatio), this.Width - (int)(220 * Helper.DisplayRatio), (int)(50*Helper.DisplayRatio)), sf);
                 }
             }
         }
 
         private void lbCharacterList_MeasureItem(object sender, MeasureItemEventArgs e)
         {
-            e.ItemHeight = 66;
+            e.ItemHeight = (int)(66 * Helper.DisplayRatio);
         }
 
         private void lbCharacterList_SelectedIndexChanged(object sender, EventArgs e)
@@ -162,8 +162,8 @@ namespace D2REditor.Forms
             g.DrawImage(backbmp, 0, 0);
             var title = Utils.AllJsons["strSelectHeroClass"];
             var size = g.MeasureString(title, this.Font);
-            g.DrawString(title, this.Font, Helper.TextBrush, (this.Width - size.Width) / 2, 40);
-            g.DrawImage(closebmp, this.Width - 27, 0);
+            g.DrawString(title, this.Font, Helper.TextBrush, (this.Width - size.Width) / 2, 40 * Helper.DisplayRatio);
+            g.DrawImage(closebmp, this.Width - closebmp.Width, 0);
 
             g2.DrawImage(bmp, 0, 0);
         }

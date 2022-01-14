@@ -39,7 +39,7 @@ namespace D2REditor.Controls
             }
             else
             {
-                this.Size = new Size(581, 753);
+                this.Size = new Size((int)(581 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
             }
 
             var questback = Helper.GetDefinitionFileName(@"\panel\quest_log\questlog_bg");
@@ -53,13 +53,13 @@ namespace D2REditor.Controls
             questdesc.ForeColor = Color.White;
             questdesc.BackColor = Color.Transparent;
             questdesc.AutoSize = true;
-            questdesc.Font = new Font("SimSun", 16, FontStyle.Bold);
+            questdesc.Font = new Font("SimSun", 9, FontStyle.Bold);
             questdesc.AutoSize = false;
             questdesc.BorderStyle = BorderStyle.FixedSingle;
-            questdesc.Width = questbackbmp.Width - 100;
-            questdesc.Height = 100;
+            questdesc.Width = questbackbmp.Width - (int)(100*Helper.DisplayRatio);
+            questdesc.Height = (int)(100 * Helper.DisplayRatio);
             questdesc.TextAlign = ContentAlignment.MiddleLeft;
-            questdesc.Location = new Point(50, 500);
+            questdesc.Location = new Point((int)(50 * Helper.DisplayRatio), (int)(500 * Helper.DisplayRatio));
             this.Controls.Add(questdesc);
 
             title = Utils.AllJsons["minipanelquest"];
@@ -71,7 +71,7 @@ namespace D2REditor.Controls
             upimg = Helper.GetImageByFrame(img, 2, 1);
 
             imgname = Helper.GetDefinitionFileName(@"\questicons\questgem");
-            img = Helper.Sprite2Png(imgname);
+            img = Helper.Sprite2Png(imgname,false);
             gem = Helper.GetImageByFrame(img, 28, 27) as Bitmap;
 
             level = 1;
@@ -89,7 +89,7 @@ namespace D2REditor.Controls
         private void QuestsControl_SizeChanged(object sender, EventArgs e)
         {
             left = (this.Parent.Width - questbackbmp.Width) / 2;
-            questdesc.Left = left + 50;
+            questdesc.Left = left + (int)(50 * Helper.DisplayRatio);
             this.Invalidate();
         }
 
@@ -180,7 +180,7 @@ namespace D2REditor.Controls
         {
             for (int i = 0; i < this.chapters.Length; i++)
             {
-                Rectangle r = new Rectangle(left + Helper.DefinitionInfo.QuestTabStartX + Helper.DefinitionInfo.QuestTabWidth * i, Helper.DefinitionInfo.QuestTabStartY, Helper.DefinitionInfo.QuestTabWidth, Helper.DefinitionInfo.QuestTabHeight);
+                Rectangle r = new Rectangle(left+(int)(Helper.DefinitionInfo.QuestTabStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio * i), (int)(Helper.DefinitionInfo.QuestTabStartY * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.QuestTabHeight * Helper.DisplayRatio));
                 if (Helper.IsPointInRange(e.Location, r))
                 {
                     currentTab = i;
@@ -196,7 +196,7 @@ namespace D2REditor.Controls
 
             for (int j = 0; j < questIcons[currentTab].Count; j++)
             {
-                Rectangle r = new Rectangle(left + Helper.DefinitionInfo.QuestIconStartX + Helper.DefinitionInfo.QuestIconWidth * (j % 3), Helper.DefinitionInfo.QuestIconStartY + Helper.DefinitionInfo.QuestIconHeight * (j / 3), questiconwidth, questiconheight);
+                Rectangle r = new Rectangle(left+(int)(Helper.DefinitionInfo.QuestIconStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconWidth * Helper.DisplayRatio * (j % 3)), (int)(Helper.DefinitionInfo.QuestIconStartY * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconHeight * Helper.DisplayRatio * (j / 3)), questiconwidth , questiconheight);
                 if (Helper.IsPointInRange(e.Location, r))
                 {
                     currentquest = j;
@@ -222,29 +222,29 @@ namespace D2REditor.Controls
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(bmp);
 
-            g.DrawImage(questbackbmp, left + 0, 0, questbackbmp.Width, questbackbmp.Height);
+            g.DrawImage(questbackbmp, left * Helper.DisplayRatio + 0, 0, questbackbmp.Width, questbackbmp.Height);
             //g.DrawImage(diffbmp, diffleft, difftop, diffbmp.Width,diffbmp.Height);
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
                     sf.Alignment = StringAlignment.Center;
                     var text = title + " - " + difftext;
-                    g.DrawString(text, f, Helper.TextBrush, new Rectangle(0, 36, this.Width, 40), sf);
+                    g.DrawString(text, f, Helper.TextBrush, new RectangleF(0, 36 * Helper.DisplayRatio, this.Width, 40 * Helper.DisplayRatio), sf);
                 }
             }
 
-            using (Font f = new Font("SimSun", 16, FontStyle.Bold))
+            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
             {
                 var text = Utils.AllJsons[String.Format("qstsa{0}q{1}", currentTab + 1, currentquest + 1)]; ;
                 var sf = g.MeasureString(text, f);
-                g.DrawString(text, f, Helper.TextBrush, left + (questbackbmp.Width - sf.Width) / 2, 447);
+                g.DrawString(text, f, Helper.TextBrush, left * Helper.DisplayRatio + (questbackbmp.Width - sf.Width) / 2, 447 * Helper.DisplayRatio);
                 //questdesc.Text = awarddict[currentTab][currentquest] ? "任务已完成" : "任务还没有完成，该拿到的奖励还没有拿，抓紧哦！";
                 //"qstsprevious"
             }
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTabFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTabFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 //g.DrawString("选择要优化的难度", f, Brushes.White, diffleft + 60, difftop - 30);
 
@@ -253,35 +253,37 @@ namespace D2REditor.Controls
                     if (currentTab == i)
                     {
                         //var downimg = Image.FromFile(Helper.GetDefinitionFileName(Helper.ExePath + Helper.DefinitionPath + @"customized\tabdown"));
-                        g.DrawImage(downimg, left + Helper.DefinitionInfo.QuestTabStartX + Helper.DefinitionInfo.QuestTabWidth * i, Helper.DefinitionInfo.QuestTabStartY, Helper.DefinitionInfo.QuestTabWidth, Helper.DefinitionInfo.QuestTabHeight);
-                        g.DrawString(chapters[i], f, Brushes.White, left + Helper.DefinitionInfo.QuestTabTitleStartX + Helper.DefinitionInfo.QuestTabWidth * i, Helper.DefinitionInfo.QuestTabTitleStartY);
+                        g.DrawImage(downimg, left * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.QuestTabStartY * Helper.DisplayRatio, Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio, Helper.DefinitionInfo.QuestTabHeight * Helper.DisplayRatio);
+                        g.DrawString(chapters[i], f, Brushes.White, left * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabTitleStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.QuestTabTitleStartY * Helper.DisplayRatio);
 
                         for (int j = 0; j < questIcons[currentTab].Count; j++)
                         {
                             var sprite = Helper.GetDefinitionFileName(@"\questicons\" + this.questIcons[currentTab][j]);
 
-                            var img = Helper.Sprite2Png(sprite);
-                            questiconwidth = img.Width / 27;
-                            questiconheight = img.Height;
+                            var img = Helper.Sprite2Png(sprite,false);
+                            questiconwidth = (int)(img.Width / 27 * Helper.DisplayRatio);
+                            questiconheight = (int)(img.Height * Helper.DisplayRatio);
 
                             int frame = 0;
                             if (awarddict[currentTab][j]) frame = 18;
-                            g.DrawImage(Helper.GetImageByFrame(img, 27, frame), left + Helper.DefinitionInfo.QuestIconStartX + Helper.DefinitionInfo.QuestIconWidth * (j % 3), Helper.DefinitionInfo.QuestIconStartY + Helper.DefinitionInfo.QuestIconHeight * (j / 3));
+                            var icon = Helper.GetImageByFrame(img, 27, frame);
+                            g.DrawImage(icon,new RectangleF(left * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconWidth * Helper.DisplayRatio * (j % 3), Helper.DefinitionInfo.QuestIconStartY * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconHeight * Helper.DisplayRatio * (j / 3),icon.Width*Helper.DisplayRatio,icon.Height*Helper.DisplayRatio),new Rectangle(0,0,icon.Width,icon.Height),GraphicsUnit.Pixel);
 
                             if (currentquest == j)
                             {
                                 g.DrawImage(gem,
-                                    left + Helper.DefinitionInfo.QuestIconStartX + Helper.DefinitionInfo.QuestIconWidth * (j % 3) + 25,
-                                    Helper.DefinitionInfo.QuestIconStartY + Helper.DefinitionInfo.QuestIconHeight * (j / 3) - 40);
+                                    new RectangleF(0+left * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconWidth * Helper.DisplayRatio * (j % 3) + 25*Helper.DisplayRatio,Helper.DefinitionInfo.QuestIconStartY * Helper.DisplayRatio + Helper.DefinitionInfo.QuestIconHeight  *Helper.DisplayRatio*(j / 3) - 40*Helper.DisplayRatio+4,icon.Width*Helper.DisplayRatio,icon.Height*Helper.DisplayRatio),
+                                    new RectangleF(0,0,icon.Width,icon.Height),
+                                    GraphicsUnit.Pixel);
                             }
                         }
                     }
                     else
                     {
                         //var upimg = Image.FromFile(Helper.GetDefinitionFileName(Helper.ExePath + Helper.DefinitionPath + @"customized\tabup"));
-                        g.DrawImage(upimg, left + Helper.DefinitionInfo.QuestTabStartX + Helper.DefinitionInfo.QuestTabWidth * i, Helper.DefinitionInfo.QuestTabStartY, Helper.DefinitionInfo.QuestTabWidth, Helper.DefinitionInfo.QuestTabHeight);
+                        g.DrawImage(upimg, left * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.QuestTabStartY * Helper.DisplayRatio , Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio, Helper.DefinitionInfo.QuestTabHeight * Helper.DisplayRatio);
 
-                        g.DrawString(chapters[i], f, Brushes.Gray, left + Helper.DefinitionInfo.QuestTabTitleStartX + Helper.DefinitionInfo.QuestTabWidth * i, Helper.DefinitionInfo.QuestTabTitleStartY);
+                        g.DrawString(chapters[i], f, Brushes.Gray, left * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabTitleStartX * Helper.DisplayRatio + Helper.DefinitionInfo.QuestTabWidth * Helper.DisplayRatio * i, Helper.DefinitionInfo.QuestTabTitleStartY * Helper.DisplayRatio);
                     }
                 }
             }

@@ -74,16 +74,16 @@ namespace D2REditor.Forms
 
         private void FormOptions_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.X >= this.Width - 24 && e.X < this.Width)
+            if (e.X >= this.Width - closebmp.Width && e.X < this.Width)
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
 
             //if(e.X>= 75 + upimg.Width * tcOptions.SelectedIndex)
-            if (e.Y >= 100 && e.Y <= 100 + upimg.Height)
+            if (e.Y >= 100 * Helper.DisplayRatio && e.Y <= (100 + upimg.Height) * Helper.DisplayRatio)
             {
-                var index = (e.X - 75.0) / upimg.Width;
+                var index = (e.X - 75.0 * Helper.DisplayRatio) / upimg.Width;
                 if (index < 0 || index >= tcOptions.TabCount) return;
 
                 tcOptions.SelectedIndex = (int)index;
@@ -97,32 +97,32 @@ namespace D2REditor.Forms
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(bmp);
 
-            g.DrawImage(closebmp, this.Width - 24, 0);
+            g.DrawImage(closebmp, this.Width - closebmp.Width, 0);
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Center;
-                g.DrawString(Utils.AllJsons["GameplayOptions"], this.Font, Brushes.White, new Rectangle(0, 40, this.Width, this.Height - 4), sf);
+                g.DrawString(Utils.AllJsons["GameplayOptions"], this.Font, Brushes.White, new RectangleF(0, 40*Helper.DisplayRatio, this.Width, this.Height - 4), sf);
             }
 
             for (int i = 0; i < tcOptions.TabPages.Count; i++)
             {
                 if (i == tcOptions.SelectedIndex)
                 {
-                    g.DrawImage(downimg, 75 + upimg.Width * i, 100);
+                    g.DrawImage(downimg, 75 * Helper.DisplayRatio +  upimg.Width * i, 100 * Helper.DisplayRatio);
                 }
                 else
                 {
-                    g.DrawImage(upimg, 75 + upimg.Width * i, 100);
+                    g.DrawImage(upimg, 75 * Helper.DisplayRatio + upimg.Width * i , 100 * Helper.DisplayRatio);
                 }
 
-                using (Font f = new Font("SimSun", 12, FontStyle.Regular))
+                using (Font f = new Font("SimSun", 9, FontStyle.Regular))
                 {
                     using (var sf = new StringFormat())
                     {
                         sf.Alignment = StringAlignment.Center;
                         //if(i==tcOptions.SelectedIndex)f.Style.
                         g.DrawString(tcOptions.TabPages[i].Text, f, Helper.TextBrush,
-                            new Rectangle(75 + upimg.Width * i, 110, upimg.Width, upimg.Height),
+                            new RectangleF(75 * Helper.DisplayRatio + upimg.Width * i , 110 * Helper.DisplayRatio, upimg.Width, upimg.Height),
                             sf);
                     }
                 }

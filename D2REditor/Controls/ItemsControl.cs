@@ -69,7 +69,7 @@ namespace D2REditor.Controls
             gembmp = Helper.Sprite2Png(gemname);
             BuildSocketMappings();
 
-            this.Size = new Size(1162, 753);
+            this.Size = new Size((int)(1162*Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
 
@@ -78,8 +78,8 @@ namespace D2REditor.Controls
 
         private void BuildSocketMappings()
         {
-            int x = Helper.DefinitionInfo.BoxSize;
-            int y = gembmp.Width;
+            int x = (int)(Helper.DefinitionInfo.BoxSize*Helper.DisplayRatio);
+            int y = (int)(gembmp.Width);
 
             socketMappings[new Size(1, 1)] = new List<List<Point>> { new List<Point> { new Point((x - y) / 2, (x - y) / 2) }, null, null, null, null, null };
 
@@ -182,12 +182,14 @@ namespace D2REditor.Controls
                         break;
                 }
 
-                item.Rectangle = r;
+                var eir = new Rectangle((int)(r.X * Helper.DisplayRatio), (int)(r.Y * Helper.DisplayRatio), (int)(r.Width * Helper.DisplayRatio), (int)(r.Height * Helper.DisplayRatio));
+
+                item.Rectangle = eir;
                 item.Rectangles.Clear();//要不然，切换一次tab，这个集合就增加了一个，然后就越画颜色越深，特么的。
                 item.Rectangles.Add(r);
                 item.IconState = ItemIconState.Normal;
 
-                mappings[r] = item;
+                mappings[eir] = item;
             }
 
             foreach (var item in store)
@@ -197,11 +199,11 @@ namespace D2REditor.Controls
                 {
                     for (int j = item.Row; j < item.Row + item.Rows; j++)
                     {
-                        item.Rectangles.Add(new Rectangle(Helper.DefinitionInfo.StoreRangeX[i], Helper.DefinitionInfo.StoreRangeY[j], Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize));
+                        item.Rectangles.Add(new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio)));
                     }
                 }
 
-                item.Rectangle = new Rectangle(Helper.DefinitionInfo.StoreRangeX[item.Column], Helper.DefinitionInfo.StoreRangeY[item.Row], item.Columns * Helper.DefinitionInfo.BoxSize, item.Rows * Helper.DefinitionInfo.BoxSize);
+                item.Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[item.Column] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[item.Row] * Helper.DisplayRatio), (int)(item.Columns * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(item.Rows * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
                 item.IconState = ItemIconState.Normal;
 
                 mappings[item.Rectangle] = item;
@@ -216,13 +218,13 @@ namespace D2REditor.Controls
                     for (int j = item.Row; j < item.Row + item.Rows; j++)
                     {
                         if (i > 9 || j > 9) continue;
-                        item.Rectangles.Add(new Rectangle(Helper.DefinitionInfo.StashRangeX[i], Helper.DefinitionInfo.StashRangeY[j], Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize));
+                        item.Rectangles.Add(new Rectangle((int)(Helper.DefinitionInfo.StashRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio)));
                     }
                 }
 
                 if (item.Row < 10 && item.Column < 10)
                 {
-                    item.Rectangle = new Rectangle(Helper.DefinitionInfo.StashRangeX[item.Column], Helper.DefinitionInfo.StashRangeY[item.Row], item.Columns * Helper.DefinitionInfo.BoxSize, item.Rows * Helper.DefinitionInfo.BoxSize);
+                    item.Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StashRangeX[item.Column] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashRangeY[item.Row] * Helper.DisplayRatio), (int)(item.Columns * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(item.Rows * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
                 }
                 item.IconState = ItemIconState.Normal;
 
@@ -247,7 +249,7 @@ namespace D2REditor.Controls
                     {
                         Column = i,
                         Row = j,
-                        Rectangle = new Rectangle(Helper.DefinitionInfo.StoreRangeX[i], Helper.DefinitionInfo.StoreRangeY[j], Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize)
+                        Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio))
                     });
                 }
             }
@@ -265,7 +267,7 @@ namespace D2REditor.Controls
                     {
                         Column = i,
                         Row = j,
-                        Rectangle = new Rectangle(Helper.DefinitionInfo.StoreRangeX[i], Helper.DefinitionInfo.StoreRangeY[j], Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize)
+                        Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio))
                     });
                 }
             }
@@ -283,7 +285,7 @@ namespace D2REditor.Controls
                     {
                         Column = i,
                         Row = j,
-                        Rectangle = new Rectangle(Helper.DefinitionInfo.StashRangeX[i], Helper.DefinitionInfo.StashRangeY[j], Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize)
+                        Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StashRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio))
                     });
                 }
             }
@@ -299,7 +301,7 @@ namespace D2REditor.Controls
 
         private Bitmap MakeTransbmp(Color color)
         {
-            var bmp = new Bitmap(Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize);
+            var bmp = new Bitmap((int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
             Graphics g2 = Graphics.FromImage(bmp);
             g2.FillRectangle(new SolidBrush(color), 0, 0, bmp.Width, bmp.Height);
 
@@ -308,20 +310,20 @@ namespace D2REditor.Controls
 
         private Point TryGetBestTooltipPosition(Rectangle r, SizeF sf)
         {
-            int left = r.X + 2 * Helper.DefinitionInfo.BoxSize + 5, top = r.Y;
+            int left = r.X + 2 * (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio) + 5, top = r.Y;
 
 
             while (top >= 0)
             {
                 if (top + sf.Height < this.Height) break;
-                top -= Helper.DefinitionInfo.BoxSize;
+                top -= (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio);
             }
             if (top < 0) top = 5;
 
             while (left >= 0)
             {
                 if (left + sf.Width < this.Width) break;
-                left -= Helper.DefinitionInfo.BoxSize;
+                left -= (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio);
             }
             if (left < 0) left = 5;
 
@@ -459,9 +461,12 @@ namespace D2REditor.Controls
                     canBeDroppped = false;
                     for (int i = 0; i < 10; i++)
                     {
-                        if (Helper.IsPointInRange(p, Helper.DefinitionInfo.EquipedItem[i]))
+                        var ei = Helper.DefinitionInfo.EquipedItem[i];
+                        var eir = new Rectangle((int)(ei.X*Helper.DisplayRatio),(int)(ei.Y*Helper.DisplayRatio), (int)(ei.Width*Helper.DisplayRatio), (int)(ei.Height*Helper.DisplayRatio));
+
+                        if (Helper.IsPointInRange(p,eir ))
                         {
-                            list = new List<Rectangle>() { Helper.DefinitionInfo.EquipedItem[i] };
+                            list = new List<Rectangle>() { eir };
 
                             if (ExcelTxt.ItemTypesTxt[curDraggingItem.TypeCode]["Body"].ToInt32() == 0)
                             {
@@ -524,7 +529,7 @@ namespace D2REditor.Controls
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        Rectangle stashTabRectangle = new Rectangle(Helper.DefinitionInfo.StashTabStartX + Helper.DefinitionInfo.StashTabWidth * i, Helper.DefinitionInfo.StashTabStartY, Helper.DefinitionInfo.StashTabWidth, Helper.DefinitionInfo.StashTabHeight);
+                        Rectangle stashTabRectangle = new Rectangle((int)(Helper.DefinitionInfo.StashTabStartX*Helper.DisplayRatio) + (int)(Helper.DefinitionInfo.StashTabWidth * i*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashTabStartY*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashTabWidth*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashTabHeight*Helper.DisplayRatio));
                         if (Helper.IsPointInRange(e.Location, stashTabRectangle))
                         {
                             switch (fromArea)
@@ -564,7 +569,7 @@ namespace D2REditor.Controls
                 {
                     toArea = GetCursorArea(e.Location);
 
-                    System.Diagnostics.Debug.WriteLine(String.Format("From {0} to {1}", fromArea, toArea));
+                    //System.Diagnostics.Debug.WriteLine(String.Format("From {0} to {1}", fromArea, toArea));
 
                     switch (fromArea)
                     {
@@ -592,7 +597,7 @@ namespace D2REditor.Controls
                             default: break;
                         }
 
-                        curDraggingItem.Rectangle = new Rectangle(hoverinfo.Rectangles[0].X, hoverinfo.Rectangles[0].Y, Helper.DefinitionInfo.BoxSize * hoverinfo.ExchangedItem.Columns, Helper.DefinitionInfo.BoxSize * hoverinfo.ExchangedItem.Rows);
+                        curDraggingItem.Rectangle = new Rectangle(hoverinfo.Rectangles[0].X, hoverinfo.Rectangles[0].Y, (int)(Helper.DefinitionInfo.BoxSize * hoverinfo.ExchangedItem.Columns*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * hoverinfo.ExchangedItem.Rows*Helper.DisplayRatio));
                         curDraggingItem.Rectangles = hoverinfo.Rectangles;
                         curDraggingItem.Row = (byte)hoverinfo.StartRow;
                         curDraggingItem.Column = (byte)hoverinfo.StartCol;
@@ -613,7 +618,7 @@ namespace D2REditor.Controls
 
                         var initrec = hoverinfo.Rectangles[0];
 
-                        curDraggingItem.Rectangle = new Rectangle(initrec.X, initrec.Y, Helper.DefinitionInfo.BoxSize * curDraggingItem.Columns, Helper.DefinitionInfo.BoxSize * curDraggingItem.Rows);
+                        curDraggingItem.Rectangle = new Rectangle(initrec.X, initrec.Y, (int)(Helper.DefinitionInfo.BoxSize * curDraggingItem.Columns*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * curDraggingItem.Rows*Helper.DisplayRatio));
                         int recs = curDraggingItem.Rectangles.Count;
                         curDraggingItem.Rectangles.Clear();
 
@@ -621,7 +626,7 @@ namespace D2REditor.Controls
                         {
                             for (int j = 0; j < curDraggingItem.Rows; j++)
                             {
-                                curDraggingItem.Rectangles.Add(new Rectangle(initrec.X + Helper.DefinitionInfo.BoxSize * i, initrec.Y + Helper.DefinitionInfo.BoxSize * j, Helper.DefinitionInfo.BoxSize, Helper.DefinitionInfo.BoxSize));
+                                curDraggingItem.Rectangles.Add(new Rectangle(initrec.X + (int)(Helper.DefinitionInfo.BoxSize * i*Helper.DisplayRatio), (int)(initrec.Y + Helper.DefinitionInfo.BoxSize * j*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize*Helper.DisplayRatio)));
                             }
                         }
 
@@ -700,7 +705,7 @@ namespace D2REditor.Controls
             //切换大箱子的TAB页
             for (int i = 0; i < 4; i++)
             {
-                Rectangle stashTabRectangle = new Rectangle(Helper.DefinitionInfo.StashTabStartX + Helper.DefinitionInfo.StashTabWidth * i, Helper.DefinitionInfo.StashTabStartY, Helper.DefinitionInfo.StashTabWidth, Helper.DefinitionInfo.StashTabHeight);
+                Rectangle stashTabRectangle = new Rectangle((int)((Helper.DefinitionInfo.StashTabStartX + Helper.DefinitionInfo.StashTabWidth * i)*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashTabStartY*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashTabWidth*Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashTabHeight*Helper.DisplayRatio));
                 if (Helper.IsPointInRange(e.Location, stashTabRectangle))
                 {
                     currentTab = i;
@@ -792,23 +797,23 @@ namespace D2REditor.Controls
             #endregion 底图
 
             #region 标题栏文字信息
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize*Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
                     sf.Alignment = StringAlignment.Center;
-                    g.DrawString(Utils.AllJsons["stash"], f, Helper.TextBrush, new Rectangle(0, 36, stashbmp.Width, 40), sf);
-                    g.DrawString(Utils.AllJsons["strpanel4"], f, Helper.TextBrush, new Rectangle(stashbmp.Width + 0, 36, charbmp.Width, 40), sf);
+                    g.DrawString(Utils.AllJsons["stash"], f, Helper.TextBrush, new RectangleF(0, 36 * Helper.DisplayRatio, stashbmp.Width, 40 * Helper.DisplayRatio), sf);
+                    g.DrawString(Utils.AllJsons["strpanel4"], f, Helper.TextBrush, new RectangleF(stashbmp.Width + 0, 36 * Helper.DisplayRatio, charbmp.Width, 40 * Helper.DisplayRatio), sf);
                 }
             }
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio))
             {
                 //g.DrawString(Utils.AllJsons["stash"], f, titleBrush, Helper.DefinitionInfo.StashTitleStartX, Helper.DefinitionInfo.StashTitleStartY);
                 //g.DrawString(Utils.AllJsons["strpanel4"], f, titleBrush, Helper.DefinitionInfo.InventoryTitleStartX, Helper.DefinitionInfo.InventoryTitleStartY);
                 var gold = "0";
                 if (Helper.CurrentCharactor.Attributes.Stats.ContainsKey("gold")) gold = Helper.CurrentCharactor.Attributes.Stats["gold"].ToString();
-                g.DrawString(gold, f, Helper.TextBrush, 824, 666);
+                g.DrawString(gold, f, Helper.TextBrush, 824 * Helper.DisplayRatio, 666 * Helper.DisplayRatio);
 
                 var goldbank = "0";
 
@@ -823,27 +828,27 @@ namespace D2REditor.Controls
                 {
                     goldbank = Helper.SharedStashes[currentTab - 1].Gold.ToString();
                 }
-                g.DrawString(goldbank, f, Helper.TextBrush, 238, 645);
+                g.DrawString(goldbank, f, Helper.TextBrush, 238 * Helper.DisplayRatio, 645 * Helper.DisplayRatio);
             }
-            g.DrawImage(goldbmp, 794, 672);
-            g.DrawImage(goldbmp, 210, 650);
+            g.DrawImage(goldbmp, 794 * Helper.DisplayRatio, 672 * Helper.DisplayRatio);
+            g.DrawImage(goldbmp, 210 * Helper.DisplayRatio, 650 * Helper.DisplayRatio);
             #endregion
 
             #region 大箱子文字
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTabFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTabFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 for (int i = 0; i < labels.Length; i++)
                 {
                     var sf = g.MeasureString(labels[i], f);
                     if (currentTab == i)
                     {
-                        g.DrawImage(downimg, Helper.DefinitionInfo.StashTabStartX + Helper.DefinitionInfo.StashTabWidth * i, Helper.DefinitionInfo.StashTabStartY);
-                        g.DrawString(labels[i], f, Brushes.White, (Helper.DefinitionInfo.StashTabTitleStartX - sf.Width) / 2 + Helper.DefinitionInfo.StashTabWidth * i, Helper.DefinitionInfo.StashTabTitleStartY);
+                        g.DrawImage(downimg, Helper.DefinitionInfo.StashTabStartX * Helper.DisplayRatio + Helper.DefinitionInfo.StashTabWidth * i * Helper.DisplayRatio, Helper.DefinitionInfo.StashTabStartY * Helper.DisplayRatio);
+                        g.DrawString(labels[i], f, Brushes.White, (Helper.DefinitionInfo.StashTabTitleStartX * Helper.DisplayRatio - sf.Width) / 2 + Helper.DefinitionInfo.StashTabWidth * i * Helper.DisplayRatio, Helper.DefinitionInfo.StashTabTitleStartY * Helper.DisplayRatio);
                     }
                     else
                     {
-                        g.DrawImage(upimg, Helper.DefinitionInfo.StashTabStartX + Helper.DefinitionInfo.StashTabWidth * i, Helper.DefinitionInfo.StashTabStartY);
-                        g.DrawString(labels[i], f, Brushes.Gray, (Helper.DefinitionInfo.StashTabTitleStartX - sf.Width) / 2 + Helper.DefinitionInfo.StashTabWidth * i, Helper.DefinitionInfo.StashTabTitleStartY);
+                        g.DrawImage(upimg, Helper.DefinitionInfo.StashTabStartX * Helper.DisplayRatio + Helper.DefinitionInfo.StashTabWidth * i * Helper.DisplayRatio, Helper.DefinitionInfo.StashTabStartY * Helper.DisplayRatio);
+                        g.DrawString(labels[i], f, Brushes.Gray, (Helper.DefinitionInfo.StashTabTitleStartX * Helper.DisplayRatio - sf.Width) / 2 + Helper.DefinitionInfo.StashTabWidth * i * Helper.DisplayRatio, Helper.DefinitionInfo.StashTabTitleStartY * Helper.DisplayRatio);
                     }
                 }
             }
@@ -907,22 +912,22 @@ namespace D2REditor.Controls
                     int i = item.TotalNumberOfSockets-1;
                     for (int j = 0; j < sinfo[i].Count; j++)
                     {
-                        g.DrawImage(gembmp, hoveringR.X + sinfo[i][j].X, hoveringR.Y + sinfo[i][j].Y);
+                        g.DrawImage(gembmp, hoveringR.X + sinfo[i][j].X , hoveringR.Y + sinfo[i][j].Y );
                     }
                     for(int j = 0; j < item.SocketedItems.Count; j++)
                     {
                         var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[j].Icon);
                         var sbmp = Helper.Sprite2Png(iconname);
-                        g.DrawImage(sbmp,new Rectangle(hoveringR.X + sinfo[i][j].X+10, hoveringR.Y + sinfo[i][j].Y+6,32, 32), new Rectangle(0, 0, sbmp.Width, sbmp.Height), GraphicsUnit.Pixel);
+                        g.DrawImage(sbmp,new RectangleF(hoveringR.X+ sinfo[i][j].X+10*Helper.DisplayRatio, hoveringR.Y + sinfo[i][j].Y+ 6 * Helper.DisplayRatio, 32 * Helper.DisplayRatio, 32 * Helper.DisplayRatio), new Rectangle(0, 0, sbmp.Width, sbmp.Height), GraphicsUnit.Pixel);
                     }
                 }
 
                 var complexRet = MeasureSizeInfo(item);
                 var newp = TryGetBestTooltipPosition(hoveringR, complexRet.Item1);
 
-                g.FillRectangle(this.tooltipBrush, new Rectangle(newp.X, newp.Y, complexRet.Item1.Width, complexRet.Item1.Height));
-                g.DrawRectangle(Pens.Wheat, new Rectangle(newp.X, newp.Y, complexRet.Item1.Width, complexRet.Item1.Height));
-                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize, FontStyle.Bold))
+                g.FillRectangle(this.tooltipBrush, new RectangleF(newp.X, newp.Y , complexRet.Item1.Width, complexRet.Item1.Height));
+                g.DrawRectangle(Pens.Wheat, new Rectangle((int)(newp.X ), (int)(newp.Y ), (int)(complexRet.Item1.Width), (int)(complexRet.Item1.Height)));
+                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
                 {
                     using (StringFormat format = new StringFormat())
                     {
@@ -934,7 +939,7 @@ namespace D2REditor.Controls
                             if (i == 1 && complexRet.Item2[0] == complexRet.Item2[1]) complexRet.Item2[1] = "";
 
                             var newr = complexRet.Item4[i];
-                            g.DrawString(complexRet.Item2[i], f, complexRet.Item3[i], new Rectangle(newp.X, 10 + newp.Y + newr.Y, complexRet.Item1.Width, complexRet.Item1.Height), format);
+                            g.DrawString(complexRet.Item2[i], f, complexRet.Item3[i], new RectangleF(newp.X, (10 + newp.Y + newr.Y) , complexRet.Item1.Width, complexRet.Item1.Height), format);
                         }
                     }
                 }
@@ -985,7 +990,7 @@ namespace D2REditor.Controls
 
             using (Graphics g = this.CreateGraphics())
             {
-                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize, FontStyle.Bold))
+                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
                 {
                     for (int i = 0; i < tooltips.Length; i++)
                     {

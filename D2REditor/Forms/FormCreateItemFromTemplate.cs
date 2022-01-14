@@ -104,7 +104,7 @@ namespace D2REditor.Forms
                 hoveringIndex = -1;
                 for (int i = 0; i < 6; i++)
                 {
-                    if (Helper.IsPointInRange(new Point(e.X, e.Y), new Rectangle(50 + (i % 3) * 300, 160 + (i / 3) * 300, blockbmp.Width, blockbmp.Height)))
+                    if (Helper.IsPointInRange(new Point(e.X, e.Y), new Rectangle((int)((50 + (i % 3) * 300)*Helper.DisplayRatio), (int)((160 + (i / 3) * 300)*Helper.DisplayRatio), blockbmp.Width, blockbmp.Height)))
                     {
                         hoveringIndex = i;
                         this.Invalidate();
@@ -122,7 +122,7 @@ namespace D2REditor.Forms
 
                 for (int i = 0; i < total; i++)
                 {
-                    if (Helper.IsPointInRange(new Point(e.X, e.Y), new Rectangle(50 + 150 * (i % 6), 80 + ((i % 30) / 6) * 130, blockbmp2.Width, blockbmp2.Height)))
+                    if (Helper.IsPointInRange(new Point(e.X, e.Y), new Rectangle((int)((50 + 150 * (i % 6))*Helper.DisplayRatio), (int)((80 + ((i % 30) / 6) * 130)*Helper.DisplayRatio), blockbmp2.Width, blockbmp2.Height)))
                     {
                         hoveringIndex = i;
                         this.Invalidate();
@@ -217,22 +217,22 @@ namespace D2REditor.Forms
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Center;
-                if (curtab == 0) g.DrawString(curTitle, this.Font, Brushes.White, new Rectangle(0, 40, this.Width, this.Height - 4), sf);
-                if (curtab == 1) g.DrawString(curTitle + "(" + curSubTypes.Keys.Count.ToString() + ")", this.Font, Brushes.White, new Rectangle(0, 40, this.Width, this.Height - 4), sf);
+                if (curtab == 0) g.DrawString(curTitle, this.Font, Brushes.White, new RectangleF(0, 40 * Helper.DisplayRatio, this.Width, this.Height - 4), sf);
+                if (curtab == 1) g.DrawString(curTitle + "(" + curSubTypes.Keys.Count.ToString() + ")", this.Font, Brushes.White, new RectangleF(0, 40*Helper.DisplayRatio, this.Width, this.Height - 4), sf);
             }
 
             if (curtab == 0)
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    g.DrawImage(blockbmp, 50 + (i % 3) * 300, 160 + (i / 3) * 300);
-                    using (Font f = new Font("SimSun", 36, FontStyle.Bold))
+                    g.DrawImage(blockbmp, (50 + (i % 3) * 300)*Helper.DisplayRatio, (160 + (i / 3) * 300)*Helper.DisplayRatio);
+                    using (Font f = new Font("SimSun", 12, FontStyle.Bold))
                     {
                         using (var sf = new StringFormat())
                         {
                             sf.Alignment = StringAlignment.Center;
                             sf.LineAlignment = StringAlignment.Center;
-                            g.DrawString(types[i], f, Helper.TextBrush, new Rectangle(50 + (i % 3) * 300, 160 + (i / 3) * 300, blockbmp.Width, blockbmp.Height), sf);
+                            g.DrawString(types[i], f, Helper.TextBrush, new RectangleF((50 + (i % 3) * 300)*Helper.DisplayRatio, (160 + (i / 3) * 300)*Helper.DisplayRatio, blockbmp.Width, blockbmp.Height), sf);
                         }
                     }
                 }
@@ -241,13 +241,13 @@ namespace D2REditor.Forms
                 {
                     using (Pen p = new Pen(Helper.TextBrush, 3))
                     {
-                        g.DrawRectangle(p, new Rectangle(50 + (hoveringIndex % 3) * 300, 160 + (hoveringIndex / 3) * 300, blockbmp.Width, blockbmp.Height));
+                        g.DrawRectangle(p, new Rectangle((int)((50 + (hoveringIndex % 3) * 300)*Helper.DisplayRatio), (int)((160 + (hoveringIndex / 3) * 300)*Helper.DisplayRatio), blockbmp.Width, blockbmp.Height));
                     }
                 }
             }
             else if (curtab > 0)
             {
-                using (Font f = new Font("SimSun", 36, FontStyle.Bold))
+                using (Font f = new Font("SimSun", 16, FontStyle.Bold))
                 {
                     g.DrawString("<", f, Brushes.White, 24, 24);
                 }
@@ -269,16 +269,16 @@ namespace D2REditor.Forms
                         {
                             break;
                         }
-                        g.DrawImage(blockbmp2, 50 + 150 * (index % 6), 80 + ((index % 30) / 6) * 130);
+                        g.DrawImage(blockbmp2, (50 + 150 * (index % 6))*Helper.DisplayRatio, (80 + ((index % 30) / 6) * 130)*Helper.DisplayRatio);
 
 
-                        using (Font f = new Font("SimSun", 20))
+                        using (Font f = new Font("SimSun", 12))
                         {
                             using (var sf = new StringFormat())
                             {
                                 sf.Alignment = StringAlignment.Center;
                                 sf.LineAlignment = StringAlignment.Center;
-                                g.DrawString(key, f, Brushes.White, new Rectangle(50 + 150 * (index % 6), 80 + ((index % 30) / 6) * 130, blockbmp2.Width, blockbmp2.Height), sf);
+                                g.DrawString(key, f, Brushes.White, new RectangleF((50 + 150 * (index % 6))*Helper.DisplayRatio, (80 + ((index % 30) / 6) * 130)*Helper.DisplayRatio, blockbmp2.Width, blockbmp2.Height), sf);
                             }
                         }
 
@@ -290,7 +290,7 @@ namespace D2REditor.Forms
                 {
                     using (Pen p = new Pen(Helper.TextBrush, 2))
                     {
-                        g.DrawRectangle(p, new Rectangle(50 + 150 * (hoveringIndex % 6), 80 + ((hoveringIndex % 30) / 6) * 130, blockbmp2.Width, blockbmp2.Height));
+                        g.DrawRectangle(p, new Rectangle((int)((50 + 150 * (hoveringIndex % 6))*Helper.DisplayRatio), (int)((80 + ((hoveringIndex % 30) / 6) * 130)*Helper.DisplayRatio), blockbmp2.Width, blockbmp2.Height));
                     }
                 }
             }
@@ -299,7 +299,7 @@ namespace D2REditor.Forms
             {
                 var import = Utils.AllJsons["double_click_to_import"];
                 var sf = g.MeasureString(import, this.Font);
-                g.DrawString(import, this.Font, (elapsed % 2 == 0) ? Brushes.Red : Brushes.Yellow, (this.Width - sf.Width) / 2, 45);
+                g.DrawString(import, this.Font, (elapsed % 2 == 0) ? Brushes.Red : Brushes.Yellow, (this.Width - sf.Width) / 2, 45*Helper.DisplayRatio);
             }
 
             e.Graphics.DrawImage(bmp, 0, 0);
@@ -460,7 +460,7 @@ namespace D2REditor.Forms
             }
 
             var tuple = MeasureSizeInfo(item);
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize*Helper.DisplayRatio, FontStyle.Bold))
             {
                 for (int i = 0; i < tuple.Item2.Length; i++)
                 {

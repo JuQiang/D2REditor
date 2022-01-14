@@ -18,12 +18,12 @@ namespace D2REditor.Controls
         {
             Graphics g = e.Graphics;
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize*Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
                     sf.Alignment = StringAlignment.Center;
-                    g.DrawString(Utils.AllJsons["Unblock"], f, Helper.TextBrush, new Rectangle(0, 36, this.Width, 40), sf);
+                    g.DrawString(Utils.AllJsons["Unblock"], f, Helper.TextBrush, new RectangleF(0, 36 * Helper.DisplayRatio, this.Width, 40 * Helper.DisplayRatio), sf);
                 }
             }
         }
@@ -92,6 +92,8 @@ namespace D2REditor.Controls
 
         private void OptimizeControl_Load(object sender, EventArgs e)
         {
+            this.Size = new Size((int)(1162 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
+
             var back = Helper.GetDefinitionFileName(@"\panel\hireling\hireablepanel\hireables_bg");
             backbmp = Helper.Sprite2Png(back);
             this.BackgroundImage = backbmp;

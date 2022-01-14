@@ -37,9 +37,9 @@
             this.lbCharacterList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbCharacterList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.lbCharacterList.FormattingEnabled = true;
-            this.lbCharacterList.Location = new System.Drawing.Point(76, 82);
+            this.lbCharacterList.Location = new System.Drawing.Point(54, 53);
             this.lbCharacterList.Name = "lbCharacterList";
-            this.lbCharacterList.Size = new System.Drawing.Size(429, 481);
+            this.lbCharacterList.Size = new System.Drawing.Size(301, 336);
             this.lbCharacterList.TabIndex = 0;
             this.lbCharacterList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCharacterList_DrawItem);
             this.lbCharacterList.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.lbCharacterList_MeasureItem);
@@ -49,9 +49,9 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(581, 753);
+            this.ClientSize = new System.Drawing.Size(407, 527);
             this.Controls.Add(this.lbCharacterList);
-            this.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

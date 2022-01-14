@@ -107,7 +107,7 @@ namespace D2SLib
                             allJsons[line["Key"].ToString()] = line[Utils.CurrentLanguage].ToString().Trim();
                             allJsons[line["enUS"].ToString()] = line[Utils.CurrentLanguage].ToString().Trim();
                             allJsons[line["Key"].ToString().ToLower()] = line[Utils.CurrentLanguage].ToString().Trim();
-                            allJsons[line["enUS"].ToString().ToLower()] = line[Utils.CurrentLanguage].ToString().Trim();
+                            //allJsons[line["enUS"].ToString().ToLower()] = line[Utils.CurrentLanguage].ToString().Trim();
                         }
                     }
 
@@ -134,7 +134,7 @@ namespace D2SLib
                     allJsons["bas"] = allJsons["item_normal"];
                     allJsons["exc"] = allJsons["item_exceptional"];
                     allJsons["eli"] = allJsons["item_elite"];
-                    allJsons["set"] = allJsons["sets"];
+                    allJsons["helm"] = allJsons["Helm"];
                     allJsons["set"] = allJsons["sets"];
                     allJsons["set"] = allJsons["sets"];
                     allJsons["set"] = allJsons["sets"];
