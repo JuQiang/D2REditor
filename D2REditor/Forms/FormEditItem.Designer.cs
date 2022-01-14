@@ -33,13 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveAsTemplate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelRunewordsCannotEdit = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.dgvItemStatCost = new System.Windows.Forms.DataGridView();
-            this.colDescFunc = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colDescFuncValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaxValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbItems = new System.Windows.Forms.ComboBox();
             this.btnDeleteStat = new System.Windows.Forms.Button();
             this.cbSubTypes = new System.Windows.Forms.ComboBox();
@@ -53,8 +50,12 @@
             this.btnRestoreValues = new System.Windows.Forms.Button();
             this.btnMaxValues = new System.Windows.Forms.Button();
             this.cbWeight = new System.Windows.Forms.ComboBox();
-            this.labelRunewordsCannotEdit = new System.Windows.Forms.Label();
             this.cbNoDamaged = new System.Windows.Forms.CheckBox();
+            this.labelSockets = new System.Windows.Forms.Label();
+            this.colDescFunc = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colDescFuncValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaxValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemStatCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbItemPicture)).BeginInit();
@@ -77,17 +78,27 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 575);
+            this.panel1.Location = new System.Drawing.Point(0, 434);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1048, 100);
+            this.panel1.Size = new System.Drawing.Size(645, 48);
             this.panel1.TabIndex = 13;
+            // 
+            // labelRunewordsCannotEdit
+            // 
+            this.labelRunewordsCannotEdit.AutoSize = true;
+            this.labelRunewordsCannotEdit.ForeColor = System.Drawing.Color.Red;
+            this.labelRunewordsCannotEdit.Location = new System.Drawing.Point(12, 19);
+            this.labelRunewordsCannotEdit.Name = "labelRunewordsCannotEdit";
+            this.labelRunewordsCannotEdit.Size = new System.Drawing.Size(41, 12);
+            this.labelRunewordsCannotEdit.TabIndex = 53;
+            this.labelRunewordsCannotEdit.Text = "label1";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(813, 19);
+            this.btnCancel.Location = new System.Drawing.Point(468, 7);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(151, 60);
+            this.btnCancel.Size = new System.Drawing.Size(99, 37);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -95,10 +106,10 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(639, 19);
+            this.btnOk.Location = new System.Drawing.Point(365, 7);
             this.btnOk.Margin = new System.Windows.Forms.Padding(2);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(151, 60);
+            this.btnOk.Size = new System.Drawing.Size(99, 37);
             this.btnOk.TabIndex = 12;
             this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -119,63 +130,26 @@
             this.dgvItemStatCost.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvItemStatCost.RowTemplate.Height = 30;
             this.dgvItemStatCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvItemStatCost.Size = new System.Drawing.Size(953, 367);
+            this.dgvItemStatCost.Size = new System.Drawing.Size(556, 257);
             this.dgvItemStatCost.TabIndex = 48;
             this.dgvItemStatCost.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemStatCost_CellValueChanged);
             this.dgvItemStatCost.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvItemStatCost_CurrentCellDirtyStateChanged);
             this.dgvItemStatCost.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvItemStatCost_DataError);
             // 
-            // colDescFunc
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.colDescFunc.HeaderText = "高级属性(下拉更改)";
-            this.colDescFunc.MinimumWidth = 8;
-            this.colDescFunc.Name = "colDescFunc";
-            this.colDescFunc.Width = 250;
-            // 
-            // colDescFuncValue
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colDescFuncValue.HeaderText = "高级属性值";
-            this.colDescFuncValue.MinimumWidth = 8;
-            this.colDescFuncValue.Name = "colDescFuncValue";
-            this.colDescFuncValue.ReadOnly = true;
-            this.colDescFuncValue.Width = 250;
-            // 
-            // colValue
-            // 
-            this.colValue.HeaderText = "值";
-            this.colValue.MinimumWidth = 8;
-            this.colValue.Name = "colValue";
-            this.colValue.Width = 150;
-            // 
-            // colMaxValue
-            // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle6;
-            this.colMaxValue.HeaderText = "最大值";
-            this.colMaxValue.MinimumWidth = 8;
-            this.colMaxValue.Name = "colMaxValue";
-            this.colMaxValue.ReadOnly = true;
-            this.colMaxValue.Width = 150;
-            // 
             // cbItems
             // 
             this.cbItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbItems.FormattingEnabled = true;
-            this.cbItems.Location = new System.Drawing.Point(857, 69);
+            this.cbItems.Location = new System.Drawing.Point(460, 102);
             this.cbItems.Margin = new System.Windows.Forms.Padding(2);
             this.cbItems.Name = "cbItems";
-            this.cbItems.Size = new System.Drawing.Size(107, 32);
+            this.cbItems.Size = new System.Drawing.Size(107, 20);
             this.cbItems.TabIndex = 43;
             this.cbItems.SelectedIndexChanged += new System.EventHandler(this.cbItems_SelectedIndexChanged);
             // 
             // btnDeleteStat
             // 
-            this.btnDeleteStat.Location = new System.Drawing.Point(971, 237);
+            this.btnDeleteStat.Location = new System.Drawing.Point(571, 217);
             this.btnDeleteStat.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteStat.Name = "btnDeleteStat";
             this.btnDeleteStat.Size = new System.Drawing.Size(70, 36);
@@ -189,19 +163,19 @@
             this.cbSubTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSubTypes.Enabled = false;
             this.cbSubTypes.FormattingEnabled = true;
-            this.cbSubTypes.Location = new System.Drawing.Point(725, 69);
+            this.cbSubTypes.Location = new System.Drawing.Point(333, 102);
             this.cbSubTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cbSubTypes.Name = "cbSubTypes";
-            this.cbSubTypes.Size = new System.Drawing.Size(119, 32);
+            this.cbSubTypes.Size = new System.Drawing.Size(119, 20);
             this.cbSubTypes.TabIndex = 42;
             // 
             // cbIsEthereal
             // 
             this.cbIsEthereal.AutoSize = true;
-            this.cbIsEthereal.Location = new System.Drawing.Point(530, 18);
+            this.cbIsEthereal.Location = new System.Drawing.Point(333, 11);
             this.cbIsEthereal.Margin = new System.Windows.Forms.Padding(2);
             this.cbIsEthereal.Name = "cbIsEthereal";
-            this.cbIsEthereal.Size = new System.Drawing.Size(84, 28);
+            this.cbIsEthereal.Size = new System.Drawing.Size(48, 16);
             this.cbIsEthereal.TabIndex = 40;
             this.cbIsEthereal.Text = "无形";
             this.cbIsEthereal.UseVisualStyleBackColor = true;
@@ -211,15 +185,15 @@
             this.cbTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypes.Enabled = false;
             this.cbTypes.FormattingEnabled = true;
-            this.cbTypes.Location = new System.Drawing.Point(628, 69);
+            this.cbTypes.Location = new System.Drawing.Point(460, 69);
             this.cbTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cbTypes.Name = "cbTypes";
-            this.cbTypes.Size = new System.Drawing.Size(78, 32);
+            this.cbTypes.Size = new System.Drawing.Size(107, 20);
             this.cbTypes.TabIndex = 41;
             // 
             // btnAddStat
             // 
-            this.btnAddStat.Location = new System.Drawing.Point(971, 177);
+            this.btnAddStat.Location = new System.Drawing.Point(571, 177);
             this.btnAddStat.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddStat.Name = "btnAddStat";
             this.btnAddStat.Size = new System.Drawing.Size(70, 36);
@@ -233,10 +207,10 @@
             this.cbQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbQuality.Enabled = false;
             this.cbQuality.FormattingEnabled = true;
-            this.cbQuality.Location = new System.Drawing.Point(530, 69);
+            this.cbQuality.Location = new System.Drawing.Point(333, 69);
             this.cbQuality.Margin = new System.Windows.Forms.Padding(2);
             this.cbQuality.Name = "cbQuality";
-            this.cbQuality.Size = new System.Drawing.Size(84, 32);
+            this.cbQuality.Size = new System.Drawing.Size(119, 20);
             this.cbQuality.TabIndex = 35;
             // 
             // cbSockets
@@ -251,19 +225,19 @@
             "4孔",
             "5孔",
             "6孔"});
-            this.cbSockets.Location = new System.Drawing.Point(758, 14);
+            this.cbSockets.Location = new System.Drawing.Point(413, 35);
             this.cbSockets.Name = "cbSockets";
-            this.cbSockets.Size = new System.Drawing.Size(86, 32);
+            this.cbSockets.Size = new System.Drawing.Size(39, 20);
             this.cbSockets.TabIndex = 45;
             // 
             // lbBasicDescription
             // 
             this.lbBasicDescription.FormattingEnabled = true;
-            this.lbBasicDescription.ItemHeight = 24;
+            this.lbBasicDescription.ItemHeight = 12;
             this.lbBasicDescription.Location = new System.Drawing.Point(122, 11);
             this.lbBasicDescription.Margin = new System.Windows.Forms.Padding(2);
             this.lbBasicDescription.Name = "lbBasicDescription";
-            this.lbBasicDescription.Size = new System.Drawing.Size(373, 148);
+            this.lbBasicDescription.Size = new System.Drawing.Size(192, 148);
             this.lbBasicDescription.TabIndex = 36;
             // 
             // pbItemPicture
@@ -279,7 +253,7 @@
             // 
             // btnRestoreValues
             // 
-            this.btnRestoreValues.Location = new System.Drawing.Point(971, 358);
+            this.btnRestoreValues.Location = new System.Drawing.Point(571, 297);
             this.btnRestoreValues.Margin = new System.Windows.Forms.Padding(2);
             this.btnRestoreValues.Name = "btnRestoreValues";
             this.btnRestoreValues.Size = new System.Drawing.Size(70, 36);
@@ -291,7 +265,7 @@
             // 
             // btnMaxValues
             // 
-            this.btnMaxValues.Location = new System.Drawing.Point(971, 298);
+            this.btnMaxValues.Location = new System.Drawing.Point(571, 257);
             this.btnMaxValues.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaxValues.Name = "btnMaxValues";
             this.btnMaxValues.Size = new System.Drawing.Size(70, 36);
@@ -305,36 +279,73 @@
             this.cbWeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWeight.Enabled = false;
             this.cbWeight.FormattingEnabled = true;
-            this.cbWeight.Location = new System.Drawing.Point(857, 11);
+            this.cbWeight.Location = new System.Drawing.Point(460, 35);
             this.cbWeight.Name = "cbWeight";
-            this.cbWeight.Size = new System.Drawing.Size(107, 32);
+            this.cbWeight.Size = new System.Drawing.Size(107, 20);
             this.cbWeight.TabIndex = 51;
-            // 
-            // labelRunewordsCannotEdit
-            // 
-            this.labelRunewordsCannotEdit.AutoSize = true;
-            this.labelRunewordsCannotEdit.ForeColor = System.Drawing.Color.Red;
-            this.labelRunewordsCannotEdit.Location = new System.Drawing.Point(12, 37);
-            this.labelRunewordsCannotEdit.Name = "labelRunewordsCannotEdit";
-            this.labelRunewordsCannotEdit.Size = new System.Drawing.Size(82, 24);
-            this.labelRunewordsCannotEdit.TabIndex = 53;
-            this.labelRunewordsCannotEdit.Text = "label1";
             // 
             // cbNoDamaged
             // 
             this.cbNoDamaged.AutoSize = true;
-            this.cbNoDamaged.Location = new System.Drawing.Point(628, 18);
+            this.cbNoDamaged.Location = new System.Drawing.Point(460, 11);
             this.cbNoDamaged.Margin = new System.Windows.Forms.Padding(2);
             this.cbNoDamaged.Name = "cbNoDamaged";
-            this.cbNoDamaged.Size = new System.Drawing.Size(84, 28);
+            this.cbNoDamaged.Size = new System.Drawing.Size(48, 16);
             this.cbNoDamaged.TabIndex = 53;
             this.cbNoDamaged.Text = "无形";
             this.cbNoDamaged.UseVisualStyleBackColor = true;
             // 
+            // labelSockets
+            // 
+            this.labelSockets.AutoSize = true;
+            this.labelSockets.Location = new System.Drawing.Point(331, 38);
+            this.labelSockets.Name = "labelSockets";
+            this.labelSockets.Size = new System.Drawing.Size(41, 12);
+            this.labelSockets.TabIndex = 54;
+            this.labelSockets.Text = "label1";
+            // 
+            // colDescFunc
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.colDescFunc.HeaderText = "高级属性(下拉更改)";
+            this.colDescFunc.MinimumWidth = 8;
+            this.colDescFunc.Name = "colDescFunc";
+            this.colDescFunc.Width = 150;
+            // 
+            // colDescFuncValue
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colDescFuncValue.HeaderText = "高级属性值";
+            this.colDescFuncValue.MinimumWidth = 8;
+            this.colDescFuncValue.Name = "colDescFuncValue";
+            this.colDescFuncValue.ReadOnly = true;
+            this.colDescFuncValue.Width = 150;
+            // 
+            // colValue
+            // 
+            this.colValue.HeaderText = "值";
+            this.colValue.MinimumWidth = 8;
+            this.colValue.Name = "colValue";
+            this.colValue.Width = 70;
+            // 
+            // colMaxValue
+            // 
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colMaxValue.HeaderText = "最大值";
+            this.colMaxValue.MinimumWidth = 8;
+            this.colMaxValue.Name = "colMaxValue";
+            this.colMaxValue.ReadOnly = true;
+            this.colMaxValue.Width = 70;
+            // 
             // FormEditItem
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1048, 675);
+            this.ClientSize = new System.Drawing.Size(645, 482);
+            this.Controls.Add(this.labelSockets);
             this.Controls.Add(this.cbNoDamaged);
             this.Controls.Add(this.cbWeight);
             this.Controls.Add(this.btnRestoreValues);
@@ -351,7 +362,7 @@
             this.Controls.Add(this.lbBasicDescription);
             this.Controls.Add(this.pbItemPicture);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -387,11 +398,12 @@
         private System.Windows.Forms.Button btnRestoreValues;
         private System.Windows.Forms.Button btnMaxValues;
         private System.Windows.Forms.ComboBox cbWeight;
+        private System.Windows.Forms.Label labelRunewordsCannotEdit;
+        private System.Windows.Forms.CheckBox cbNoDamaged;
+        private System.Windows.Forms.Label labelSockets;
         private System.Windows.Forms.DataGridViewComboBoxColumn colDescFunc;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescFuncValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaxValue;
-        private System.Windows.Forms.Label labelRunewordsCannotEdit;
-        private System.Windows.Forms.CheckBox cbNoDamaged;
     }
 }

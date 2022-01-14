@@ -161,6 +161,7 @@ namespace D2REditor.Forms
             //cbItems.Enabled = (!item.IsRuneword);
             labelRunewordsCannotEdit.Visible = (item.IsRuneword);
 
+            labelSockets.Text = Utils.AllJsons["sockets"];
             cbNoDamaged.Text = Utils.AllJsons["ModStre9s"];
             cbNoDamaged.Checked = item.MaxDurability == 0;
 

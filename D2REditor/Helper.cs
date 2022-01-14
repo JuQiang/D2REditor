@@ -1513,6 +1513,7 @@ namespace D2REditor
                 var item = CreateItem(row["code"].Value);
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Normal;
+                item.Armor = row["maxac"].ToUInt16();
                 Helper.SetDurability(item);
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
