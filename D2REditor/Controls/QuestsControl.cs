@@ -33,14 +33,7 @@ namespace D2REditor.Controls
             this.questIcons[3] = new List<string>() { "a4q1", "a4q2", "a4q3", };
             this.questIcons[4] = new List<string>() { "a5q1", "a5q2", "a5q3", "a5q4", "a5q5", "a5q6", };
 
-            if (Helper.IsHighDefinition)
-            {
-                this.Size = new Size(2324, 1507);
-            }
-            else
-            {
-                this.Size = new Size((int)(581 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
-            }
+            
 
             var questback = Helper.GetDefinitionFileName(@"\panel\quest_log\questlog_bg");
             questbackbmp = Helper.Sprite2Png(questback);
@@ -77,6 +70,9 @@ namespace D2REditor.Controls
             level = 1;
 
             SetDifficulty(level);
+
+            this.Width = questbackbmp.Width;
+            this.Height = questbackbmp.Height;
 
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 

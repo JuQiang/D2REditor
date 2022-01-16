@@ -37,9 +37,9 @@
             this.lbCharacterList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbCharacterList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.lbCharacterList.FormattingEnabled = true;
-            this.lbCharacterList.Location = new System.Drawing.Point(54, 53);
+            this.lbCharacterList.Location = new System.Drawing.Point(79, 78);
             this.lbCharacterList.Name = "lbCharacterList";
-            this.lbCharacterList.Size = new System.Drawing.Size(301, 336);
+            this.lbCharacterList.Size = new System.Drawing.Size(430, 480);
             this.lbCharacterList.TabIndex = 0;
             this.lbCharacterList.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCharacterList_DrawItem);
             this.lbCharacterList.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.lbCharacterList_MeasureItem);
@@ -49,7 +49,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(407, 527);
+            this.ClientSize = new System.Drawing.Size(581, 753);
             this.Controls.Add(this.lbCharacterList);
             this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveAsTemplate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelRunewordsCannotEdit = new System.Windows.Forms.Label();
@@ -78,9 +81,9 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 434);
+            this.panel1.Location = new System.Drawing.Point(0, 530);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(645, 48);
+            this.panel1.Size = new System.Drawing.Size(831, 48);
             this.panel1.TabIndex = 13;
             // 
             // labelRunewordsCannotEdit
@@ -89,13 +92,13 @@
             this.labelRunewordsCannotEdit.ForeColor = System.Drawing.Color.Red;
             this.labelRunewordsCannotEdit.Location = new System.Drawing.Point(12, 19);
             this.labelRunewordsCannotEdit.Name = "labelRunewordsCannotEdit";
-            this.labelRunewordsCannotEdit.Size = new System.Drawing.Size(41, 12);
+            this.labelRunewordsCannotEdit.Size = new System.Drawing.Size(62, 18);
             this.labelRunewordsCannotEdit.TabIndex = 53;
             this.labelRunewordsCannotEdit.Text = "label1";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(468, 7);
+            this.btnCancel.Location = new System.Drawing.Point(721, 11);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 37);
@@ -106,7 +109,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(365, 7);
+            this.btnOk.Location = new System.Drawing.Point(618, 11);
             this.btnOk.Margin = new System.Windows.Forms.Padding(2);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(99, 37);
@@ -117,20 +120,44 @@
             // 
             // dgvItemStatCost
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemStatCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItemStatCost.ColumnHeadersHeight = 34;
             this.dgvItemStatCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDescFunc,
             this.colDescFuncValue,
             this.colValue,
             this.colMaxValue});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItemStatCost.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvItemStatCost.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvItemStatCost.Location = new System.Drawing.Point(11, 177);
             this.dgvItemStatCost.Margin = new System.Windows.Forms.Padding(2);
             this.dgvItemStatCost.Name = "dgvItemStatCost";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemStatCost.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvItemStatCost.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvItemStatCost.RowTemplate.Height = 30;
             this.dgvItemStatCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvItemStatCost.Size = new System.Drawing.Size(556, 257);
+            this.dgvItemStatCost.Size = new System.Drawing.Size(723, 257);
             this.dgvItemStatCost.TabIndex = 48;
             this.dgvItemStatCost.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemStatCost_CellValueChanged);
             this.dgvItemStatCost.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvItemStatCost_CurrentCellDirtyStateChanged);
@@ -140,16 +167,16 @@
             // 
             this.cbItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbItems.FormattingEnabled = true;
-            this.cbItems.Location = new System.Drawing.Point(460, 102);
+            this.cbItems.Location = new System.Drawing.Point(713, 69);
             this.cbItems.Margin = new System.Windows.Forms.Padding(2);
             this.cbItems.Name = "cbItems";
-            this.cbItems.Size = new System.Drawing.Size(107, 20);
+            this.cbItems.Size = new System.Drawing.Size(107, 26);
             this.cbItems.TabIndex = 43;
             this.cbItems.SelectedIndexChanged += new System.EventHandler(this.cbItems_SelectedIndexChanged);
             // 
             // btnDeleteStat
             // 
-            this.btnDeleteStat.Location = new System.Drawing.Point(571, 217);
+            this.btnDeleteStat.Location = new System.Drawing.Point(750, 216);
             this.btnDeleteStat.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteStat.Name = "btnDeleteStat";
             this.btnDeleteStat.Size = new System.Drawing.Size(70, 36);
@@ -163,10 +190,10 @@
             this.cbSubTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSubTypes.Enabled = false;
             this.cbSubTypes.FormattingEnabled = true;
-            this.cbSubTypes.Location = new System.Drawing.Point(333, 102);
+            this.cbSubTypes.Location = new System.Drawing.Point(582, 69);
             this.cbSubTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cbSubTypes.Name = "cbSubTypes";
-            this.cbSubTypes.Size = new System.Drawing.Size(119, 20);
+            this.cbSubTypes.Size = new System.Drawing.Size(119, 26);
             this.cbSubTypes.TabIndex = 42;
             // 
             // cbIsEthereal
@@ -175,7 +202,7 @@
             this.cbIsEthereal.Location = new System.Drawing.Point(333, 11);
             this.cbIsEthereal.Margin = new System.Windows.Forms.Padding(2);
             this.cbIsEthereal.Name = "cbIsEthereal";
-            this.cbIsEthereal.Size = new System.Drawing.Size(48, 16);
+            this.cbIsEthereal.Size = new System.Drawing.Size(70, 22);
             this.cbIsEthereal.TabIndex = 40;
             this.cbIsEthereal.Text = "无形";
             this.cbIsEthereal.UseVisualStyleBackColor = true;
@@ -188,12 +215,12 @@
             this.cbTypes.Location = new System.Drawing.Point(460, 69);
             this.cbTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cbTypes.Name = "cbTypes";
-            this.cbTypes.Size = new System.Drawing.Size(107, 20);
+            this.cbTypes.Size = new System.Drawing.Size(107, 26);
             this.cbTypes.TabIndex = 41;
             // 
             // btnAddStat
             // 
-            this.btnAddStat.Location = new System.Drawing.Point(571, 177);
+            this.btnAddStat.Location = new System.Drawing.Point(750, 176);
             this.btnAddStat.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddStat.Name = "btnAddStat";
             this.btnAddStat.Size = new System.Drawing.Size(70, 36);
@@ -210,7 +237,7 @@
             this.cbQuality.Location = new System.Drawing.Point(333, 69);
             this.cbQuality.Margin = new System.Windows.Forms.Padding(2);
             this.cbQuality.Name = "cbQuality";
-            this.cbQuality.Size = new System.Drawing.Size(119, 20);
+            this.cbQuality.Size = new System.Drawing.Size(119, 26);
             this.cbQuality.TabIndex = 35;
             // 
             // cbSockets
@@ -227,13 +254,13 @@
             "6孔"});
             this.cbSockets.Location = new System.Drawing.Point(413, 35);
             this.cbSockets.Name = "cbSockets";
-            this.cbSockets.Size = new System.Drawing.Size(39, 20);
+            this.cbSockets.Size = new System.Drawing.Size(39, 26);
             this.cbSockets.TabIndex = 45;
             // 
             // lbBasicDescription
             // 
             this.lbBasicDescription.FormattingEnabled = true;
-            this.lbBasicDescription.ItemHeight = 12;
+            this.lbBasicDescription.ItemHeight = 18;
             this.lbBasicDescription.Location = new System.Drawing.Point(122, 11);
             this.lbBasicDescription.Margin = new System.Windows.Forms.Padding(2);
             this.lbBasicDescription.Name = "lbBasicDescription";
@@ -253,7 +280,7 @@
             // 
             // btnRestoreValues
             // 
-            this.btnRestoreValues.Location = new System.Drawing.Point(571, 297);
+            this.btnRestoreValues.Location = new System.Drawing.Point(750, 296);
             this.btnRestoreValues.Margin = new System.Windows.Forms.Padding(2);
             this.btnRestoreValues.Name = "btnRestoreValues";
             this.btnRestoreValues.Size = new System.Drawing.Size(70, 36);
@@ -265,7 +292,7 @@
             // 
             // btnMaxValues
             // 
-            this.btnMaxValues.Location = new System.Drawing.Point(571, 257);
+            this.btnMaxValues.Location = new System.Drawing.Point(750, 256);
             this.btnMaxValues.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaxValues.Name = "btnMaxValues";
             this.btnMaxValues.Size = new System.Drawing.Size(70, 36);
@@ -281,7 +308,7 @@
             this.cbWeight.FormattingEnabled = true;
             this.cbWeight.Location = new System.Drawing.Point(460, 35);
             this.cbWeight.Name = "cbWeight";
-            this.cbWeight.Size = new System.Drawing.Size(107, 20);
+            this.cbWeight.Size = new System.Drawing.Size(107, 26);
             this.cbWeight.TabIndex = 51;
             // 
             // cbNoDamaged
@@ -290,7 +317,7 @@
             this.cbNoDamaged.Location = new System.Drawing.Point(460, 11);
             this.cbNoDamaged.Margin = new System.Windows.Forms.Padding(2);
             this.cbNoDamaged.Name = "cbNoDamaged";
-            this.cbNoDamaged.Size = new System.Drawing.Size(48, 16);
+            this.cbNoDamaged.Size = new System.Drawing.Size(70, 22);
             this.cbNoDamaged.TabIndex = 53;
             this.cbNoDamaged.Text = "无形";
             this.cbNoDamaged.UseVisualStyleBackColor = true;
@@ -300,29 +327,29 @@
             this.labelSockets.AutoSize = true;
             this.labelSockets.Location = new System.Drawing.Point(331, 38);
             this.labelSockets.Name = "labelSockets";
-            this.labelSockets.Size = new System.Drawing.Size(41, 12);
+            this.labelSockets.Size = new System.Drawing.Size(62, 18);
             this.labelSockets.TabIndex = 54;
             this.labelSockets.Text = "label1";
             // 
             // colDescFunc
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.colDescFunc.HeaderText = "高级属性(下拉更改)";
             this.colDescFunc.MinimumWidth = 8;
             this.colDescFunc.Name = "colDescFunc";
-            this.colDescFunc.Width = 150;
+            this.colDescFunc.Width = 240;
             // 
             // colDescFuncValue
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle3;
             this.colDescFuncValue.HeaderText = "高级属性值";
             this.colDescFuncValue.MinimumWidth = 8;
             this.colDescFuncValue.Name = "colDescFuncValue";
             this.colDescFuncValue.ReadOnly = true;
-            this.colDescFuncValue.Width = 150;
+            this.colDescFuncValue.Width = 240;
             // 
             // colValue
             // 
@@ -333,8 +360,8 @@
             // 
             // colMaxValue
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle4;
             this.colMaxValue.HeaderText = "最大值";
             this.colMaxValue.MinimumWidth = 8;
             this.colMaxValue.Name = "colMaxValue";
@@ -344,7 +371,7 @@
             // FormEditItem
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(645, 482);
+            this.ClientSize = new System.Drawing.Size(831, 578);
             this.Controls.Add(this.labelSockets);
             this.Controls.Add(this.cbNoDamaged);
             this.Controls.Add(this.cbWeight);

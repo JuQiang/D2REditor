@@ -25,15 +25,6 @@ namespace D2REditor.Controls
 
             currentTab = 0;
 
-            if (Helper.IsHighDefinition)
-            {
-                this.Size = new Size(2324, 1507);
-            }
-            else
-            {
-                this.Size = new Size((int)(581 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
-            }
-
             var questback = Helper.GetDefinitionFileName(@"\panel\waypoints\waypoints_base");
             waypointsbackbmp = Helper.Sprite2Png(questback);
 
@@ -79,6 +70,9 @@ namespace D2REditor.Controls
 
             this.level = 1;
             SetDifficulty(this.level);
+
+            this.Width = waypointsbackbmp.Width;
+            this.Height = waypointsbackbmp.Height;
 
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 

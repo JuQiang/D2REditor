@@ -30,9 +30,9 @@ namespace D2REditor.Forms
         }
         public FormSelectD2R()
         {
-            WriteLog("Before initialize component");
+            //WriteLog("Before initialize component");
             InitializeComponent();
-            WriteLog("after initialize component");
+            //WriteLog("after initialize component");
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -45,11 +45,11 @@ namespace D2REditor.Forms
 
         private void FormSelectD2R_Load(object sender, EventArgs e)
         {
-            WriteLog("Before load");
+            //WriteLog("Before load");
             Helper.RefreshSettings();
 
             InitData();
-            WriteLog("after load");
+            //WriteLog("after load");
         }
 
         private Dictionary<int, string> chamappings = new Dictionary<int, string>();
@@ -104,6 +104,7 @@ namespace D2REditor.Forms
                 Helper.SharedD2IFileName = Helper.DefaultD2RFolder + "\\SharedStashSoftCoreV2.d2I";
             }
 
+            //pbLeftPanel.Width = 
             btnDelete.ImageFile = @"\frontend\hd\final\frontend_delete";
             btnRefresh.ImageFile = @"\lobby\joingame\joingame_refreshbtn";
 
@@ -179,7 +180,7 @@ namespace D2REditor.Forms
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Center;
-                g.DrawString(Utils.AllJsons["BetaWelcomeTitle"], this.Font, Brushes.White, new RectangleF(0, 24, pbRightPanel.Width, pbRightPanel.Height - 4), sf);
+                g.DrawString(Utils.AllJsons["BetaWelcomeTitle"], this.Font, Brushes.White, new RectangleF(0, 32, pbRightPanel.Width, pbRightPanel.Height - 4), sf);
             }
 
             e.Graphics.DrawImage(bmp, 0, 0);

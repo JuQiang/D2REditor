@@ -50,10 +50,11 @@ namespace D2REditor.Forms
             this.panelCenter.BackColor = System.Drawing.Color.RosyBrown;
             this.panelCenter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelCenter.Controls.Add(this.btnEdit);
-            this.panelCenter.Location = new System.Drawing.Point(207, 0);
+            this.panelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCenter.Location = new System.Drawing.Point(296, 0);
             this.panelCenter.Name = "panelCenter";
-            this.panelCenter.Size = new System.Drawing.Size(370, 479);
-            this.panelCenter.TabIndex = 20;
+            this.panelCenter.Size = new System.Drawing.Size(466, 632);
+            this.panelCenter.TabIndex = 22;
             // 
             // btnEdit
             // 
@@ -63,9 +64,9 @@ namespace D2REditor.Forms
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.ImageFile = "";
             this.btnEdit.ImageFrames = 4;
-            this.btnEdit.Location = new System.Drawing.Point(149, 425);
+            this.btnEdit.Location = new System.Drawing.Point(149, 554);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(90, 30);
+            this.btnEdit.Size = new System.Drawing.Size(184, 44);
             this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "开始修改";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -80,19 +81,19 @@ namespace D2REditor.Forms
             this.pbRightPanel.Controls.Add(this.btnCreateNew);
             this.pbRightPanel.Controls.Add(this.btnDelete);
             this.pbRightPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pbRightPanel.Font = new System.Drawing.Font("SimSun", 9F);
-            this.pbRightPanel.Location = new System.Drawing.Point(575, 0);
+            this.pbRightPanel.Font = new System.Drawing.Font("SimSun", 10.5F);
+            this.pbRightPanel.Location = new System.Drawing.Point(762, 0);
             this.pbRightPanel.Name = "pbRightPanel";
-            this.pbRightPanel.Size = new System.Drawing.Size(245, 479);
+            this.pbRightPanel.Size = new System.Drawing.Size(292, 632);
             this.pbRightPanel.TabIndex = 10;
             // 
             // lbCharactors
             // 
             this.lbCharactors.FormattingEnabled = true;
-            this.lbCharactors.ItemHeight = 12;
-            this.lbCharactors.Location = new System.Drawing.Point(12, 41);
+            this.lbCharactors.ItemHeight = 21;
+            this.lbCharactors.Location = new System.Drawing.Point(17, 60);
             this.lbCharactors.Name = "lbCharactors";
-            this.lbCharactors.Size = new System.Drawing.Size(221, 376);
+            this.lbCharactors.Size = new System.Drawing.Size(252, 508);
             this.lbCharactors.TabIndex = 15;
             this.lbCharactors.SelectedIndexChanged += new System.EventHandler(this.lbCharactors_SelectedIndexChanged);
             // 
@@ -104,7 +105,7 @@ namespace D2REditor.Forms
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.ImageFile = "";
             this.btnRefresh.ImageFrames = 4;
-            this.btnRefresh.Location = new System.Drawing.Point(198, 426);
+            this.btnRefresh.Location = new System.Drawing.Point(217, 574);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(32, 32);
             this.btnRefresh.TabIndex = 18;
@@ -119,7 +120,7 @@ namespace D2REditor.Forms
             this.btnCreateNew.ForeColor = System.Drawing.Color.White;
             this.btnCreateNew.ImageFile = "";
             this.btnCreateNew.ImageFrames = 4;
-            this.btnCreateNew.Location = new System.Drawing.Point(54, 425);
+            this.btnCreateNew.Location = new System.Drawing.Point(73, 573);
             this.btnCreateNew.Name = "btnCreateNew";
             this.btnCreateNew.Size = new System.Drawing.Size(138, 33);
             this.btnCreateNew.TabIndex = 19;
@@ -135,7 +136,7 @@ namespace D2REditor.Forms
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.ImageFile = "";
             this.btnDelete.ImageFrames = 4;
-            this.btnDelete.Location = new System.Drawing.Point(16, 426);
+            this.btnDelete.Location = new System.Drawing.Point(35, 573);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(32, 32);
             this.btnDelete.TabIndex = 17;
@@ -151,7 +152,7 @@ namespace D2REditor.Forms
             this.pbLeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbLeftPanel.Location = new System.Drawing.Point(0, 0);
             this.pbLeftPanel.Name = "pbLeftPanel";
-            this.pbLeftPanel.Size = new System.Drawing.Size(207, 479);
+            this.pbLeftPanel.Size = new System.Drawing.Size(296, 632);
             this.pbLeftPanel.TabIndex = 5;
             this.pbLeftPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.pbLeftPanel_Paint);
             // 
@@ -163,9 +164,9 @@ namespace D2REditor.Forms
             this.btnAbout.ForeColor = System.Drawing.Color.White;
             this.btnAbout.ImageFile = "";
             this.btnAbout.ImageFrames = 4;
-            this.btnAbout.Location = new System.Drawing.Point(44, 289);
+            this.btnAbout.Location = new System.Drawing.Point(58, 416);
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(112, 43);
+            this.btnAbout.Size = new System.Drawing.Size(184, 43);
             this.btnAbout.TabIndex = 12;
             this.btnAbout.Text = "关于";
             this.btnAbout.UseVisualStyleBackColor = true;
@@ -179,9 +180,9 @@ namespace D2REditor.Forms
             this.btnOptions.ForeColor = System.Drawing.Color.White;
             this.btnOptions.ImageFile = "";
             this.btnOptions.ImageFrames = 4;
-            this.btnOptions.Location = new System.Drawing.Point(44, 230);
+            this.btnOptions.Location = new System.Drawing.Point(58, 355);
             this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(112, 44);
+            this.btnOptions.Size = new System.Drawing.Size(184, 44);
             this.btnOptions.TabIndex = 11;
             this.btnOptions.Text = "设定";
             this.btnOptions.UseVisualStyleBackColor = true;
@@ -192,7 +193,7 @@ namespace D2REditor.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(820, 479);
+            this.ClientSize = new System.Drawing.Size(1054, 632);
             this.ControlBox = false;
             this.Controls.Add(this.panelCenter);
             this.Controls.Add(this.pbRightPanel);
@@ -223,6 +224,6 @@ namespace D2REditor.Forms
         private Controls.ButtonEx btnRefresh;
         private Controls.ButtonEx btnCreateNew;
         private System.Windows.Forms.Panel panelCenter;
-        private Controls.ButtonEx btnEdit;
+        private ButtonEx btnEdit;
     }
 }

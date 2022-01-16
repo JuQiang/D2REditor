@@ -158,8 +158,8 @@ namespace D2REditor
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             //this.Text = String.Format("{0},{1}", this.Width, this.Height);
-            //this.Width = 1177;
-            //this.Height = 820;
+            //this.Width = (int)(1177*Helper.DisplayRatio);
+            //this.Height = (int)(820 * Helper.DisplayRatio);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -180,8 +180,7 @@ namespace D2REditor
             btnItems.Tag = questsControl;
             btnQuestsWaypoints.Text = "";
             btnQuestsWaypoints.Tag = skillsControl;
-            btnItems2.Tag = itemsControl;
-            btnOptimizeAll2.Tag = optimizeControl;
+
 
             lightPens = new Pen[4] { new Pen(Color.Red, 3), new Pen(Color.Green, 3), new Pen(Color.Red, 3), new Pen(Color.Green, 3) };
 
@@ -235,8 +234,8 @@ namespace D2REditor
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
 
-            //this.Width = 1177;
-            //this.Height = 968;
+            //this.Width = (int)(1177*Helper.DisplayRatio);
+            //this.Height = (int)(968 * Helper.DisplayRatio);
 
             this.Paint += MainForm_Paint;
 
@@ -264,10 +263,6 @@ namespace D2REditor
             btnOptimizeAll.ImageFrames = 4;
             btnOptimizeAll.ImageFile = @"\panel\hud_02\quest_button"; //@"\panel\hud_02\messages";
             tooltip.SetToolTip(btnOptimizeAll, Utils.AllJsons["optimize_all"]);// Utils.AllJsons["minipanelparty"]);
-
-            btnReportBug.ImageFrames = 3;
-            btnReportBug.ImageFile = @"\panel\hud_02\bugbtn";
-            tooltip.SetToolTip(btnReportBug, Utils.AllJsons["report_bug"]);
 
             btnSave.ImageFrames = 1;
             btnSave.ImageFile = @"\items\quest\scroll_of_horadric_quest_info";
@@ -363,7 +358,7 @@ namespace D2REditor
                 }
             };
 
-            btnExtra2.Visible = true; btnExtra2.Text = "+"; tooltip.SetToolTip(btnExtra2, Utils.AllJsons["click_import_local"]);
+            btnExtra2.Visible = true; btnExtra2.Text = "+";// tooltip.SetToolTip(btnExtra2, Utils.AllJsons["click_import_local"]);
             btnExtra2.Click += (asender, ae) =>
             {
                 OpenFileDialog ofd = new OpenFileDialog();

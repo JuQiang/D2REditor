@@ -158,7 +158,7 @@ namespace D2REditor.Controls
                 //e.Graphics.DrawRectangle(Pens.Red, new Rectangle(60 + (col - 1) * 131, 69 + (row - 1) * 89, 65, 65));
                 g.DrawImage(skillbmp[skill["IconCel"].ToInt32()], new RectangleF(tableft + 60 * Helper.DisplayRatio + (col - 1) * 131 * Helper.DisplayRatio, top + 69 * Helper.DisplayRatio + (row - 1) * 89 * Helper.DisplayRatio, skillbmp[0].Width * Helper.DisplayRatio, skillbmp[0].Height * Helper.DisplayRatio), new RectangleF(0, 0, skillbmp[skill["IconCel"].ToInt32()].Width, skillbmp[skill["IconCel"].ToInt32()].Height), GraphicsUnit.Pixel);
                 int point = Helper.CurrentCharactor.ClassSkills.Skills.Where(s => s.Id == Convert.ToInt32(skill["str name"].Value.ToLower().Replace("skillsname", "").Replace("skillname", ""))).First().Points;
-                using (Font f = new Font("SimSun", 16 * Helper.DisplayRatio, FontStyle.Bold))
+                using (Font f = new Font("SimSun", 9, FontStyle.Bold))
                 {
                     g.DrawString(point.ToString(), f, Brushes.White, tableft + 130 * Helper.DisplayRatio + (col - 1) * 131 * Helper.DisplayRatio, top + 112 * Helper.DisplayRatio + (row - 1) * 89 * Helper.DisplayRatio);
                 }
@@ -173,7 +173,7 @@ namespace D2REditor.Controls
                 var tooltip = Utils.AllJsons[skill["str long"].Value];
                 int width = 0, height = 0;
 
-                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize*Helper.DisplayRatio, FontStyle.Bold))
+                using (Font f = new Font("SimSun", 9, FontStyle.Bold))
                 {
                     var sf = g.MeasureString(title, f, this.Width - 20);
                     var sf2 = g.MeasureString(tooltip, f, this.Width - 20);

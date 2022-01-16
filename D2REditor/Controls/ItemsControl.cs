@@ -69,7 +69,9 @@ namespace D2REditor.Controls
             gembmp = Helper.Sprite2Png(gemname);
             BuildSocketMappings();
 
-            this.Size = new Size((int)(1162*Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
+            this.Width = stashbmp.Width + charbmp.Width;
+            this.Height = stashbmp.Height;
+            //this.Size = new Size((int)(1162*Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
 
@@ -199,10 +201,13 @@ namespace D2REditor.Controls
                 {
                     for (int j = item.Row; j < item.Row + item.Rows; j++)
                     {
+                        if (item.Column + item.Columns >= 11) continue;
+                        if(item.Row + item.Rows >= 5) continue;
                         item.Rectangles.Add(new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio)));
                     }
                 }
 
+                if (item.Row >= 4 || item.Column >= 10) continue;
                 item.Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[item.Column] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[item.Row] * Helper.DisplayRatio), (int)(item.Columns * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(item.Rows * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
                 item.IconState = ItemIconState.Normal;
 
@@ -787,6 +792,7 @@ namespace D2REditor.Controls
 
             Bitmap background = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(background);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;//.AntiAlias;// | System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             g.Clear(Color.Black);
 
             #region 底图
@@ -927,7 +933,7 @@ namespace D2REditor.Controls
 
                 g.FillRectangle(this.tooltipBrush, new RectangleF(newp.X, newp.Y , complexRet.Item1.Width, complexRet.Item1.Height));
                 g.DrawRectangle(Pens.Wheat, new Rectangle((int)(newp.X ), (int)(newp.Y ), (int)(complexRet.Item1.Width), (int)(complexRet.Item1.Height)));
-                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
+                using (Font f = new Font("SimSun",Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
                 {
                     using (StringFormat format = new StringFormat())
                     {

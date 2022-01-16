@@ -247,9 +247,9 @@ namespace D2REditor.Forms
             }
             else if (curtab > 0)
             {
-                using (Font f = new Font("SimSun", 16, FontStyle.Bold))
+                using (Font f = new Font("SimSun", 24, FontStyle.Bold))
                 {
-                    g.DrawString("<", f, Brushes.White, 24, 24);
+                    g.DrawString("<", f, Brushes.White, 28, 24);
                 }
             }
 

@@ -32,11 +32,9 @@ namespace D2REditor
         {
             this.components = new System.ComponentModel.Container();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnItems2 = new D2REditor.Controls.ButtonEx();
             this.pContainer = new System.Windows.Forms.Panel();
             this.pTop = new D2REditor.Controls.PanelEx();
             this.pBottom = new D2REditor.Controls.PanelEx();
-            this.btnReportBug = new D2REditor.Controls.ButtonEx();
             this.button2 = new System.Windows.Forms.Button();
             this.btnBooks = new D2REditor.Controls.ButtonEx();
             this.btnSave = new D2REditor.Controls.ButtonEx();
@@ -44,7 +42,6 @@ namespace D2REditor
             this.btnExtra2 = new D2REditor.Controls.ButtonEx();
             this.btnExtra3 = new D2REditor.Controls.ButtonEx();
             this.btnExtra1 = new D2REditor.Controls.ButtonEx();
-            this.btnOptimizeAll2 = new D2REditor.Controls.ButtonEx();
             this.btnQuestsWaypoints = new D2REditor.Controls.ButtonEx();
             this.btnItems = new D2REditor.Controls.ButtonEx();
             this.btnOptimizeAll = new D2REditor.Controls.ButtonEx();
@@ -57,50 +54,30 @@ namespace D2REditor
             // 
             this.tooltip.IsBalloon = true;
             // 
-            // btnItems2
-            // 
-            this.btnItems2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnItems2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnItems2.FlatAppearance.BorderSize = 0;
-            this.btnItems2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnItems2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnItems2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnItems2.ForeColor = System.Drawing.Color.White;
-            this.btnItems2.ImageFile = "";
-            this.btnItems2.ImageFrames = 4;
-            this.btnItems2.Location = new System.Drawing.Point(598, 124);
-            this.btnItems2.Name = "btnItems2";
-            this.btnItems2.Size = new System.Drawing.Size(34, 34);
-            this.btnItems2.TabIndex = 9;
-            this.tooltip.SetToolTip(this.btnItems2, "aaa");
-            this.btnItems2.UseVisualStyleBackColor = true;
-            this.btnItems2.Visible = false;
-            this.btnItems2.Click += new System.EventHandler(this.btnItems_Click);
-            // 
             // pContainer
             // 
             this.pContainer.BackColor = System.Drawing.Color.Black;
+            this.pContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pContainer.Location = new System.Drawing.Point(0, 24);
             this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(813, 527);
+            this.pContainer.Size = new System.Drawing.Size(1161, 753);
             this.pContainer.TabIndex = 27;
             // 
             // pTop
             // 
             this.pTop.BackColor = System.Drawing.Color.Black;
             this.pTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pTop.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pTop.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pTop.Location = new System.Drawing.Point(0, 0);
             this.pTop.Name = "pTop";
-            this.pTop.Size = new System.Drawing.Size(813, 24);
+            this.pTop.Size = new System.Drawing.Size(1161, 24);
             this.pTop.TabIndex = 25;
             // 
             // pBottom
             // 
             this.pBottom.BackColor = System.Drawing.Color.Black;
             this.pBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pBottom.Controls.Add(this.btnReportBug);
             this.pBottom.Controls.Add(this.button2);
             this.pBottom.Controls.Add(this.btnBooks);
             this.pBottom.Controls.Add(this.btnSave);
@@ -108,38 +85,16 @@ namespace D2REditor
             this.pBottom.Controls.Add(this.btnExtra2);
             this.pBottom.Controls.Add(this.btnExtra3);
             this.pBottom.Controls.Add(this.btnExtra1);
-            this.pBottom.Controls.Add(this.btnOptimizeAll2);
-            this.pBottom.Controls.Add(this.btnItems2);
             this.pBottom.Controls.Add(this.btnQuestsWaypoints);
             this.pBottom.Controls.Add(this.btnItems);
             this.pBottom.Controls.Add(this.btnOptimizeAll);
             this.pBottom.Controls.Add(this.btnCharactorSkill);
             this.pBottom.Controls.Add(this.button1);
             this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pBottom.Location = new System.Drawing.Point(0, 551);
+            this.pBottom.Location = new System.Drawing.Point(0, 777);
             this.pBottom.Name = "pBottom";
-            this.pBottom.Size = new System.Drawing.Size(813, 120);
+            this.pBottom.Size = new System.Drawing.Size(1161, 182);
             this.pBottom.TabIndex = 22;
-            // 
-            // btnReportBug
-            // 
-            this.btnReportBug.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReportBug.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnReportBug.FlatAppearance.BorderSize = 0;
-            this.btnReportBug.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnReportBug.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnReportBug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportBug.ForeColor = System.Drawing.Color.White;
-            this.btnReportBug.ImageFile = "";
-            this.btnReportBug.ImageFrames = 4;
-            this.btnReportBug.Location = new System.Drawing.Point(678, 49);
-            this.btnReportBug.Name = "btnReportBug";
-            this.btnReportBug.Size = new System.Drawing.Size(24, 24);
-            this.btnReportBug.TabIndex = 21;
-            this.btnReportBug.Text = "6";
-            this.btnReportBug.UseVisualStyleBackColor = true;
-            this.btnReportBug.Visible = false;
-            this.btnReportBug.Click += new System.EventHandler(this.btnReportBug_Click);
             // 
             // button2
             // 
@@ -165,7 +120,7 @@ namespace D2REditor
             this.btnBooks.ForeColor = System.Drawing.Color.White;
             this.btnBooks.ImageFile = "";
             this.btnBooks.ImageFrames = 4;
-            this.btnBooks.Location = new System.Drawing.Point(432, 77);
+            this.btnBooks.Location = new System.Drawing.Point(623, 118);
             this.btnBooks.Name = "btnBooks";
             this.btnBooks.Size = new System.Drawing.Size(34, 34);
             this.btnBooks.TabIndex = 19;
@@ -185,7 +140,7 @@ namespace D2REditor
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.ImageFile = "";
             this.btnSave.ImageFrames = 4;
-            this.btnSave.Location = new System.Drawing.Point(356, 77);
+            this.btnSave.Location = new System.Drawing.Point(513, 118);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(34, 34);
             this.btnSave.TabIndex = 18;
@@ -205,7 +160,7 @@ namespace D2REditor
             this.btnExtra4.ForeColor = System.Drawing.Color.White;
             this.btnExtra4.ImageFile = "";
             this.btnExtra4.ImageFrames = 4;
-            this.btnExtra4.Location = new System.Drawing.Point(594, 82);
+            this.btnExtra4.Location = new System.Drawing.Point(852, 123);
             this.btnExtra4.Name = "btnExtra4";
             this.btnExtra4.Size = new System.Drawing.Size(25, 25);
             this.btnExtra4.TabIndex = 17;
@@ -225,7 +180,7 @@ namespace D2REditor
             this.btnExtra2.ForeColor = System.Drawing.Color.White;
             this.btnExtra2.ImageFile = "";
             this.btnExtra2.ImageFrames = 4;
-            this.btnExtra2.Location = new System.Drawing.Point(524, 82);
+            this.btnExtra2.Location = new System.Drawing.Point(752, 123);
             this.btnExtra2.Name = "btnExtra2";
             this.btnExtra2.Size = new System.Drawing.Size(25, 25);
             this.btnExtra2.TabIndex = 16;
@@ -245,7 +200,7 @@ namespace D2REditor
             this.btnExtra3.ForeColor = System.Drawing.Color.White;
             this.btnExtra3.ImageFile = "";
             this.btnExtra3.ImageFrames = 4;
-            this.btnExtra3.Location = new System.Drawing.Point(559, 82);
+            this.btnExtra3.Location = new System.Drawing.Point(802, 123);
             this.btnExtra3.Name = "btnExtra3";
             this.btnExtra3.Size = new System.Drawing.Size(25, 25);
             this.btnExtra3.TabIndex = 15;
@@ -265,32 +220,12 @@ namespace D2REditor
             this.btnExtra1.ForeColor = System.Drawing.Color.White;
             this.btnExtra1.ImageFile = "";
             this.btnExtra1.ImageFrames = 4;
-            this.btnExtra1.Location = new System.Drawing.Point(488, 82);
+            this.btnExtra1.Location = new System.Drawing.Point(702, 123);
             this.btnExtra1.Name = "btnExtra1";
             this.btnExtra1.Size = new System.Drawing.Size(25, 25);
             this.btnExtra1.TabIndex = 12;
             this.btnExtra1.Text = "99";
             this.btnExtra1.UseVisualStyleBackColor = false;
-            // 
-            // btnOptimizeAll2
-            // 
-            this.btnOptimizeAll2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOptimizeAll2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnOptimizeAll2.FlatAppearance.BorderSize = 0;
-            this.btnOptimizeAll2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnOptimizeAll2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnOptimizeAll2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOptimizeAll2.ForeColor = System.Drawing.Color.White;
-            this.btnOptimizeAll2.ImageFile = "";
-            this.btnOptimizeAll2.ImageFrames = 4;
-            this.btnOptimizeAll2.Location = new System.Drawing.Point(648, 49);
-            this.btnOptimizeAll2.Name = "btnOptimizeAll2";
-            this.btnOptimizeAll2.Size = new System.Drawing.Size(24, 24);
-            this.btnOptimizeAll2.TabIndex = 10;
-            this.btnOptimizeAll2.Text = "5";
-            this.btnOptimizeAll2.UseVisualStyleBackColor = true;
-            this.btnOptimizeAll2.Visible = false;
-            this.btnOptimizeAll2.Click += new System.EventHandler(this.btnOptimizeAll_Click);
             // 
             // btnQuestsWaypoints
             // 
@@ -303,7 +238,7 @@ namespace D2REditor
             this.btnQuestsWaypoints.ForeColor = System.Drawing.Color.White;
             this.btnQuestsWaypoints.ImageFile = "";
             this.btnQuestsWaypoints.ImageFrames = 4;
-            this.btnQuestsWaypoints.Location = new System.Drawing.Point(219, 93);
+            this.btnQuestsWaypoints.Location = new System.Drawing.Point(302, 134);
             this.btnQuestsWaypoints.Name = "btnQuestsWaypoints";
             this.btnQuestsWaypoints.Size = new System.Drawing.Size(24, 24);
             this.btnQuestsWaypoints.TabIndex = 8;
@@ -322,7 +257,7 @@ namespace D2REditor
             this.btnItems.ForeColor = System.Drawing.Color.White;
             this.btnItems.ImageFile = "";
             this.btnItems.ImageFrames = 4;
-            this.btnItems.Location = new System.Drawing.Point(243, 93);
+            this.btnItems.Location = new System.Drawing.Point(326, 134);
             this.btnItems.Name = "btnItems";
             this.btnItems.Size = new System.Drawing.Size(24, 24);
             this.btnItems.TabIndex = 7;
@@ -341,7 +276,7 @@ namespace D2REditor
             this.btnOptimizeAll.ForeColor = System.Drawing.Color.White;
             this.btnOptimizeAll.ImageFile = "";
             this.btnOptimizeAll.ImageFrames = 4;
-            this.btnOptimizeAll.Location = new System.Drawing.Point(267, 93);
+            this.btnOptimizeAll.Location = new System.Drawing.Point(350, 134);
             this.btnOptimizeAll.Name = "btnOptimizeAll";
             this.btnOptimizeAll.Size = new System.Drawing.Size(24, 24);
             this.btnOptimizeAll.TabIndex = 6;
@@ -360,7 +295,7 @@ namespace D2REditor
             this.btnCharactorSkill.ForeColor = System.Drawing.Color.White;
             this.btnCharactorSkill.ImageFile = "";
             this.btnCharactorSkill.ImageFrames = 4;
-            this.btnCharactorSkill.Location = new System.Drawing.Point(195, 93);
+            this.btnCharactorSkill.Location = new System.Drawing.Point(278, 134);
             this.btnCharactorSkill.Name = "btnCharactorSkill";
             this.btnCharactorSkill.Size = new System.Drawing.Size(24, 24);
             this.btnCharactorSkill.TabIndex = 5;
@@ -382,7 +317,7 @@ namespace D2REditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(813, 671);
+            this.ClientSize = new System.Drawing.Size(1161, 959);
             this.Controls.Add(this.pContainer);
             this.Controls.Add(this.pTop);
             this.Controls.Add(this.pBottom);
@@ -406,8 +341,6 @@ namespace D2REditor
         private Controls.ButtonEx btnOptimizeAll;
         private Controls.ButtonEx btnItems;
         private Controls.ButtonEx btnQuestsWaypoints;
-        private Controls.ButtonEx btnItems2;
-        private Controls.ButtonEx btnOptimizeAll2;
         private System.Windows.Forms.ToolTip tooltip;
         private Controls.ButtonEx btnExtra1;
         private Controls.ButtonEx btnExtra3;
@@ -420,6 +353,5 @@ namespace D2REditor
         private Controls.ButtonEx btnCharactorSkill;
         private PanelEx pTop;
         private System.Windows.Forms.Panel pContainer;
-        private ButtonEx btnReportBug;
     }
 }

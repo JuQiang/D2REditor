@@ -54,10 +54,10 @@ namespace D2REditor.Forms
             this.tcOptions.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tcOptions.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tcOptions.ItemSize = new System.Drawing.Size(130, 30);
-            this.tcOptions.Location = new System.Drawing.Point(54, 98);
+            this.tcOptions.Location = new System.Drawing.Point(80, 137);
             this.tcOptions.Name = "tcOptions";
             this.tcOptions.SelectedIndex = 0;
-            this.tcOptions.Size = new System.Drawing.Size(301, 333);
+            this.tcOptions.Size = new System.Drawing.Size(424, 492);
             this.tcOptions.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcOptions.TabIndex = 9;
             this.tcOptions.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tcOptions_DrawItem);
@@ -70,15 +70,15 @@ namespace D2REditor.Forms
             this.tpLanguage.Location = new System.Drawing.Point(4, 34);
             this.tpLanguage.Name = "tpLanguage";
             this.tpLanguage.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLanguage.Size = new System.Drawing.Size(293, 295);
+            this.tpLanguage.Size = new System.Drawing.Size(416, 454);
             this.tpLanguage.TabIndex = 0;
             this.tpLanguage.Text = "tabPage1";
             // 
             // btnOpenLanguageFile
             // 
-            this.btnOpenLanguageFile.Location = new System.Drawing.Point(56, 283);
+            this.btnOpenLanguageFile.Location = new System.Drawing.Point(109, 404);
             this.btnOpenLanguageFile.Name = "btnOpenLanguageFile";
-            this.btnOpenLanguageFile.Size = new System.Drawing.Size(187, 32);
+            this.btnOpenLanguageFile.Size = new System.Drawing.Size(211, 44);
             this.btnOpenLanguageFile.TabIndex = 4;
             this.btnOpenLanguageFile.Text = "button1";
             this.btnOpenLanguageFile.UseVisualStyleBackColor = true;
@@ -86,16 +86,16 @@ namespace D2REditor.Forms
             // 
             // lbLanguages
             // 
-            this.lbLanguages.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbLanguages.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbLanguages.FormattingEnabled = true;
-            this.lbLanguages.ItemHeight = 12;
+            this.lbLanguages.ItemHeight = 24;
             this.lbLanguages.Items.AddRange(new object[] {
             "English",
             "简体中文",
             "繁体中文"});
             this.lbLanguages.Location = new System.Drawing.Point(5, 5);
             this.lbLanguages.Name = "lbLanguages";
-            this.lbLanguages.Size = new System.Drawing.Size(286, 268);
+            this.lbLanguages.Size = new System.Drawing.Size(408, 364);
             this.lbLanguages.TabIndex = 3;
             this.lbLanguages.SelectedIndexChanged += new System.EventHandler(this.lbLanguages_SelectedIndexChanged);
             // 
@@ -110,7 +110,7 @@ namespace D2REditor.Forms
             this.tpFile.Location = new System.Drawing.Point(4, 34);
             this.tpFile.Name = "tpFile";
             this.tpFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFile.Size = new System.Drawing.Size(293, 295);
+            this.tpFile.Size = new System.Drawing.Size(416, 454);
             this.tpFile.TabIndex = 1;
             this.tpFile.Text = "tabPage2";
             // 
@@ -121,7 +121,7 @@ namespace D2REditor.Forms
             this.labelCache.ForeColor = System.Drawing.Color.White;
             this.labelCache.Location = new System.Drawing.Point(8, 80);
             this.labelCache.Name = "labelCache";
-            this.labelCache.Size = new System.Drawing.Size(41, 12);
+            this.labelCache.Size = new System.Drawing.Size(62, 18);
             this.labelCache.TabIndex = 9;
             this.labelCache.Text = "label1";
             // 
@@ -131,7 +131,7 @@ namespace D2REditor.Forms
             this.tbCacheLocation.Location = new System.Drawing.Point(14, 116);
             this.tbCacheLocation.Name = "tbCacheLocation";
             this.tbCacheLocation.ReadOnly = true;
-            this.tbCacheLocation.Size = new System.Drawing.Size(273, 21);
+            this.tbCacheLocation.Size = new System.Drawing.Size(386, 28);
             this.tbCacheLocation.TabIndex = 8;
             // 
             // labelGameFile
@@ -141,7 +141,7 @@ namespace D2REditor.Forms
             this.labelGameFile.ForeColor = System.Drawing.Color.White;
             this.labelGameFile.Location = new System.Drawing.Point(6, 3);
             this.labelGameFile.Name = "labelGameFile";
-            this.labelGameFile.Size = new System.Drawing.Size(41, 12);
+            this.labelGameFile.Size = new System.Drawing.Size(62, 18);
             this.labelGameFile.TabIndex = 7;
             this.labelGameFile.Text = "label1";
             // 
@@ -150,13 +150,13 @@ namespace D2REditor.Forms
             this.tbD2RFolder.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbD2RFolder.Location = new System.Drawing.Point(12, 39);
             this.tbD2RFolder.Name = "tbD2RFolder";
-            this.tbD2RFolder.Size = new System.Drawing.Size(225, 21);
+            this.tbD2RFolder.Size = new System.Drawing.Size(340, 28);
             this.tbD2RFolder.TabIndex = 6;
             // 
             // btnBrowseD2RFolder
             // 
             this.btnBrowseD2RFolder.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnBrowseD2RFolder.Location = new System.Drawing.Point(245, 38);
+            this.btnBrowseD2RFolder.Location = new System.Drawing.Point(358, 40);
             this.btnBrowseD2RFolder.Name = "btnBrowseD2RFolder";
             this.btnBrowseD2RFolder.Size = new System.Drawing.Size(42, 27);
             this.btnBrowseD2RFolder.TabIndex = 5;
@@ -175,7 +175,7 @@ namespace D2REditor.Forms
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.ImageFile = "";
             this.btnCancel.ImageFrames = 4;
-            this.btnCancel.Location = new System.Drawing.Point(233, 441);
+            this.btnCancel.Location = new System.Drawing.Point(311, 646);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 29);
             this.btnCancel.TabIndex = 8;
@@ -194,7 +194,7 @@ namespace D2REditor.Forms
             this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.ImageFile = "";
             this.btnOk.ImageFrames = 4;
-            this.btnOk.Location = new System.Drawing.Point(81, 441);
+            this.btnOk.Location = new System.Drawing.Point(193, 646);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(93, 29);
             this.btnOk.TabIndex = 7;
@@ -207,7 +207,7 @@ namespace D2REditor.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(406, 527);
+            this.ClientSize = new System.Drawing.Size(580, 753);
             this.ControlBox = false;
             this.Controls.Add(this.tcOptions);
             this.Controls.Add(this.btnCancel);

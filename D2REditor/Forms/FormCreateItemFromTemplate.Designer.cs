@@ -40,9 +40,9 @@
             this.lbItems.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.lbItems.ForeColor = System.Drawing.Color.Black;
             this.lbItems.FormattingEnabled = true;
-            this.lbItems.Location = new System.Drawing.Point(25, 53);
+            this.lbItems.Location = new System.Drawing.Point(39, 78);
             this.lbItems.Name = "lbItems";
-            this.lbItems.Size = new System.Drawing.Size(632, 500);
+            this.lbItems.Size = new System.Drawing.Size(896, 714);
             this.lbItems.TabIndex = 7;
             this.lbItems.Visible = false;
             this.lbItems.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbItems_DrawItem);
@@ -60,7 +60,7 @@
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
             this.btnPrevious.ImageFile = "";
             this.btnPrevious.ImageFrames = 4;
-            this.btnPrevious.Location = new System.Drawing.Point(337, 510);
+            this.btnPrevious.Location = new System.Drawing.Point(615, 798);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(150, 35);
             this.btnPrevious.TabIndex = 9;
@@ -79,7 +79,7 @@
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.ImageFile = "";
             this.btnNext.ImageFrames = 4;
-            this.btnNext.Location = new System.Drawing.Point(507, 510);
+            this.btnNext.Location = new System.Drawing.Point(785, 798);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(150, 35);
             this.btnNext.TabIndex = 8;
@@ -90,11 +90,11 @@
             // FormCreateItemFromTemplate
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(683, 572);
+            this.ClientSize = new System.Drawing.Size(976, 817);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lbItems);
-            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCreateItemFromTemplate";

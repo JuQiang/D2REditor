@@ -18,7 +18,7 @@ namespace D2REditor
     {
         public static string Host = "http://localhost";
         public const int Version = 0x61;
-        public static float DisplayRatio = 0.7f;
+        public static float DisplayRatio = 1.0f;
         public static string CurrentD2SFileName = "";
         public static string GeneralButtonImageFile = @"\frontend\hd\final\cinematics\cinematicsbtn";
         private static Dictionary<int, Bitmap> spmappings = new Dictionary<int, Bitmap>();
@@ -162,10 +162,10 @@ namespace D2REditor
             InventoryTitleStartY = 33,
             StashTabWidth = 125,
             StashTabHeight = 40,
-            StashTabFontSize = 12,
-            StashTitleFontSize = 18,
+            StashTabFontSize = 9,
+            StashTitleFontSize = 12,
 
-            TooltipFontSize = 16,
+            TooltipFontSize = 12,
 
             StoreRangeX = new int[] { 628, 677, 726, 775, 824, 873, 922, 971, 1020, 1069 },
             StoreRangeY = new int[] { 450, 499, 548, 597 },

@@ -92,7 +92,7 @@ namespace D2REditor.Controls
 
         private void OptimizeControl_Load(object sender, EventArgs e)
         {
-            this.Size = new Size((int)(1162 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
+            //this.Size = new Size((int)(1162 * Helper.DisplayRatio), (int)(753 * Helper.DisplayRatio));
 
             var back = Helper.GetDefinitionFileName(@"\panel\hireling\hireablepanel\hireables_bg");
             backbmp = Helper.Sprite2Png(back);
