@@ -56,7 +56,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(404, 142);
+            this.button2.Location = new System.Drawing.Point(739, 12);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(224, 120);
@@ -70,7 +70,7 @@
             this.textBox1.Location = new System.Drawing.Point(34, 142);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 28);
+            this.textBox1.Size = new System.Drawing.Size(138, 14);
             this.textBox1.TabIndex = 2;
             // 
             // pictureBox1
@@ -84,7 +84,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(34, 200);
+            this.button3.Location = new System.Drawing.Point(1220, 12);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(191, 72);
@@ -106,23 +106,26 @@
             // tv
             // 
             this.tv.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tv.Location = new System.Drawing.Point(34, 310);
+            this.tv.Location = new System.Drawing.Point(34, 182);
             this.tv.Name = "tv";
-            this.tv.Size = new System.Drawing.Size(855, 1229);
+            this.tv.Size = new System.Drawing.Size(846, 592);
             this.tv.TabIndex = 6;
             this.tv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_AfterSelect);
             // 
             // preview
             // 
-            this.preview.Location = new System.Drawing.Point(918, 764);
+            this.preview.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.preview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.preview.Location = new System.Drawing.Point(897, 453);
             this.preview.Name = "preview";
-            this.preview.Size = new System.Drawing.Size(1526, 775);
+            this.preview.Size = new System.Drawing.Size(1017, 427);
+            this.preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.preview.TabIndex = 7;
             this.preview.TabStop = false;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(665, 142);
+            this.button5.Location = new System.Drawing.Point(978, 12);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(224, 120);
@@ -135,16 +138,16 @@
             // 
             this.lb.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb.FormattingEnabled = true;
-            this.lb.ItemHeight = 33;
-            this.lb.Location = new System.Drawing.Point(918, 310);
+            this.lb.ItemHeight = 21;
+            this.lb.Location = new System.Drawing.Point(897, 182);
             this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(1526, 400);
+            this.lb.Size = new System.Drawing.Size(1017, 256);
             this.lb.TabIndex = 9;
             this.lb.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(1124, 137);
+            this.button6.Location = new System.Drawing.Point(1228, 99);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(183, 72);
             this.button6.TabIndex = 10;
@@ -154,8 +157,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(2480, 1585);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(2001, 913);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.lb);
             this.Controls.Add(this.button5);
@@ -167,6 +171,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);

@@ -11,7 +11,7 @@ namespace D2REditor.Controls
 {
     public partial class ItemsControl : UserControl
     {
-        private Bitmap stashbmp, charbmp;
+        private Bitmap stashbmp, stashbmp2, charbmp;
         private List<Item> body;
         private List<Item> store;
         private Dictionary<int, List<Item>> stashes = new Dictionary<int, List<Item>>();
@@ -58,7 +58,14 @@ namespace D2REditor.Controls
 
             var stashfile = Helper.GetDefinitionFileName(@"\panel\stash\stashpanel_bg");
             stashbmp = Helper.Sprite2Png(stashfile);
-            var charfile = Helper.GetDefinitionFileName(@"\panel\inventory\background");
+            var stashfile2 = Helper.GetDefinitionFileName(@"\panel\stash\stashpanel_bg_big2");
+            var stashin = Helper.Sprite2Png(stashfile2);//42,116
+            stashbmp2 = new Bitmap(496, 496);
+            Graphics g = Graphics.FromImage(stashbmp2);
+            g.DrawImage(stashin, new Rectangle(0, 0, stashbmp2.Width, stashbmp2.Height), new Rectangle(0, 0, stashin.Width, stashin.Height), GraphicsUnit.Pixel);
+            g.Dispose();
+
+            var charfile = Helper.GetDefinitionFileName(@"\panel\inventory\background_big");
             charbmp = Helper.Sprite2Png(charfile);
 
             var goldfile = Helper.GetDefinitionFileName(@"\panel\goldbutton");
@@ -201,13 +208,10 @@ namespace D2REditor.Controls
                 {
                     for (int j = item.Row; j < item.Row + item.Rows; j++)
                     {
-                        if (item.Column + item.Columns >= 11) continue;
-                        if(item.Row + item.Rows >= 5) continue;
                         item.Rectangles.Add(new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio)));
                     }
                 }
 
-                if (item.Row >= 4 || item.Column >= 10) continue;
                 item.Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StoreRangeX[item.Column] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StoreRangeY[item.Row] * Helper.DisplayRatio), (int)(item.Columns * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(item.Rows * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
                 item.IconState = ItemIconState.Normal;
 
@@ -222,15 +226,11 @@ namespace D2REditor.Controls
 
                     for (int j = item.Row; j < item.Row + item.Rows; j++)
                     {
-                        if (i > 9 || j > 9) continue;
                         item.Rectangles.Add(new Rectangle((int)(Helper.DefinitionInfo.StashRangeX[i] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashRangeY[j] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio)));
                     }
                 }
 
-                if (item.Row < 10 && item.Column < 10)
-                {
-                    item.Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StashRangeX[item.Column] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashRangeY[item.Row] * Helper.DisplayRatio), (int)(item.Columns * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(item.Rows * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
-                }
+                item.Rectangle = new Rectangle((int)(Helper.DefinitionInfo.StashRangeX[item.Column] * Helper.DisplayRatio), (int)(Helper.DefinitionInfo.StashRangeY[item.Row] * Helper.DisplayRatio), (int)(item.Columns * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio), (int)(item.Rows * Helper.DefinitionInfo.BoxSize * Helper.DisplayRatio));
                 item.IconState = ItemIconState.Normal;
 
                 mappings[item.Rectangle] = item;
@@ -260,8 +260,8 @@ namespace D2REditor.Controls
             }
 
             allboxes.Store = new Box();
-            allboxes.Store.MaxRows = 4;
-            allboxes.Store.MaxColumns = 10;
+            allboxes.Store.MaxRows = 8;
+            allboxes.Store.MaxColumns = 15;
             allboxes.Store.UnitList = new List<Unit>();
 
             for (int i = 0; i < Helper.DefinitionInfo.StoreRangeX.Length; i++)
@@ -278,8 +278,8 @@ namespace D2REditor.Controls
             }
 
             allboxes.Stash = new Box();
-            allboxes.Stash.MaxRows = 10;
-            allboxes.Stash.MaxColumns = 10;
+            allboxes.Stash.MaxRows = 16;
+            allboxes.Stash.MaxColumns = 16;
             allboxes.Stash.UnitList = new List<Unit>();
 
             for (int i = 0; i < Helper.DefinitionInfo.StashRangeX.Length; i++)
@@ -376,7 +376,7 @@ namespace D2REditor.Controls
 
             //System.Diagnostics.Debug.WriteLine(String.Format("Row={0},Col={1}, Rows={2}, Columns={3}", curDraggingItem.Row, curDraggingItem.Column, curDraggingItem.Rows, curDraggingItem.Columns));
             Box box = null;
-            var area = GetCursorArea(p);
+            var area = GetCursorArea(new Point(p.X,p.Y));
 
             switch (area)
             {
@@ -396,68 +396,71 @@ namespace D2REditor.Controls
             {
                 if (area != Area.Body)
                 {
-                    foreach (var unit in box.UnitList)
+                    //foreach (var unit in box.UnitList)
                     {
-                        if (Helper.IsPointInRange(p, unit.Rectangle))
+                        //if (Helper.IsPointInRange(p, unit.Rectangle))
+                        var unit = box.UnitList.Where(u => Helper.IsPointInRange(p, u.Rectangle)).FirstOrDefault();
+                        if (unit != null)
                         {
                             //System.Diagnostics.Debug.WriteLine(String.Format("StartRow={0},StartCol={1},EndRow={2},EndCol={3}", unit.Row, unit.Column, unit.Row + curDraggingItem.Rows - 1, unit.Column + curDraggingItem.Columns - 1));
-                            if (unit.Row + curDraggingItem.Rows - 1 >= box.MaxRows) { /*System.Diagnostics.Debug.WriteLine("Rows exceeded.");*/ canBeDroppped = false; break; }
-                            if (unit.Column + curDraggingItem.Columns - 1 >= box.MaxColumns) { /*System.Diagnostics.Debug.WriteLine("Columnss exceeded.");*/ canBeDroppped = false; break; }
+                            if (unit.Row + curDraggingItem.Rows - 1 >= box.MaxRows) { /*System.Diagnostics.Debug.WriteLine("Rows exceeded.");*/ canBeDroppped = false;}
+                            if (unit.Column + curDraggingItem.Columns - 1 >= box.MaxColumns) { /*System.Diagnostics.Debug.WriteLine("Columnss exceeded.");*/ canBeDroppped = false;}
 
-                            int itemsCountFromHoverdRange = 0;
-                            List<Item> hoveredItemList = new List<Item>();
-
-                            list.Clear();
-                            bool firsttime = true;
-
-                            for (int col = unit.Column; col < unit.Column + curDraggingItem.Columns; col++)
+                            if (canBeDroppped)
                             {
-                                for (int row = unit.Row; row < unit.Row + curDraggingItem.Rows; row++)
-                                {
-                                    if (firsttime)
-                                    {
-                                        startRow = row;
-                                        startCol = col;
-                                        firsttime = false;
-                                    }
-                                    var r = box.UnitList.Where(u => u.Row == row && u.Column == col).First().Rectangle;
-                                    var hoveredItem = GetItemFromPoint(new Point(r.X, r.Y));
-                                    if (hoveredItem != null)
-                                    {
-                                        if (!hoveredItemList.Contains(hoveredItem))
-                                        {
-                                            //System.Diagnostics.Debug.WriteLine("Items hovered name=" + hoveredItem.Name);
-                                            itemsCountFromHoverdRange++;
-                                            hoveredItemList.Add(hoveredItem);
-                                        }
-                                    }
+                                int itemsCountFromHoverdRange = 0;
+                                List<Item> hoveredItemList = new List<Item>();
 
-                                    list.Add(r);
+                                list.Clear();
+                                bool firsttime = true;
+
+                                for (int col = unit.Column; col < unit.Column + curDraggingItem.Columns; col++)
+                                {
+                                    for (int row = unit.Row; row < unit.Row + curDraggingItem.Rows; row++)
+                                    {
+                                        if (firsttime)
+                                        {
+                                            startRow = row;
+                                            startCol = col;
+                                            firsttime = false;
+                                        }
+                                        var r = box.UnitList.Where(u => u.Row == row && u.Column == col).First().Rectangle;
+                                        var hoveredItem = GetItemFromPoint(new Point(r.X, r.Y));
+                                        if (hoveredItem != null)
+                                        {
+                                            if (!hoveredItemList.Contains(hoveredItem))
+                                            {
+                                                //System.Diagnostics.Debug.WriteLine("Items hovered name=" + hoveredItem.Name);
+                                                itemsCountFromHoverdRange++;
+                                                hoveredItemList.Add(hoveredItem);
+                                            }
+                                        }
+
+                                        list.Add(r);
+                                    }
+                                }
+
+                                //System.Diagnostics.Debug.WriteLine("Items count=" + itemsCountFromHoverdRange.ToString());
+
+                                if (itemsCountFromHoverdRange == 0)
+                                {
+                                    canBeDroppped = true;
+                                    exchangedItem = curDraggingItem;
+                                    //list = exchangedItem.Rectangles;
+                                }
+                                else if (itemsCountFromHoverdRange == 1)
+                                {
+                                    canBeDroppped = true;
+                                    exchangedItem = hoveredItemList[0];
+                                    list = exchangedItem.Rectangles;
+                                }
+
+                                else
+                                {
+                                    canBeDroppped = false;
+                                    exchangedItem = null;
                                 }
                             }
-
-                            //System.Diagnostics.Debug.WriteLine("Items count=" + itemsCountFromHoverdRange.ToString());
-
-                            if (itemsCountFromHoverdRange == 0)
-                            {
-                                canBeDroppped = true;
-                                exchangedItem = curDraggingItem;
-                                //list = exchangedItem.Rectangles;
-                            }
-                            else if (itemsCountFromHoverdRange == 1)
-                            {
-                                canBeDroppped = true;
-                                exchangedItem = hoveredItemList[0];
-                                list = exchangedItem.Rectangles;
-                            }
-
-                            else
-                            {
-                                canBeDroppped = false;
-                                exchangedItem = null;
-                            }
-
-                            break;
                         }
                     }
                 }
@@ -705,7 +708,7 @@ namespace D2REditor.Controls
 
             return cursorArea;
         }
-        private void CharactorControl_MouseUp(object sender, MouseEventArgs e)
+        private void ItemControl_MouseUp(object sender, MouseEventArgs e)
         {
             //切换大箱子的TAB页
             for (int i = 0; i < 4; i++)
@@ -744,7 +747,7 @@ namespace D2REditor.Controls
             }
         }
 
-        private void CharactorControl_MouseMove(object sender, MouseEventArgs e)
+        private void ItemControl_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDraging)
             {
@@ -798,6 +801,7 @@ namespace D2REditor.Controls
             #region 底图
             //左面的大箱子
             g.DrawImage(stashbmp, 0, 0, stashbmp.Width, stashbmp.Height);
+            g.DrawImage(stashbmp2, 42, 116, stashbmp2.Width, stashbmp2.Height);
             //右面的装备栏
             g.DrawImage(charbmp, stashbmp.Width, 0, charbmp.Width, charbmp.Height);
             #endregion 底图
@@ -819,7 +823,7 @@ namespace D2REditor.Controls
                 //g.DrawString(Utils.AllJsons["strpanel4"], f, titleBrush, Helper.DefinitionInfo.InventoryTitleStartX, Helper.DefinitionInfo.InventoryTitleStartY);
                 var gold = "0";
                 if (Helper.CurrentCharactor.Attributes.Stats.ContainsKey("gold")) gold = Helper.CurrentCharactor.Attributes.Stats["gold"].ToString();
-                g.DrawString(gold, f, Helper.TextBrush, 824 * Helper.DisplayRatio, 666 * Helper.DisplayRatio);
+                g.DrawString(gold, f, Helper.TextBrush, 570 * Helper.DisplayRatio, 840 * Helper.DisplayRatio);
 
                 var goldbank = "0";
 
@@ -836,7 +840,7 @@ namespace D2REditor.Controls
                 }
                 g.DrawString(goldbank, f, Helper.TextBrush, 238 * Helper.DisplayRatio, 645 * Helper.DisplayRatio);
             }
-            g.DrawImage(goldbmp, 794 * Helper.DisplayRatio, 672 * Helper.DisplayRatio);
+            g.DrawImage(goldbmp, 540 * Helper.DisplayRatio, 840 * Helper.DisplayRatio);
             g.DrawImage(goldbmp, 210 * Helper.DisplayRatio, 650 * Helper.DisplayRatio);
             #endregion
 
@@ -888,11 +892,9 @@ namespace D2REditor.Controls
 
                 #region 装备图标
                 var imgname = Helper.GetDefinitionFileName(@"\items\" + item.Icon);
-                var bmp = Helper.Sprite2Png(imgname);
+                var bmp = Helper.Sprite2Png2(imgname);
 
-                //System.Diagnostics.Debug.WriteLine(item.Name);
-                //System.Diagnostics.Debug.WriteLine(r);
-                g.DrawImage(bmp, r.X + (r.Width - bmp.Width) / 2, r.Y + (r.Height - bmp.Height) / 2, bmp.Width, bmp.Height);
+                g.DrawImage(bmp, r.X + (r.Width - bmp.Width) / 2, r.Y+ (r.Height - bmp.Height) / 2, bmp.Width, bmp.Height);
                 #endregion 装备图标
 
 
@@ -923,7 +925,7 @@ namespace D2REditor.Controls
                     for(int j = 0; j < item.SocketedItems.Count; j++)
                     {
                         var iconname = Helper.GetDefinitionFileName(@"\items\" + item.SocketedItems[j].Icon);
-                        var sbmp = Helper.Sprite2Png(iconname);
+                        var sbmp = Helper.Sprite2Png2(iconname);
                         g.DrawImage(sbmp,new RectangleF(hoveringR.X+ sinfo[i][j].X+10*Helper.DisplayRatio, hoveringR.Y + sinfo[i][j].Y+ 6 * Helper.DisplayRatio, 32 * Helper.DisplayRatio, 32 * Helper.DisplayRatio), new Rectangle(0, 0, sbmp.Width, sbmp.Height), GraphicsUnit.Pixel);
                     }
                 }
@@ -957,16 +959,20 @@ namespace D2REditor.Controls
                 if (draggingBmp == null)
                 {
                     var imgname = Helper.GetDefinitionFileName(@"\items\" + this.curDraggingItem.Icon);
-                    draggingBmp = Helper.Sprite2Png(imgname);
+                    draggingBmp = Helper.Sprite2Png2(imgname);
                 }
-                g.DrawImage(draggingBmp, this.curDraggingPositon);
-
                 var hoverinfo = GetItemListFromHoveringPoint(this.curDraggingPositon);
 
-                var transbmp = hoverinfo.CanBeDropped ? transbmpGreen : transbmpRed;
-                foreach (var r in hoverinfo.Rectangles)
+                if (hoverinfo.Rectangles.Count > 0 && hoverinfo.ExchangedItem!=null)
                 {
-                    g.DrawImage(transbmp, r);
+                    var r2 = new Rectangle(hoverinfo.Rectangles[0].X, hoverinfo.Rectangles[0].Y, hoverinfo.ExchangedItem.Columns*Helper.DefinitionInfo.BoxSize, hoverinfo.ExchangedItem.Rows * Helper.DefinitionInfo.BoxSize);
+                    g.DrawImage(draggingBmp, r2.X + (r2.Width - draggingBmp.Width) / 2, r2.Y + (r2.Height - draggingBmp.Height) / 2, draggingBmp.Width, draggingBmp.Height);// this.curDraggingPositon);
+
+                    var transbmp = hoverinfo.CanBeDropped ? transbmpGreen : transbmpRed;
+                    foreach (var r in hoverinfo.Rectangles)
+                    {
+                        g.DrawImage(transbmp, r);
+                    }
                 }
             }
 

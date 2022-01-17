@@ -229,7 +229,7 @@ namespace Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var spriteFiles = Directory.GetFiles(@"c:\temp", "*.sprite");
+            var spriteFiles = Directory.GetFiles(textBox1.Text, "*.sprite");
             int index = 1;
             int count = spriteFiles.Length;
 
@@ -316,7 +316,7 @@ namespace Tools
 
         private void button5_Click(object sender, EventArgs e)
         {
-            var path = @"C:\Users\Administrator\Documents\D2R\data\data\hd\global\ui";
+            var path = textBox1.Text;// @"C:\Users\Administrator\Documents\D2R\data\data\hd\global\ui";
 
             tv.Nodes.Clear();
             var root = tv.Nodes.Add("UI");

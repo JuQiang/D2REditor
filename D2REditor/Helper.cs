@@ -19,9 +19,11 @@ namespace D2REditor
         public static string Host = "http://localhost";
         public const int Version = 0x61;
         public static float DisplayRatio = 1.0f;
+        public static float DisplayRatio2 = 0.6f;
         public static string CurrentD2SFileName = "";
         public static string GeneralButtonImageFile = @"\frontend\hd\final\cinematics\cinematicsbtn";
         private static Dictionary<int, Bitmap> spmappings = new Dictionary<int, Bitmap>();
+        private static Dictionary<int, Bitmap> spmappings2 = new Dictionary<int, Bitmap>();
         public static string DefaultD2RFolder = "";
         public static D2S CurrentCharactor;
         public static Brush TextBrush;
@@ -167,12 +169,18 @@ namespace D2REditor
 
             TooltipFontSize = 12,
 
-            StoreRangeX = new int[] { 628, 677, 726, 775, 824, 873, 922, 971, 1020, 1069 },
-            StoreRangeY = new int[] { 450, 499, 548, 597 },
-            StashRangeX = new int[] { 47, 96, 145, 194, 243, 292, 341, 390, 439, 488 },
-            StashRangeY = new int[] { 120, 169, 218, 267, 316, 365, 414, 463, 512, 561 },
-            BoxSize = 49,
-            InnerBoxSize = 45,
+            //StoreRangeX = new int[] { 628, 677, 726, 775, 824, 873, 922, 971, 1020, 1069 },
+            //StoreRangeY = new int[] { 450, 499, 548, 597 },
+            //StashRangeX = new int[] { 47, 96, 145, 194, 243, 292, 341, 390, 439, 488 },
+            //StashRangeY = new int[] { 120, 169, 218, 267, 316, 365, 414, 463, 512, 561 },
+            StoreRangeX = new int[] { 629, 661, 694,727,759,792,825,857,890,923,955,988,1021,1053,1086},
+            StoreRangeY = new int[] { 450, 483, 516,548,581,614,646,679},
+            StashRangeX = new int[] { 47, 78,108,139,169,200,231,261,292,323,354,384,415,445,476,507},
+            StashRangeY = new int[] { 121, 151,181,212,243,273,304,335,365,396,427,457,488,519,550,580},
+            //BoxSize = 49,
+            //InnerBoxSize = 45,
+            BoxSize = 30,
+            InnerBoxSize = 28,
             EquipedItem = new Rectangle[] {
                 new Rectangle(822, 91, 49 * 2, 49 * 2),//Head, +581
                 new Rectangle(635, 116, 49 * 2, 49 * 4),//RightHand
@@ -283,6 +291,73 @@ namespace D2REditor
             }
 
             return spmappings[hash];
+        }
+
+        public static Bitmap Sprite2Png2(string fileName, bool skipSplit = true)
+        {
+            Bitmap bmp = null;
+
+            var fname = fileName.Replace(".sprite", ".png");
+            int hash = fileName.GetHashCode();
+
+            if (false == spmappings2.TryGetValue(hash, out bmp))
+            {
+                //if (!File.Exists(fname))
+                //{
+                //    var bytes = File.ReadAllBytes(fileName);
+                //    int x, y;
+                //    var version = BitConverter.ToUInt16(bytes, 4);
+                //    var width = BitConverter.ToInt32(bytes, 8);
+                //    var height = BitConverter.ToInt32(bytes, 0xC);
+                //    bmp = new Bitmap(width, height);
+
+                //    if (version == 31)
+                //    {   // regular RGBA
+                //        for (x = 0; x < height; x++)
+                //        {
+                //            for (y = 0; y < width; y++)
+                //            {
+                //                var baseVal = 0x28 + x * 4 * width + y * 4;
+                //                bmp.SetPixel(y, x, Color.FromArgb(bytes[baseVal + 3], bytes[baseVal + 0], bytes[baseVal + 1], bytes[baseVal + 2]));
+                //            }
+                //        }
+                //    }
+                //    else if (version == 61)
+                //    {   // DXT
+                //        var tempBytes = new byte[width * height * 4];
+                //        Dxt.DxtDecoder.DecompressDXT5(bytes, width, height, tempBytes);
+                //        for (y = 0; y < height; y++)
+                //        {
+                //            for (x = 0; x < width; x++)
+                //            {
+                //                var baseVal = (y * width) + (x * 4);
+                //                bmp.SetPixel(x, y, Color.FromArgb(tempBytes[baseVal + 3], tempBytes[baseVal], tempBytes[baseVal + 1], tempBytes[baseVal + 2]));
+                //            }
+                //        }
+                //    }
+
+                //    bmp.Save(fname);
+                //}
+
+                bmp = Image.FromFile(fname) as Bitmap;
+
+                if (!skipSplit)
+                {
+                    spmappings2[hash] = bmp;
+                }
+                else
+                {
+                    var zoombmp = new Bitmap((int)(bmp.Width * Helper.DisplayRatio2), (int)(bmp.Height * Helper.DisplayRatio2));
+                    using (Graphics g = Graphics.FromImage(zoombmp))
+                    {
+                        g.DrawImage(bmp, new Rectangle(0, 0, zoombmp.Width, zoombmp.Height), new Rectangle(0, 0, bmp.Width, bmp.Height), GraphicsUnit.Pixel);
+                    }
+                    spmappings2[hash] = zoombmp;
+                    bmp.Dispose();
+                }
+            }
+
+            return spmappings2[hash];
         }
 
         public static void CacheD2S(D2S d2s)
@@ -1722,7 +1797,7 @@ namespace D2REditor
             Helper.CurrentCharactor.Attributes.Stats["statpts"] = 4092 - (Helper.CurrentCharactor.Attributes.Stats["strength"] + Helper.CurrentCharactor.Attributes.Stats["energy"] + Helper.CurrentCharactor.Attributes.Stats["dexterity"] + Helper.CurrentCharactor.Attributes.Stats["vitality"]);
 
             Helper.CurrentCharactor.Level = 1;
-            //Helper.CurrentCharactor.ClassSkills.Skills.ForEach(skill => skill.Points = 0);
+            Helper.CurrentCharactor.ClassSkills.Skills.ForEach(skill => skill.Points = 0);
         }
     }
 
@@ -1756,7 +1831,7 @@ namespace D2REditor
         {
             get
             {
-                return new Rectangle((int)(StoreRangeX[0] * Helper.DisplayRatio), (int)(StoreRangeY[0] * Helper.DisplayRatio), (int)((StoreRangeX[StoreRangeX.Length - 1] + 49) * Helper.DisplayRatio), (int)((StoreRangeY[StoreRangeY.Length - 1] + 49) * Helper.DisplayRatio));
+                return new Rectangle((int)(StoreRangeX[0] * Helper.DisplayRatio), (int)(StoreRangeY[0] * Helper.DisplayRatio), (int)((StoreRangeX[StoreRangeX.Length - 1] + Helper.DefinitionInfo.BoxSize) * Helper.DisplayRatio), (int)((StoreRangeY[StoreRangeY.Length - 1] + Helper.DefinitionInfo.BoxSize) * Helper.DisplayRatio));
             }
         }
 
@@ -1764,7 +1839,7 @@ namespace D2REditor
         {
             get
             {
-                return new Rectangle((int)(StashRangeX[0] * Helper.DisplayRatio), (int)(StashRangeY[0] * Helper.DisplayRatio), (int)((StashRangeX[StashRangeX.Length - 1] + 49) * Helper.DisplayRatio), (int)((StashRangeY[StashRangeY.Length - 1] + 49) * Helper.DisplayRatio));
+                return new Rectangle((int)(StashRangeX[0] * Helper.DisplayRatio), (int)(StashRangeY[0] * Helper.DisplayRatio), (int)((StashRangeX[StashRangeX.Length - 1] + Helper.DefinitionInfo.BoxSize) * Helper.DisplayRatio), (int)((StashRangeY[StashRangeY.Length - 1] + Helper.DefinitionInfo.BoxSize) * Helper.DisplayRatio));
             }
         }
     }

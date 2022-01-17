@@ -38,8 +38,8 @@
             this.Font = new System.Drawing.Font("SimSun", 5.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "ItemsControl";
             this.Size = new System.Drawing.Size(213, 141);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CharactorControl_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CharactorControl_MouseUp);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ItemControl_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ItemControl_MouseUp);
             this.ResumeLayout(false);
 
         }

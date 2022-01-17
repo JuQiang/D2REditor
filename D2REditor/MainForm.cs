@@ -358,7 +358,7 @@ namespace D2REditor
                 }
             };
 
-            btnExtra2.Visible = true; btnExtra2.Text = "+";// tooltip.SetToolTip(btnExtra2, Utils.AllJsons["click_import_local"]);
+            btnExtra2.Visible = true; btnExtra2.Text = "+";tooltip.SetToolTip(btnExtra2, Utils.AllJsons["click_import_local"]);
             btnExtra2.Click += (asender, ae) =>
             {
                 OpenFileDialog ofd = new OpenFileDialog();
