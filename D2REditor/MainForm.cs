@@ -126,9 +126,23 @@ namespace D2REditor
 
         private void itemsControl_OnItemSelected(object sender, ItemSelectedEventArgs e)
         {
-            FormEditItem fei = new FormEditItem(e.Item);
-            fei.ShowDialog();
+            ContextMenu cm = new ContextMenu();
+            cm.MenuItems.Add(Utils.AllJsons["edit"]).Click += delegate
+            {
+                FormEditItem fei = new FormEditItem(e.Item);
+                fei.ShowDialog();
+            };
+            cm.MenuItems.Add(Utils.AllJsons["copy"]).Click += delegate
+            {
+                var item = e.Item.Clone();
+                item.Page = 1;
+                item.Mode = ItemMode.Stored;
 
+                itemsControl.SetCurrentDraggingItem(item);
+            };
+
+
+            cm.Show(itemsControl, e.Point);
         }
 
         private void button1_Click(object sender, EventArgs e)

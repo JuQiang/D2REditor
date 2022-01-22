@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveAsTemplate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelRunewordsCannotEdit = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.dgvItemStatCost = new System.Windows.Forms.DataGridView();
+            this.colDescFunc = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colDescFuncValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaxValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbItems = new System.Windows.Forms.ComboBox();
             this.btnDeleteStat = new System.Windows.Forms.Button();
             this.cbSubTypes = new System.Windows.Forms.ComboBox();
@@ -55,10 +59,6 @@
             this.cbWeight = new System.Windows.Forms.ComboBox();
             this.cbNoDamaged = new System.Windows.Forms.CheckBox();
             this.labelSockets = new System.Windows.Forms.Label();
-            this.colDescFunc = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colDescFuncValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaxValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemStatCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbItemPicture)).BeginInit();
@@ -81,9 +81,9 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 530);
+            this.panel1.Location = new System.Drawing.Point(0, 516);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(831, 48);
+            this.panel1.Size = new System.Drawing.Size(831, 62);
             this.panel1.TabIndex = 13;
             // 
             // labelRunewordsCannotEdit
@@ -120,40 +120,40 @@
             // 
             // dgvItemStatCost
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItemStatCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemStatCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvItemStatCost.ColumnHeadersHeight = 34;
             this.dgvItemStatCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDescFunc,
             this.colDescFuncValue,
             this.colValue,
             this.colMaxValue});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItemStatCost.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItemStatCost.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvItemStatCost.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvItemStatCost.Location = new System.Drawing.Point(11, 177);
             this.dgvItemStatCost.Margin = new System.Windows.Forms.Padding(2);
             this.dgvItemStatCost.Name = "dgvItemStatCost";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItemStatCost.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemStatCost.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvItemStatCost.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvItemStatCost.RowTemplate.Height = 30;
             this.dgvItemStatCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -162,6 +162,43 @@
             this.dgvItemStatCost.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemStatCost_CellValueChanged);
             this.dgvItemStatCost.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvItemStatCost_CurrentCellDirtyStateChanged);
             this.dgvItemStatCost.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvItemStatCost_DataError);
+            // 
+            // colDescFunc
+            // 
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle8;
+            this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.colDescFunc.HeaderText = "高级属性(下拉更改)";
+            this.colDescFunc.MinimumWidth = 8;
+            this.colDescFunc.Name = "colDescFunc";
+            this.colDescFunc.Width = 240;
+            // 
+            // colDescFuncValue
+            // 
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle9;
+            this.colDescFuncValue.HeaderText = "高级属性值";
+            this.colDescFuncValue.MinimumWidth = 8;
+            this.colDescFuncValue.Name = "colDescFuncValue";
+            this.colDescFuncValue.ReadOnly = true;
+            this.colDescFuncValue.Width = 240;
+            // 
+            // colValue
+            // 
+            this.colValue.HeaderText = "值";
+            this.colValue.MinimumWidth = 8;
+            this.colValue.Name = "colValue";
+            this.colValue.Width = 70;
+            // 
+            // colMaxValue
+            // 
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle10;
+            this.colMaxValue.HeaderText = "最大值";
+            this.colMaxValue.MinimumWidth = 8;
+            this.colMaxValue.Name = "colMaxValue";
+            this.colMaxValue.ReadOnly = true;
+            this.colMaxValue.Width = 70;
             // 
             // cbItems
             // 
@@ -252,9 +289,9 @@
             "4孔",
             "5孔",
             "6孔"});
-            this.cbSockets.Location = new System.Drawing.Point(413, 35);
+            this.cbSockets.Location = new System.Drawing.Point(399, 35);
             this.cbSockets.Name = "cbSockets";
-            this.cbSockets.Size = new System.Drawing.Size(39, 26);
+            this.cbSockets.Size = new System.Drawing.Size(53, 26);
             this.cbSockets.TabIndex = 45;
             // 
             // lbBasicDescription
@@ -330,43 +367,6 @@
             this.labelSockets.Size = new System.Drawing.Size(62, 18);
             this.labelSockets.TabIndex = 54;
             this.labelSockets.Text = "label1";
-            // 
-            // colDescFunc
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.colDescFunc.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colDescFunc.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.colDescFunc.HeaderText = "高级属性(下拉更改)";
-            this.colDescFunc.MinimumWidth = 8;
-            this.colDescFunc.Name = "colDescFunc";
-            this.colDescFunc.Width = 240;
-            // 
-            // colDescFuncValue
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colDescFuncValue.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colDescFuncValue.HeaderText = "高级属性值";
-            this.colDescFuncValue.MinimumWidth = 8;
-            this.colDescFuncValue.Name = "colDescFuncValue";
-            this.colDescFuncValue.ReadOnly = true;
-            this.colDescFuncValue.Width = 240;
-            // 
-            // colValue
-            // 
-            this.colValue.HeaderText = "值";
-            this.colValue.MinimumWidth = 8;
-            this.colValue.Name = "colValue";
-            this.colValue.Width = 70;
-            // 
-            // colMaxValue
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.colMaxValue.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colMaxValue.HeaderText = "最大值";
-            this.colMaxValue.MinimumWidth = 8;
-            this.colMaxValue.Name = "colMaxValue";
-            this.colMaxValue.ReadOnly = true;
-            this.colMaxValue.Width = 70;
             // 
             // FormEditItem
             // 

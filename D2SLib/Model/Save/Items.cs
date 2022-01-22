@@ -437,8 +437,8 @@ namespace D2SLib.Model.Save
             if (item.IsArmor)
             {
                 //why do i need this cast?
-                //item.Armor = (UInt16)(reader.ReadUInt16(11) + ExcelTxt.ItemStatCostTxt["armorclass"]["Save Add"].ToUInt16());
-                item.Armor = (UInt16)(reader.ReadUInt16(11) - ExcelTxt.ItemStatCostTxt["armorclass"]["Save Add"].ToUInt16());
+                item.Armor = (ushort)(reader.ReadUInt16(11) - ExcelTxt.ItemStatCostTxt["armorclass"]["Save Add"].ToUInt16());
+                //item.Armor = (UInt16)(reader.ReadUInt16(11) - ExcelTxt.ItemStatCostTxt["armorclass"]["Save Add"].ToUInt16());
             }
             if (item.IsArmor || item.IsWeapon)
             {
@@ -555,7 +555,7 @@ namespace D2SLib.Model.Save
             bool isStackable = row["stackable"].ToBool();
             if (isArmor)
             {
-                writer.WriteUInt16((UInt16)(item.Armor - ExcelTxt.ItemStatCostTxt["armorclass"]["Save Add"].ToUInt16()), 11);
+                writer.WriteUInt16((ushort)(item.Armor + ExcelTxt.ItemStatCostTxt["armorclass"]["Save Add"].ToUInt16()), 11);
             }
             if (isArmor || isWeapon)
             {
@@ -955,7 +955,10 @@ namespace D2SLib.Model.Save
         public string RunewordsDependency { get; set; }
         public Item Clone()
         {
-            return Core.ReadItem(Core.WriteItem(this, 0x61), 0x61);
+            var item = Core.ReadItem(Core.WriteItem(this, 0x61), 0x61);
+            item.Id = (uint)(DateTime.Now.Ticks);
+
+            return item;
         }
     }
 

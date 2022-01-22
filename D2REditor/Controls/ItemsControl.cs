@@ -739,7 +739,7 @@ namespace D2REditor.Controls
                 }
                 if ((item != null) && (OnItemSelected != null))
                 {
-                    OnItemSelected(this, new ItemSelectedEventArgs(item));
+                    OnItemSelected(this, new ItemSelectedEventArgs(item,e.Location));
                     //ItemsControl_MouseDown(sender, new MouseEventArgs(MouseButtons.Left,e.Clicks, e.X,e.Y,e.Delta));
                     //Item.UpdateRowsAndColumnsInformation(item);
                     this.Invalidate();
