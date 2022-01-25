@@ -757,11 +757,11 @@ namespace D2REditor.Controls
                     var item = GetItemFromPoint(e.Location);
                     if (item != null)
                     {
-                        System.Diagnostics.Debug.WriteLine("Body now." + item.Name);
+                        //System.Diagnostics.Debug.WriteLine("Body now." + item.Name);
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("Body now.");
+                        //System.Diagnostics.Debug.WriteLine("Body now.");
                     }
                 }
             }

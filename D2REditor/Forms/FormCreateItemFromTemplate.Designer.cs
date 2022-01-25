@@ -60,7 +60,7 @@
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
             this.btnPrevious.ImageFile = "";
             this.btnPrevious.ImageFrames = 4;
-            this.btnPrevious.Location = new System.Drawing.Point(615, 798);
+            this.btnPrevious.Location = new System.Drawing.Point(615, 740);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(150, 35);
             this.btnPrevious.TabIndex = 9;
@@ -79,7 +79,7 @@
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.ImageFile = "";
             this.btnNext.ImageFrames = 4;
-            this.btnNext.Location = new System.Drawing.Point(785, 798);
+            this.btnNext.Location = new System.Drawing.Point(785, 740);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(150, 35);
             this.btnNext.TabIndex = 8;

@@ -437,7 +437,7 @@ namespace D2SLib
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine(String.Format("Rare prefix code={0}", code));
+                            //System.Diagnostics.Debug.WriteLine(String.Format("Rare prefix code={0}", code));
                         }
                     }
                 }
@@ -472,7 +472,7 @@ namespace D2SLib
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine(String.Format("Rare suffix code={0}", code));
+                            //System.Diagnostics.Debug.WriteLine(String.Format("Rare suffix code={0}", code));
                         }
                     }
                 }
@@ -645,7 +645,7 @@ namespace D2SLib
                             }
                             else
                             {
-                                System.Diagnostics.Debug.WriteLine(item["code"].Value);
+                                //System.Diagnostics.Debug.WriteLine(item["code"].Value);
                             }
                         }
                     }

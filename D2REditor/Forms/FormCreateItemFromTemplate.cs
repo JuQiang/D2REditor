@@ -359,7 +359,7 @@ namespace D2REditor.Forms
 
             foreach (var group in grouped)
             {
-                if (ignoreKeys.Contains(group.Key)) continue;
+                //if (ignoreKeys.Contains(group.Key)) continue;
                 var glist = group.ToList();
                 curSubTypes[glist[0].TypeName] = glist;
             }

@@ -46,12 +46,12 @@ namespace D2REditor.Forms
             //cbIsCompact.Checked = this.item.IsCompact;
             cbIsEthereal.Checked = this.item.IsEthereal;
 
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             //品质
             foreach (var q in Utils.QualityList) cbQuality.Items.Add(q);
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             //类型
@@ -61,7 +61,7 @@ namespace D2REditor.Forms
             {
                 cbTypes.Items.Add(typename.Key);
             }
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             //子类型
@@ -80,24 +80,24 @@ namespace D2REditor.Forms
             cbTypes.Text = Utils.MiniItemList.Where(mi => mi.ItemCode.Trim() == item.Code.Trim()).FirstOrDefault().TypeName;
             cbSubTypes.Text = Utils.MiniItemList.Where(mi => mi.ItemCode.Trim() == item.Code.Trim()).FirstOrDefault().SubTypeName;
             cbItems.Text = Utils.MiniItemList.Where(mi => mi.ItemCode.Trim() == item.Code.Trim()).FirstOrDefault().ItemName;
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             BuildGridView();
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             //图片
             var imgname = Helper.GetDefinitionFileName(@"\items\" + item.Icon);
             var bmp = Helper.Sprite2Png(imgname);
             pbItemPicture.Image = bmp;
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             //基本描述
             var lines = Helper.GetBasicDescription(Helper.CurrentCharactor.Level, item).Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var line in lines) lbBasicDescription.Items.Add(line);
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             //基本属性
@@ -106,7 +106,7 @@ namespace D2REditor.Forms
             cbSockets.Enabled = !item.IsRuneword;
 
             //cbItems.EndUpdate();
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             if (this.item.IsWeapon) cbTypes.SelectedIndex = 0;
@@ -114,7 +114,7 @@ namespace D2REditor.Forms
             else cbTypes.SelectedIndex = 2;
             FillSubTypes();
 
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
             sw.Restart();
             //cbSubTypes.Text = Utils.MiniItemList.Where(mi => mi.ItemName == this.item.TypeName).First().SubTypeName;
             cbSubTypes.Text = this.item.TypeName;
@@ -122,7 +122,7 @@ namespace D2REditor.Forms
 
             cbItems.Text = Utils.AllJsons[this.item.Code.Trim()];
 
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
             sw.Restart();
             if (this.item.IsArmor)
             {
@@ -132,11 +132,11 @@ namespace D2REditor.Forms
 
                 cbWeight.SelectedIndex = this.item.Speed / 5;
             }
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
             sw.Restart();
             SetMaxSockets(item.Code);
-            System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine(sw.ElapsedMilliseconds);
 
 
 

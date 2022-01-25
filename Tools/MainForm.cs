@@ -301,7 +301,7 @@ namespace Tools
             foreach (var file in allfiles)
             {
                 var item = Core.ReadItem(file, 0x61);
-                System.Diagnostics.Debug.WriteLine(String.Format("{0} - {1}", (new FileInfo(file)).Name, item.Name));
+                //System.Diagnostics.Debug.WriteLine(String.Format("{0} - {1}", (new FileInfo(file)).Name, item.Name));
             }
         }
 

@@ -1335,7 +1335,7 @@ namespace D2REditor
                             basicItemRow = ExcelTxt.MiscTxt.Rows.Where(w => w["type"].Value == typecode).First();
                             break;
                         case "":
-                            System.Diagnostics.Debug.WriteLine(row["Name"].Value + " : " + type + ", " + typecode);
+                            //System.Diagnostics.Debug.WriteLine(row["Name"].Value + " : " + type + ", " + typecode);
                             break;
                         default:
                             break;
@@ -1345,7 +1345,7 @@ namespace D2REditor
 
                     if (basicItemRow == null)
                     {
-                        System.Diagnostics.Debug.WriteLine(output);
+                        //System.Diagnostics.Debug.WriteLine(output);
                         continue;
                     }
 
@@ -1613,6 +1613,9 @@ namespace D2REditor
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
+                item.ItemLevel = (byte)(row["level"].ToUInt16());
+                item.TotalNumberOfSockets = (byte)(row["gemsockets"].ToUInt16());
+
                 misces.Add(item);
             }
 
@@ -1701,7 +1704,7 @@ namespace D2REditor
 
                 if (String.IsNullOrEmpty(item.Icon))
                 {
-                    System.Diagnostics.Debug.WriteLine("没有图标：" + item.Name);
+                    //System.Diagnostics.Debug.WriteLine("没有图标：" + item.Name);
                     continue;
                 }
 

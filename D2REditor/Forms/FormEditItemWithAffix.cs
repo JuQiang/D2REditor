@@ -436,11 +436,11 @@ namespace D2REditor.Forms
             {
                 if (Helper.IsPointInRange(e.Location, new Rectangle(18 + 60 * i, 34, gembmp.Width, gembmp.Height)))
                 {
-                    System.Diagnostics.Debug.WriteLine("Move to ." + i.ToString());
+                    //System.Diagnostics.Debug.WriteLine("Move to ." + i.ToString());
                     if ((currentGem == null) || (item.SocketedItems[i] != currentGem))
                     {
                         currentGem = item.SocketedItems[i];
-                        System.Diagnostics.Debug.WriteLine("Repaint on ." + i.ToString());
+                        //System.Diagnostics.Debug.WriteLine("Repaint on ." + i.ToString());
                         gbSocket.Invalidate();
                         return;
                     }
