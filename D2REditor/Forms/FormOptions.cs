@@ -115,7 +115,7 @@ namespace D2REditor.Forms
                     g.DrawImage(upimg, 75 * Helper.DisplayRatio + upimg.Width * i , 100 * Helper.DisplayRatio);
                 }
 
-                using (Font f = new Font("SimSun", 9, FontStyle.Regular))
+                using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Regular))
                 {
                     using (var sf = new StringFormat())
                     {

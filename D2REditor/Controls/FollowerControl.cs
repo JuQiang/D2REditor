@@ -75,7 +75,7 @@ namespace D2REditor.Controls
 
             g.DrawImage(chabackbmp, 0, 0, chabackbmp.Width, chabackbmp.Height);
             g.DrawImage(advchabackmp, chabackbmp.Width, 0, advchabackmp.Width, advchabackmp.Height);
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
             {
                 var text = Utils.AllJsons["MiniPanelHireinv"];
                 var sf = g.MeasureString(text, f);
@@ -89,7 +89,7 @@ namespace D2REditor.Controls
 
             var stats = Helper.CurrentCharactor.Attributes.Stats;
 
-            using (Font f = new Font("SimSun", 14, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 14, FontStyle.Bold))
             {
                 g.DrawString(String.Format("等级 {0} {1}", Helper.CurrentCharactor.Level, Helper.CurrentCharactor.ClassName), f, Brushes.White, 60, 436);
 

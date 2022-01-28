@@ -147,7 +147,7 @@ namespace D2REditor.Controls
             g.DrawImage(chabackbmp, left, 0, chabackbmp.Width, chabackbmp.Height);
             //g.DrawImage(advchabackmp, left + chabackbmp.Width, 0, advchabackmp.Width, advchabackmp.Height);            
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
@@ -156,7 +156,7 @@ namespace D2REditor.Controls
                 }
             }
 
-            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
             {
                 //g.DrawString("角色", f, Helper.TextBrush, 260, 36);
                 g.DrawString(Helper.CurrentCharactor.DisplayName, f, Brushes.White, left + 60 * Helper.DisplayRatio, 80 * Helper.DisplayRatio);
@@ -170,7 +170,7 @@ namespace D2REditor.Controls
             }
 
 
-            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
             {
                 g.DrawString(String.Format("{2} {0} {1}", Helper.CurrentCharactor.Level, Helper.CurrentCharactor.ClassName, Utils.AllJsons["Level"]), f, Brushes.White, left + 60 * Helper.DisplayRatio, 126 * Helper.DisplayRatio);
 

@@ -217,8 +217,8 @@ namespace D2REditor.Forms
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Center;
-                if (curtab == 0) g.DrawString(curTitle, this.Font, Brushes.White, new RectangleF(0, 40 * Helper.DisplayRatio, this.Width, this.Height - 4), sf);
-                if (curtab == 1) g.DrawString(curTitle + "(" + curSubTypes.Keys.Count.ToString() + ")", this.Font, Brushes.White, new RectangleF(0, 40*Helper.DisplayRatio, this.Width, this.Height - 4), sf);
+                if (curtab == 0) g.DrawString(curTitle, this.Font, Brushes.White, new RectangleF(0, 32 * Helper.DisplayRatio, this.Width, this.Height - 4), sf);
+                if (curtab == 1) g.DrawString(curTitle + "(" + curSubTypes.Keys.Count.ToString() + ")", this.Font, Brushes.White, new RectangleF(0, 32 * Helper.DisplayRatio, this.Width, this.Height - 4), sf);
             }
 
             if (curtab == 0)
@@ -226,7 +226,7 @@ namespace D2REditor.Forms
                 for (int i = 0; i < 6; i++)
                 {
                     g.DrawImage(blockbmp, (50 + (i % 3) * 300)*Helper.DisplayRatio, (160 + (i / 3) * 300)*Helper.DisplayRatio);
-                    using (Font f = new Font("SimSun", 12, FontStyle.Bold))
+                    using (Font f = new Font(Helper.CurrentFontFamily, 12, FontStyle.Bold))
                     {
                         using (var sf = new StringFormat())
                         {
@@ -247,9 +247,9 @@ namespace D2REditor.Forms
             }
             else if (curtab > 0)
             {
-                using (Font f = new Font("SimSun", 24, FontStyle.Bold))
+                using (Font f = new Font(Helper.CurrentFontFamily, 24, FontStyle.Bold))
                 {
-                    g.DrawString("<", f, Brushes.White, 28, 24);
+                    g.DrawString("<", f, Brushes.White, 28, 16);
                 }
             }
 
@@ -272,7 +272,7 @@ namespace D2REditor.Forms
                         g.DrawImage(blockbmp2, (50 + 150 * (index % 6))*Helper.DisplayRatio, (80 + ((index % 30) / 6) * 130)*Helper.DisplayRatio);
 
 
-                        using (Font f = new Font("SimSun", 12))
+                        using (Font f = new Font(Helper.CurrentFontFamily, 12))
                         {
                             using (var sf = new StringFormat())
                             {
@@ -299,7 +299,7 @@ namespace D2REditor.Forms
             {
                 var import = Utils.AllJsons["double_click_to_import"];
                 var sf = g.MeasureString(import, this.Font);
-                g.DrawString(import, this.Font, (elapsed % 2 == 0) ? Brushes.Red : Brushes.Yellow, (this.Width - sf.Width) / 2, 45*Helper.DisplayRatio);
+                g.DrawString(import, this.Font, (elapsed % 2 == 0) ? Brushes.Red : Brushes.Yellow, (this.Width - sf.Width) / 2, 32*Helper.DisplayRatio);
             }
 
             e.Graphics.DrawImage(bmp, 0, 0);
@@ -359,7 +359,7 @@ namespace D2REditor.Forms
 
             foreach (var group in grouped)
             {
-                //if (ignoreKeys.Contains(group.Key)) continue;
+                if (ignoreKeys.Contains(group.Key)) continue;
                 var glist = group.ToList();
                 curSubTypes[glist[0].TypeName] = glist;
             }
@@ -460,7 +460,7 @@ namespace D2REditor.Forms
             }
 
             var tuple = MeasureSizeInfo(item);
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize*Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.TooltipFontSize*Helper.DisplayRatio, FontStyle.Bold))
             {
                 for (int i = 0; i < tuple.Item2.Length; i++)
                 {
@@ -512,7 +512,7 @@ namespace D2REditor.Forms
 
             using (Graphics g = this.CreateGraphics())
             {
-                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize, FontStyle.Bold))
+                using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.TooltipFontSize, FontStyle.Bold))
                 {
                     for (int i = 0; i < tooltips.Length; i++)
                     {

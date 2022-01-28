@@ -73,7 +73,14 @@ namespace D2SLib.Model.Save
             UInt16 count = reader.ReadUInt16();
             for (int i = 0; i < count; i++)
             {
-                itemList.Items.Add(Item.Read(reader, version));
+                try
+                {
+                    itemList.Items.Add(Item.Read(reader, version));
+                }
+                catch(Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex);
+                }
             }
             return itemList;
         }

@@ -131,7 +131,7 @@ namespace D2REditor.Forms
 
 
             g.DrawString(descriptions[e.Index], this.Font, Helper.TextBrush, e.Bounds.X + classesbmp[e.Index].Width, e.Bounds.Y + 3);
-            using (Font f = new Font("SimSun", 9))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9))
             {
                 using (StringFormat sf = new StringFormat())
                 {

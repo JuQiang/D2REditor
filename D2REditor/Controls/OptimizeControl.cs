@@ -18,7 +18,7 @@ namespace D2REditor.Controls
         {
             Graphics g = e.Graphics;
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize*Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize*Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {

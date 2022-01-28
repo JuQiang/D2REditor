@@ -60,7 +60,7 @@ namespace D2REditor.Forms
             // 
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.ImageFile = "";
             this.btnEdit.ImageFrames = 4;
@@ -81,7 +81,7 @@ namespace D2REditor.Forms
             this.pbRightPanel.Controls.Add(this.btnCreateNew);
             this.pbRightPanel.Controls.Add(this.btnDelete);
             this.pbRightPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pbRightPanel.Font = new System.Drawing.Font("SimSun", 10.5F);
+            this.pbRightPanel.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 10.5F);
             this.pbRightPanel.Location = new System.Drawing.Point(762, 0);
             this.pbRightPanel.Name = "pbRightPanel";
             this.pbRightPanel.Size = new System.Drawing.Size(292, 632);
@@ -101,7 +101,7 @@ namespace D2REditor.Forms
             // 
             this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Bold);
+            this.btnRefresh.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 16F, System.Drawing.FontStyle.Bold);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.ImageFile = "";
             this.btnRefresh.ImageFrames = 4;
@@ -116,7 +116,7 @@ namespace D2REditor.Forms
             // 
             this.btnCreateNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCreateNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateNew.Font = new System.Drawing.Font("SimSun", 9F);
+            this.btnCreateNew.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F);
             this.btnCreateNew.ForeColor = System.Drawing.Color.White;
             this.btnCreateNew.ImageFile = "";
             this.btnCreateNew.ImageFrames = 4;
@@ -132,7 +132,7 @@ namespace D2REditor.Forms
             // 
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("SimSun", 16F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 16F, System.Drawing.FontStyle.Bold);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.ImageFile = "";
             this.btnDelete.ImageFrames = 4;
@@ -160,7 +160,7 @@ namespace D2REditor.Forms
             // 
             this.btnAbout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbout.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAbout.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Bold);
             this.btnAbout.ForeColor = System.Drawing.Color.White;
             this.btnAbout.ImageFile = "";
             this.btnAbout.ImageFrames = 4;
@@ -176,7 +176,7 @@ namespace D2REditor.Forms
             // 
             this.btnOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOptions.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOptions.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Bold);
             this.btnOptions.ForeColor = System.Drawing.Color.White;
             this.btnOptions.ImageFile = "";
             this.btnOptions.ImageFrames = 4;
@@ -199,7 +199,7 @@ namespace D2REditor.Forms
             this.Controls.Add(this.pbRightPanel);
             this.Controls.Add(this.pbLeftPanel);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("SimSun", 9F);
+            this.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

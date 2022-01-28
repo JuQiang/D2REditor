@@ -260,7 +260,7 @@ namespace D2REditor.Forms
             e.Graphics.DrawImage(anilist[logoIndex], new RectangleF(45*Helper.DisplayRatio, 56 * Helper.DisplayRatio, 210 * Helper.DisplayRatio, 210 * Helper.DisplayRatio * anilist[0].Height / anilist[0].Width));
             e.Graphics.DrawImage(anilist2[logoIndex], new RectangleF(90 * Helper.DisplayRatio, 192 * Helper.DisplayRatio, 100 * Helper.DisplayRatio, 100 * Helper.DisplayRatio * anilist2[0].Height / anilist2[0].Width));
 
-            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
             {
                 e.Graphics.DrawString("R E S U R R E C T E D", f, brush, new PointF(50 * Helper.DisplayRatio, 173 * Helper.DisplayRatio));
             }

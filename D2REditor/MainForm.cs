@@ -60,7 +60,7 @@ namespace D2REditor
             g.DrawImage(sprintbmp, new RectangleF(280 * Helper.DisplayRatio, top + 113 * Helper.DisplayRatio, 16 * Helper.DisplayRatio, 16 * Helper.DisplayRatio), new Rectangle(0, 0, sprintbmp.Width, sprintbmp.Height), GraphicsUnit.Pixel);
             g.DrawImage(staminabmp, new RectangleF(302 * Helper.DisplayRatio, top + 113 * Helper.DisplayRatio, 180 * Helper.DisplayRatio, 16 * Helper.DisplayRatio), new Rectangle(0, 0, staminabmp.Width, staminabmp.Height), GraphicsUnit.Pixel);
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize, FontStyle.Bold))
             {
                 var text = Helper.CurrentCharactor.DisplayName;
                 var sf = e.Graphics.MeasureString(text, f);

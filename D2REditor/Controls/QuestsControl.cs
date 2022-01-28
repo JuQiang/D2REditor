@@ -46,7 +46,7 @@ namespace D2REditor.Controls
             questdesc.ForeColor = Color.White;
             questdesc.BackColor = Color.Transparent;
             questdesc.AutoSize = true;
-            questdesc.Font = new Font("SimSun", 9, FontStyle.Bold);
+            questdesc.Font = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold);
             questdesc.AutoSize = false;
             questdesc.BorderStyle = BorderStyle.FixedSingle;
             questdesc.Width = questbackbmp.Width - (int)(100*Helper.DisplayRatio);
@@ -221,7 +221,7 @@ namespace D2REditor.Controls
             g.DrawImage(questbackbmp, left * Helper.DisplayRatio + 0, 0, questbackbmp.Width, questbackbmp.Height);
             //g.DrawImage(diffbmp, diffleft, difftop, diffbmp.Width,diffbmp.Height);
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
@@ -231,7 +231,7 @@ namespace D2REditor.Controls
                 }
             }
 
-            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
             {
                 var text = Utils.AllJsons[String.Format("qstsa{0}q{1}", currentTab + 1, currentquest + 1)]; ;
                 var sf = g.MeasureString(text, f);
@@ -240,7 +240,7 @@ namespace D2REditor.Controls
                 //"qstsprevious"
             }
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTabFontSize * Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTabFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 //g.DrawString("选择要优化的难度", f, Brushes.White, diffleft + 60, difftop - 30);
 

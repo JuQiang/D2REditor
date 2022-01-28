@@ -63,7 +63,7 @@ namespace D2SLib.Model.Save
                 writer.WriteUInt16(mercenaryItemList.Header ?? 0x666A);
                 if (mercenary.Id != 0)
                 {
-                    writer.WriteBytes(ItemList.Write(mercenaryItemList.ItemList, version));
+                    //writer.WriteBytes(ItemList.Write(mercenaryItemList.ItemList, version));
                 }
                 return writer.ToArray();
             }

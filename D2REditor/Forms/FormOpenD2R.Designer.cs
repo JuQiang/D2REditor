@@ -37,7 +37,7 @@
             // 
             this.btnSelectFile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSelectFile.BackgroundImage")));
             this.btnSelectFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSelectFile.Font = new System.Drawing.Font("SimSun", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSelectFile.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSelectFile.ForeColor = System.Drawing.Color.White;
             this.btnSelectFile.Location = new System.Drawing.Point(25, 961);
             this.btnSelectFile.Name = "btnSelectFile";

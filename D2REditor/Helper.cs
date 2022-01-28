@@ -3,6 +3,7 @@ using D2SLib.Model.Save;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -16,7 +17,10 @@ namespace D2REditor
 
     public class Helper
     {
+        private static Dictionary<string,FontFamily> fonts = new Dictionary<string, FontFamily>();
+        private static PrivateFontCollection pfc = new PrivateFontCollection();
         public static string Host = "http://localhost";
+        public static FontFamily CurrentFontFamily { get; set; }
         public const int Version = 0x61;
         public static float DisplayRatio = 1.0f;
         public static float DisplayRatio2 = 0.6f;
@@ -32,7 +36,10 @@ namespace D2REditor
         public static string CurrentLanguage
         {
             get { return Utils.CurrentLanguage; }
-            set { Utils.CurrentLanguage = value; }
+            set { 
+                Utils.CurrentLanguage = value; 
+                Helper.CurrentFontFamily = fonts[value];
+            }
         }
 
         static Helper()
@@ -57,6 +64,25 @@ namespace D2REditor
             LanguageMappings.Add(new LanguageMapping("Русский", "ruRU"));
             LanguageMappings.Add(new LanguageMapping("中文 (简体)", "zhCN"));
             LanguageMappings.Add(new LanguageMapping("中文（繁體）", "zhTW"));
+            
+            pfc.AddFontFile(Helper.CacheFolder + "\\fonts\\ik4ll3.ttf");
+            pfc.AddFontFile(Helper.CacheFolder + "\\fonts\\blizzardglobal-v5_81.ttf");
+
+            fonts["enUS"] = pfc.Families[0];
+            fonts["deDE"] = pfc.Families[0];
+            fonts["esES"] = pfc.Families[0];
+            fonts["frFR"] = pfc.Families[0];
+            fonts["itIT"] = pfc.Families[0];
+            fonts["jaJP"] = pfc.Families[0];
+            fonts["esMX"] = pfc.Families[0];
+            fonts["koKR"] = pfc.Families[0];
+            fonts["ptBR"] = pfc.Families[0];
+            fonts["plPL"] = pfc.Families[0];
+            fonts["ruRU"] = pfc.Families[0];
+            fonts["zhCN"] = pfc.Families[0];
+            fonts["zhTW"] = pfc.Families[0];
+
+            Helper.CurrentFontFamily = fonts["zhTW"];
         }
 
         public static string SharedD2IFileName
@@ -1422,6 +1448,11 @@ namespace D2REditor
 
                     if (dep.EndsWith("/")) dep = dep.Substring(0, dep.Length - 1);
                     item.RunewordsDependency = dep;
+                    if (item.IsArmor)
+                    {
+                        item.Armor = (ushort)(ExcelTxt.ArmorTxt[item.Code]["maxac"].ToUInt16());
+                    }
+
 
                     SplitStatLists(item, list);
                     runewords.Add(item);
@@ -1610,6 +1641,10 @@ namespace D2REditor
                 item.Id = (uint)(DateTime.Now.Ticks);
                 item.Quality = ItemQuality.Normal;
                 Helper.SetDurability(item);
+                if (item.IsArmor)
+                {
+                    item.Armor = (ushort)(ExcelTxt.ArmorTxt[item.Code]["maxac"].ToUInt16());
+                }
 
                 if (String.IsNullOrEmpty(item.Icon)) continue;
 
@@ -1634,7 +1669,10 @@ namespace D2REditor
                 item.Quality = ItemQuality.Unique;
                 item.FileIndex = (uint)(row["*ID"].ToInt32());
                 Helper.SetDurability(item);
-
+                if (item.IsArmor)
+                {
+                    item.Armor = (ushort)(ExcelTxt.ArmorTxt[item.Code]["maxac"].ToUInt16());
+                }
 
                 if (String.IsNullOrEmpty(item.Icon))
                 {
@@ -1700,6 +1738,10 @@ namespace D2REditor
                 item.Quality = ItemQuality.Set;
                 item.FileIndex = (uint)(row["*ID"].ToInt32());
                 Helper.SetDurability(item);
+                if (item.IsArmor)
+                {
+                    item.Armor = (ushort)(ExcelTxt.ArmorTxt[item.Code]["maxac"].ToUInt16());
+                }
 
 
                 if (String.IsNullOrEmpty(item.Icon))

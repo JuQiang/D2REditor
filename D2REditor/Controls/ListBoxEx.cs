@@ -48,7 +48,7 @@ namespace D2REditor.Controls
                 g.DrawImage(borderbmp, new Rectangle(0, 0, width, height));
             }
 
-            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
             {
                 g.DrawString(cha.Title, f, brush, 8, 8);
                 g.DrawString(cha.FileName, f, Brushes.White, 8, 26);

@@ -118,7 +118,7 @@ namespace D2REditor.Controls
             g.DrawImage(waypointsbackbmp, 0, 0);
             g.DrawImage(bgbmp, 36 * Helper.DisplayRatio, 70 * Helper.DisplayRatio);
             g.DrawImage(backbmp[curtab], new RectangleF(tableft, top, backbmp[0].Width * Helper.DisplayRatio, backbmp[0].Height * Helper.DisplayRatio), new RectangleF(0, 0, backbmp[curtab].Width, backbmp[curtab].Height), GraphicsUnit.Pixel);
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
@@ -136,14 +136,14 @@ namespace D2REditor.Controls
                 var sf = g.MeasureString(name, this.Font);//4,4,140,30
                 if (curtab == i)
                 {
-                    using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+                    using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
                     {
                         g.DrawString(name, f, Brushes.White, 50 * Helper.DisplayRatio + 150 * i * Helper.DisplayRatio + 4 + (150 * Helper.DisplayRatio - sf.Width) / 2, top + 4 * Helper.DisplayRatio + (40 * Helper.DisplayRatio - sf.Height) / 2);
                     }
                 }
                 else
                 {
-                    using (Font f = new Font("SimSun", 9))
+                    using (Font f = new Font(Helper.CurrentFontFamily, 9))
                     {
                         g.DrawString(name, f, Brushes.DarkGray, 50 * Helper.DisplayRatio + 150 * i * Helper.DisplayRatio + 4 + (150 * Helper.DisplayRatio - sf.Width) / 2, top + 4 * Helper.DisplayRatio + (40 * Helper.DisplayRatio - sf.Height) / 2);
                     }
@@ -158,7 +158,7 @@ namespace D2REditor.Controls
                 //e.Graphics.DrawRectangle(Pens.Red, new Rectangle(60 + (col - 1) * 131, 69 + (row - 1) * 89, 65, 65));
                 g.DrawImage(skillbmp[skill["IconCel"].ToInt32()], new RectangleF(tableft + 60 * Helper.DisplayRatio + (col - 1) * 131 * Helper.DisplayRatio, top + 69 * Helper.DisplayRatio + (row - 1) * 89 * Helper.DisplayRatio, skillbmp[0].Width * Helper.DisplayRatio, skillbmp[0].Height * Helper.DisplayRatio), new RectangleF(0, 0, skillbmp[skill["IconCel"].ToInt32()].Width, skillbmp[skill["IconCel"].ToInt32()].Height), GraphicsUnit.Pixel);
                 int point = Helper.CurrentCharactor.ClassSkills.Skills.Where(s => s.Id == Convert.ToInt32(skill["str name"].Value.ToLower().Replace("skillsname", "").Replace("skillname", ""))).First().Points;
-                using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+                using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
                 {
                     g.DrawString(point.ToString(), f, Brushes.White, tableft + 130 * Helper.DisplayRatio + (col - 1) * 131 * Helper.DisplayRatio, top + 112 * Helper.DisplayRatio + (row - 1) * 89 * Helper.DisplayRatio);
                 }
@@ -173,7 +173,7 @@ namespace D2REditor.Controls
                 var tooltip = Utils.AllJsons[skill["str long"].Value];
                 int width = 0, height = 0;
 
-                using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+                using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
                 {
                     var sf = g.MeasureString(title, f, this.Width - 20);
                     var sf2 = g.MeasureString(tooltip, f, this.Width - 20);

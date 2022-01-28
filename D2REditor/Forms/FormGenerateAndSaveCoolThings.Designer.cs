@@ -71,7 +71,7 @@
             this.Controls.Add(this.btnCreateGems);
             this.Controls.Add(this.btnCreateKeys);
             this.Controls.Add(this.btnCreateRuns);
-            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FormGenerateCoolThings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormGenerateAndSaveCoolThings";

@@ -68,7 +68,7 @@ namespace D2REditor
             // 
             this.pTop.BackColor = System.Drawing.Color.Black;
             this.pTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pTop.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pTop.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pTop.Location = new System.Drawing.Point(0, 0);
             this.pTop.Name = "pTop";
             this.pTop.Size = new System.Drawing.Size(1161, 24);
@@ -116,7 +116,7 @@ namespace D2REditor
             this.btnBooks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnBooks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBooks.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnBooks.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnBooks.ForeColor = System.Drawing.Color.White;
             this.btnBooks.ImageFile = "";
             this.btnBooks.ImageFrames = 4;
@@ -136,7 +136,7 @@ namespace D2REditor
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSave.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.ImageFile = "";
             this.btnSave.ImageFrames = 4;
@@ -156,7 +156,7 @@ namespace D2REditor
             this.btnExtra4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnExtra4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExtra4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExtra4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExtra4.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExtra4.ForeColor = System.Drawing.Color.White;
             this.btnExtra4.ImageFile = "";
             this.btnExtra4.ImageFrames = 4;
@@ -176,7 +176,7 @@ namespace D2REditor
             this.btnExtra2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnExtra2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExtra2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExtra2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExtra2.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExtra2.ForeColor = System.Drawing.Color.White;
             this.btnExtra2.ImageFile = "";
             this.btnExtra2.ImageFrames = 4;
@@ -196,7 +196,7 @@ namespace D2REditor
             this.btnExtra3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnExtra3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExtra3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExtra3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExtra3.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExtra3.ForeColor = System.Drawing.Color.White;
             this.btnExtra3.ImageFile = "";
             this.btnExtra3.ImageFrames = 4;
@@ -216,7 +216,7 @@ namespace D2REditor
             this.btnExtra1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnExtra1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExtra1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExtra1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExtra1.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExtra1.ForeColor = System.Drawing.Color.White;
             this.btnExtra1.ImageFile = "";
             this.btnExtra1.ImageFrames = 4;
@@ -322,7 +322,7 @@ namespace D2REditor
             this.Controls.Add(this.pTop);
             this.Controls.Add(this.pBottom);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "MainForm";

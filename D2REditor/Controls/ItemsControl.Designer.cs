@@ -35,7 +35,7 @@
             // ItemsControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Font = new System.Drawing.Font("SimSun", 5.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 5.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "ItemsControl";
             this.Size = new System.Drawing.Size(213, 141);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ItemControl_MouseMove);

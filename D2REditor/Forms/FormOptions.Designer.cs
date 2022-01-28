@@ -52,7 +52,7 @@ namespace D2REditor.Forms
             this.tcOptions.Controls.Add(this.tpLanguage);
             this.tcOptions.Controls.Add(this.tpFile);
             this.tcOptions.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tcOptions.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tcOptions.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tcOptions.ItemSize = new System.Drawing.Size(130, 30);
             this.tcOptions.Location = new System.Drawing.Point(80, 137);
             this.tcOptions.Name = "tcOptions";
@@ -86,7 +86,7 @@ namespace D2REditor.Forms
             // 
             // lbLanguages
             // 
-            this.lbLanguages.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbLanguages.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbLanguages.FormattingEnabled = true;
             this.lbLanguages.ItemHeight = 24;
             this.lbLanguages.Items.AddRange(new object[] {
@@ -117,7 +117,7 @@ namespace D2REditor.Forms
             // labelCache
             // 
             this.labelCache.AutoSize = true;
-            this.labelCache.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelCache.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelCache.ForeColor = System.Drawing.Color.White;
             this.labelCache.Location = new System.Drawing.Point(8, 80);
             this.labelCache.Name = "labelCache";
@@ -127,7 +127,7 @@ namespace D2REditor.Forms
             // 
             // tbCacheLocation
             // 
-            this.tbCacheLocation.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbCacheLocation.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbCacheLocation.Location = new System.Drawing.Point(14, 116);
             this.tbCacheLocation.Name = "tbCacheLocation";
             this.tbCacheLocation.ReadOnly = true;
@@ -137,7 +137,7 @@ namespace D2REditor.Forms
             // labelGameFile
             // 
             this.labelGameFile.AutoSize = true;
-            this.labelGameFile.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelGameFile.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelGameFile.ForeColor = System.Drawing.Color.White;
             this.labelGameFile.Location = new System.Drawing.Point(6, 3);
             this.labelGameFile.Name = "labelGameFile";
@@ -147,7 +147,7 @@ namespace D2REditor.Forms
             // 
             // tbD2RFolder
             // 
-            this.tbD2RFolder.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbD2RFolder.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbD2RFolder.Location = new System.Drawing.Point(12, 39);
             this.tbD2RFolder.Name = "tbD2RFolder";
             this.tbD2RFolder.Size = new System.Drawing.Size(340, 28);
@@ -155,7 +155,7 @@ namespace D2REditor.Forms
             // 
             // btnBrowseD2RFolder
             // 
-            this.btnBrowseD2RFolder.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnBrowseD2RFolder.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnBrowseD2RFolder.Location = new System.Drawing.Point(358, 40);
             this.btnBrowseD2RFolder.Name = "btnBrowseD2RFolder";
             this.btnBrowseD2RFolder.Size = new System.Drawing.Size(42, 27);
@@ -213,7 +213,7 @@ namespace D2REditor.Forms
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

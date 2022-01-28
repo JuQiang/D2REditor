@@ -18,7 +18,14 @@ namespace D2SLib.Model.Save
             corpseList.Count = reader.ReadUInt16();
             for (int i = 0; i < corpseList.Count; i++)
             {
-                corpseList.Corpses.Add(Corpse.Read(reader, version));
+                try
+                {
+                    corpseList.Corpses.Add(Corpse.Read(reader, version));
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex);
+                }
             }
             return corpseList;
         }

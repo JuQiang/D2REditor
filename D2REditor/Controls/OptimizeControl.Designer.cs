@@ -40,7 +40,7 @@
             // 
             this.cbAllMoney.AutoSize = true;
             this.cbAllMoney.Checked = true;
-            this.cbAllMoney.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbAllMoney.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbAllMoney.ForeColor = System.Drawing.Color.White;
             this.cbAllMoney.Location = new System.Drawing.Point(185, 271);
             this.cbAllMoney.Name = "cbAllMoney";
@@ -56,7 +56,7 @@
             this.btnModify.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnModify.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModify.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnModify.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnModify.ForeColor = System.Drawing.Color.White;
             this.btnModify.ImageFile = "";
             this.btnModify.ImageFrames = 4;
@@ -72,7 +72,7 @@
             // 
             this.cbSkill20.AutoSize = true;
             this.cbSkill20.Checked = true;
-            this.cbSkill20.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbSkill20.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbSkill20.ForeColor = System.Drawing.Color.White;
             this.cbSkill20.Location = new System.Drawing.Point(591, 98);
             this.cbSkill20.Name = "cbSkill20";
@@ -84,7 +84,7 @@
             // 
             this.cbAllWays.AutoSize = true;
             this.cbAllWays.Checked = false;
-            this.cbAllWays.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbAllWays.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbAllWays.ForeColor = System.Drawing.Color.White;
             this.cbAllWays.Location = new System.Drawing.Point(591, 180);
             this.cbAllWays.Name = "cbAllWays";
@@ -96,7 +96,7 @@
             // 
             this.CbAllQuests.AutoSize = true;
             this.CbAllQuests.Checked = false;
-            this.CbAllQuests.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CbAllQuests.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CbAllQuests.ForeColor = System.Drawing.Color.White;
             this.CbAllQuests.Location = new System.Drawing.Point(185, 180);
             this.CbAllQuests.Name = "CbAllQuests";
@@ -108,7 +108,7 @@
             // 
             this.cbLevel99.AutoSize = true;
             this.cbLevel99.Checked = true;
-            this.cbLevel99.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbLevel99.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbLevel99.ForeColor = System.Drawing.Color.White;
             this.cbLevel99.Location = new System.Drawing.Point(185, 98);
             this.cbLevel99.Name = "cbLevel99";
@@ -128,7 +128,7 @@
             this.Controls.Add(this.CbAllQuests);
             this.Controls.Add(this.cbLevel99);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font(Helper.CurrentFontFamily, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "OptimizeControl";
             this.Size = new System.Drawing.Size(1162, 753);

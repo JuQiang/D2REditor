@@ -807,7 +807,7 @@ namespace D2REditor.Controls
             #endregion 底图
 
             #region 标题栏文字信息
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize*Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize*Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
@@ -817,7 +817,7 @@ namespace D2REditor.Controls
                 }
             }
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio))
             {
                 //g.DrawString(Utils.AllJsons["stash"], f, titleBrush, Helper.DefinitionInfo.StashTitleStartX, Helper.DefinitionInfo.StashTitleStartY);
                 //g.DrawString(Utils.AllJsons["strpanel4"], f, titleBrush, Helper.DefinitionInfo.InventoryTitleStartX, Helper.DefinitionInfo.InventoryTitleStartY);
@@ -845,7 +845,7 @@ namespace D2REditor.Controls
             #endregion
 
             #region 大箱子文字
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTabFontSize * Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTabFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 for (int i = 0; i < labels.Length; i++)
                 {
@@ -935,7 +935,7 @@ namespace D2REditor.Controls
 
                 g.FillRectangle(this.tooltipBrush, new RectangleF(newp.X, newp.Y , complexRet.Item1.Width, complexRet.Item1.Height));
                 g.DrawRectangle(Pens.Wheat, new Rectangle((int)(newp.X ), (int)(newp.Y ), (int)(complexRet.Item1.Width), (int)(complexRet.Item1.Height)));
-                using (Font f = new Font("SimSun",Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
+                using (Font f = new Font(Helper.CurrentFontFamily,Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
                 {
                     using (StringFormat format = new StringFormat())
                     {
@@ -1002,7 +1002,7 @@ namespace D2REditor.Controls
 
             using (Graphics g = this.CreateGraphics())
             {
-                using (Font f = new Font("SimSun", Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
+                using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.TooltipFontSize * Helper.DisplayRatio, FontStyle.Bold))
                 {
                     for (int i = 0; i < tooltips.Length; i++)
                     {

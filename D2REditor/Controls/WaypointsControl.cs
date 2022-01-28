@@ -97,7 +97,7 @@ namespace D2REditor.Controls
 
             g.DrawImage(waypointsbackbmp, left  + 0, 0, waypointsbackbmp.Width, waypointsbackbmp.Height);
 
-            using (Font f = new Font("SimSun", Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, Helper.DefinitionInfo.StashTitleFontSize * Helper.DisplayRatio, FontStyle.Bold))
             {
                 using (var sf = new StringFormat())
                 {
@@ -109,7 +109,7 @@ namespace D2REditor.Controls
 
             //g.DrawImage(diffbmp, diffleft, difftop, diffbmp.Width, diffbmp.Height);
 
-            using (Font f = new Font("SimSun", 9, FontStyle.Bold))
+            using (Font f = new Font(Helper.CurrentFontFamily, 9, FontStyle.Bold))
             {
                 //g.DrawString("选择要优化的难度", f, Brushes.White, diffleft + 60, difftop - 30);
 

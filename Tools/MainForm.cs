@@ -3,6 +3,7 @@ using D2SLib;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
 
@@ -15,9 +16,16 @@ namespace Tools
             InitializeComponent();
         }
 
+        private PrivateFontCollection pfc = new PrivateFontCollection();
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            var folder = @"C:\Users\Administrator\Documents\HD\data\data\hd\ui\fonts";
+            var files = Directory.GetFiles(folder, "*.ttf");
+            foreach (var file in files)
+            {
+                this.pfc.AddFontFile(file);
+                cbFontList.Items.Add((new FileInfo(file)).Name);
+            }
         }
 
 
@@ -409,6 +417,17 @@ namespace Tools
                 bmp.Dispose();
                 ori.Dispose();
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void cbFontList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Font = new Font(this.pfc.Families[cbFontList.SelectedIndex], 16);
         }
     }
 }
