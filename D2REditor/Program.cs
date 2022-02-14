@@ -16,26 +16,26 @@ namespace D2REditor
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (args.Length != 1) return;
-            bool safe = false;
+            //if (args.Length != 1) return;
+            //bool safe = false;
 
 
-            int pid = -1;
-            if (args.Length > 0 && Int32.TryParse(args[0], out pid))
-            {
-                try
-                {
-                    safe = (System.Diagnostics.Process.GetProcessById(pid).ProcessName.ToLower() == "d2reditorlauncher");
-                    WriteLog(String.Format("{0},{1},{2}", args[0], System.Diagnostics.Process.GetProcessById(pid).ProcessName.ToLower(), safe.ToString()));
-                    //throw new Exception(String.Format("{0},{1}", args[0], System.Diagnostics.Process.GetProcessById(pid).ProcessName.ToLower()));
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
+            //int pid = -1;
+            //if (args.Length > 0 && Int32.TryParse(args[0], out pid))
+            //{
+            //    try
+            //    {
+            //        safe = (System.Diagnostics.Process.GetProcessById(pid).ProcessName.ToLower() == "d2reditorlauncher");
+            //        WriteLog(String.Format("{0},{1},{2}", args[0], System.Diagnostics.Process.GetProcessById(pid).ProcessName.ToLower(), safe.ToString()));
+            //        //throw new Exception(String.Format("{0},{1}", args[0], System.Diagnostics.Process.GetProcessById(pid).ProcessName.ToLower()));
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        throw ex;
+            //    }
+            //}
 
-            if (!safe) return;
+            //if (!safe) return;
 
             //WriteLog("Begin call select d2r");
             if (Environment.OSVersion.Version.Major >= 6)

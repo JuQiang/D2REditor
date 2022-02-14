@@ -12,27 +12,49 @@ namespace D2SLib.Model.Save
         public static Golem Read(BitReader reader, UInt32 version)
         {
             Golem golem = new Golem();
-            golem.Header = reader.ReadUInt16();
-            golem.Exists = reader.ReadByte() == 1;
-            if (golem.Exists)
+            try
             {
-                golem.Item = Item.Read(reader, version);
+                golem.Header = reader.ReadUInt16();
+                golem.Exists = reader.ReadByte() == 1;
+                if (golem.Exists)
+                {
+                    golem.Item = Item.Read(reader, version);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
             }
             return golem;
+            
         }
 
         public static byte[] Write(Golem golem, UInt32 version)
         {
-            using (BitWriter writer = new BitWriter())
+            BitWriter writer = new BitWriter();
+            byte[] data = null;
+            try
             {
+
                 writer.WriteUInt16(golem.Header ?? 0x666B);
                 writer.WriteByte((byte)(golem.Exists ? 1 : 0));
                 if (golem.Exists)
                 {
                     writer.WriteBytes(Item.Write(golem.Item, version));
                 }
-                return writer.ToArray();
+                data= writer.ToArray();
             }
+
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                writer.Dispose();
+            }
+
+            return data;
         }
     }
 }

@@ -206,9 +206,9 @@ namespace D2REditor.Forms
                 {
                     charators.Add(Core.ReadD2S(file));
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    System.Diagnostics.Debug.WriteLine(ex);
                 }
             }
 

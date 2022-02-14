@@ -12,10 +12,11 @@ namespace D2SLib.Model.Save
         public UInt16 TypeId { get; set; }
         public UInt32 Experience { get; set; }
 
-        public static Mercenary Read(byte[] bytes)
+        //public static Mercenary Read(byte[] bytes)
+        public static Mercenary Read(BitReader reader)
         {
             Mercenary mercenary = new Mercenary();
-            using (BitReader reader = new BitReader(bytes))
+            //using (BitReader reader = new BitReader(bytes))
             {
                 mercenary.IsDead = reader.ReadUInt16();
                 mercenary.Id = reader.ReadUInt32();
@@ -51,8 +52,17 @@ namespace D2SLib.Model.Save
             mercenaryItemList.Header = reader.ReadUInt16();
             if (mercenary.Id != 0)
             {
-                mercenaryItemList.ItemList = ItemList.Read(reader, version);
+                try
+                {
+                    mercenaryItemList.ItemList = ItemList.Read(reader, version);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
             }
+
+            if(mercenaryItemList.ItemList == null) mercenaryItemList.ItemList= new ItemList();
             return mercenaryItemList;
         }
 
@@ -63,7 +73,14 @@ namespace D2SLib.Model.Save
                 writer.WriteUInt16(mercenaryItemList.Header ?? 0x666A);
                 if (mercenary.Id != 0)
                 {
-                    //writer.WriteBytes(ItemList.Write(mercenaryItemList.ItemList, version));
+                    try
+                    {
+                        writer.WriteBytes(ItemList.Write(mercenaryItemList.ItemList, version));
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.Message);
+                    }
                 }
                 return writer.ToArray();
             }

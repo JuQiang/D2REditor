@@ -65,7 +65,7 @@ namespace D2REditor
             LanguageMappings.Add(new LanguageMapping("中文 (简体)", "zhCN"));
             LanguageMappings.Add(new LanguageMapping("中文（繁體）", "zhTW"));
             
-            pfc.AddFontFile(Helper.CacheFolder + "\\fonts\\ik4ll3.ttf");
+            //pfc.AddFontFile(Helper.CacheFolder + "\\fonts\\ik4ll3.ttf");
             pfc.AddFontFile(Helper.CacheFolder + "\\fonts\\blizzardglobal-v5_81.ttf");
 
             fonts["enUS"] = pfc.Families[0];

@@ -181,7 +181,8 @@ namespace D2SLib.Model.Save
                 d2s.Location = Locations.Read(reader.ReadBytes(3));
                 d2s.MapId = reader.ReadUInt32();
                 d2s.Unk0x00af = reader.ReadBytes(2);
-                d2s.Mercenary = Mercenary.Read(reader.ReadBytes(14));
+                //d2s.Mercenary = Mercenary.Read(reader.ReadBytes(14));
+                d2s.Mercenary = Mercenary.Read(reader);
                 d2s.RealmData = reader.ReadBytes(140);
                 d2s.Quests = QuestsSection.Read(reader.ReadBytes(302));
                 d2s.Waypoints = WaypointsSection.Read(reader.ReadBytes(80));
@@ -198,7 +199,7 @@ namespace D2SLib.Model.Save
                     d2s.MercenaryItemList = MercenaryItemList.Read(reader, d2s.Mercenary, d2s.Header.Version);
                     d2s.Golem = Golem.Read(reader, d2s.Header.Version);
                 }
-                Debug.Assert(reader.Position == (bytes.Length * 8));
+                //Debug.Assert(reader.Position == (bytes.Length * 8));
                 return d2s;
             }
         }
